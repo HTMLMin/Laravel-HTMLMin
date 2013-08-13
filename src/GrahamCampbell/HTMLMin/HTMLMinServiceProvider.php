@@ -27,7 +27,7 @@ class HTMLMinServiceProvider extends ServiceProvider {
      */
     public function register() {
         $this->app['htmlmin'] = $this->app->share(function($app) {
-            return new GrahamCampbell\Passwd\Classes\HTMLMin;
+            return new GrahamCampbell\HTMLMin\Classes\HTMLMin;
         });
     }
 
