@@ -50,7 +50,7 @@ Once HTMLMin is installed, you need to register the service provider. Open up `a
 
 You can register the HTMLMin facade in the `aliases` key of your `app/config/app.php` file if you like.
 
-`'HTMLMin' => 'GrahamCampbell\HTMLMin\Facade\HTMLMin'`
+`'HTMLMin' => 'GrahamCampbell\HTMLMin\Facades\HTMLMin'`
 
 
 ## Updating Your Fork
