@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-0": {
-            "GrahamCampbell\\Passwd": "src/"
+            "GrahamCampbell\\HTMLMin": "src/"
         }
     },
     "minimum-stability": "dev"
