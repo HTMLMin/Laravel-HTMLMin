@@ -41,7 +41,7 @@ Laravel HTMLMin Is A Simple HTML Minifier For [Laravel 4](http://laravel.com).
 
 Please check the system requirements before installing Laravel HTMLMin.  
 
-To get the latest version of HTMLMin, simply require it in your `composer.json` file.
+To get the latest version of Laravel HTMLMin, simply require it in your `composer.json` file.
 
 `"graham-campbell/htmlmin": "dev-master"`
 
