@@ -21,7 +21,7 @@ Copyright © [Graham Campbell](https://github.com/GrahamCampbell) 2013
 
 ## What Is Laravel HTMLMin?
 
-Laravel HTMLMin Is A Simple HTML Minifier For [Laravel 4](http://laravel.com).  
+Laravel HTMLMin is a simple HTML minifier for [Laravel 4](http://laravel.com).  
 
 * Laravel HTMLMin was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell).  
 * Laravel HTMLMin uses [Travis CI](https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin) to run tests to check if it's working as it should.  
