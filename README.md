@@ -2,15 +2,11 @@ Laravel HTMLMin
 ===============
 
 
-[![Latest Stable Version](https://poser.pugx.org/graham-campbell/htmlmin/v/stable.png)](https://packagist.org/packages/graham-campbell/htmlmin)
 [![Build Status](https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin.png?branch=master)](https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin)
-[![Latest Unstable Version](https://poser.pugx.org/graham-campbell/htmlmin/v/unstable.png)](https://packagist.org/packages/graham-campbell/htmlmin)
-[![Build Status](https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin.png?branch=develop)](https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin)
+[![Latest Version](https://poser.pugx.org/graham-campbell/htmlmin/v/stable.png)](https://packagist.org/packages/graham-campbell/htmlmin)
 [![Total Downloads](https://poser.pugx.org/graham-campbell/htmlmin/downloads.png)](https://packagist.org/packages/graham-campbell/htmlmin)
-[![Still Maintained](http://stillmaintained.com/GrahamCampbell/Laravel-HTMLMin.png)](http://stillmaintained.com/GrahamCampbell/Laravel-HTMLMin)
-
-
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/GrahamCampbell/laravel-htmlmin/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![Still Maintained](http://stillmaintained.com/GrahamCampbell/Laravel-HTMLMin.png)](http://stillmaintained.com/GrahamCampbell/Laravel-HTMLMin)
 
 
 Copyright © [Graham Campbell](https://github.com/GrahamCampbell) 2013  
