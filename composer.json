@@ -11,20 +11,15 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "illuminate/support": "4.0.*"
+        "illuminate/support": "4.0.*@stable"
     },
     "require-dev": {
-        "mockery/mockery": "dev-master",
+        "mockery/mockery": "0.8.*@stable",
         "phpunit/phpunit": "3.7.*@stable"
     },
     "autoload": {
         "psr-0": {
             "GrahamCampbell\\HTMLMin": "src/"
-        }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "0.1.x-dev"
         }
     },
     "minimum-stability": "dev"

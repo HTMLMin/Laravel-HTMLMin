@@ -37,6 +37,6 @@ class HTMLMinServiceProvider extends ServiceProvider {
      * @return array
      */
     public function provides() {
-        return array();
+        return array('htmlmin');
     }
 }
