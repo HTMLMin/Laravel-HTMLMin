@@ -5,6 +5,7 @@ class HTMLMin {
     /**
      * Get the minified html.
      *
+     * @param  string  $render
      * @return string
      */
     public static function render($render) {
