@@ -23,4 +23,4 @@ Please submit pull requests against my develop branch.
   * I will never accept pull requests into the master branch.  
   * If you plan to fix a bug, please create a branch called `fix-`, followed by an appropriate name.  
   * If you plan to add a feature, please create a branch called `feature-`, followed by an appropriate name.  
-  * Please indent with 4 spaces rather than tabs, and make sure your code is commented.
+  * Please indent with 4 spaces rather than tabs, and make sure your code is commented.  

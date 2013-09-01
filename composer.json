@@ -2,7 +2,7 @@
     "name": "graham-campbell/htmlmin",
     "description": "HTMLMin Is A Simple HTML Minifier For Laravel 4",
     "keywords": ["laravel", "framework", "html minifier", "html", "minifier", "HTMLMin", "Laravel HTMLMin", "Laravel-HTMLMin", "Graham Campbell", "GrahamCampbell"],
-    "license": "MIT",
+    "license": "Apache License 2.0",
     "authors": [
         {
             "name": "Graham Campbell",
