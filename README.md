@@ -2,7 +2,7 @@ Laravel HTMLMin
 ===============
 
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/GrahamCampbell/laravel-htmlmin/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/GrahamCampbell/Laravel-HTMLMin/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 [![Build Status](https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin.png?branch=master)](https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin)
 [![Latest Version](https://poser.pugx.org/graham-campbell/htmlmin/v/stable.png)](https://packagist.org/packages/graham-campbell/htmlmin)
 [![Total Downloads](https://poser.pugx.org/graham-campbell/htmlmin/downloads.png)](https://packagist.org/packages/graham-campbell/htmlmin)
