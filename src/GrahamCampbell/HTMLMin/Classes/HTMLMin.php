@@ -23,6 +23,23 @@
 class HTMLMin {
 
     /**
+     * The application instance.
+     *
+     * @var \Illuminate\Foundation\Application
+     */
+    protected $app;
+
+    /**
+     * Create a new instance.
+     *
+     * @param  \Illuminate\Foundation\Application  $app
+     * @return void
+     */
+    public function __construct($app) {
+        $this->app = $app;
+    }
+
+    /**
      * Get the minified html.
      *
      * @param  string  $render
@@ -39,5 +56,17 @@ class HTMLMin {
         $render = preg_replace(array_keys($filters), array_values($filters), $render);
 
         return $render;
+    }
+
+    /**
+     * Get the minified view.
+     *
+     * @param  string  $view
+     * @param  array   $data
+     * @param  array   $mergeData
+     * @return string
+     */
+    public static function make($view, array $data = array(), array $mergeData = array()) {
+        return $this->render($this->app['view']->make($view, $data, $mergeData)->render());
     }
 }
