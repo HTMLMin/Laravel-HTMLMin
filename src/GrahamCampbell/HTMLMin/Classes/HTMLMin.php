@@ -45,7 +45,7 @@ class HTMLMin {
      * @param  string  $render
      * @return string
      */
-    public static function render($render) {
+    public function render($render) {
         $filters = array(
             '/<!--([^\[|(<!)].*)/' => '',
             '/(?<!\S)\/\/\s*[^\r\n]*/' => '',
@@ -66,7 +66,7 @@ class HTMLMin {
      * @param  array   $mergeData
      * @return string
      */
-    public static function make($view, array $data = array(), array $mergeData = array()) {
+    public function make($view, array $data = array(), array $mergeData = array()) {
         return $this->render($this->app['view']->make($view, $data, $mergeData)->render());
     }
 }
