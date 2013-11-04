@@ -11,7 +11,7 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "illuminate/support": "4.0.*@stable"
+        "orchestra/testbench": "2.0.*"
     },
     "require-dev": {
         "mockery/mockery": "0.8.*@stable",
