@@ -34,10 +34,13 @@ class HTMLMinCompiler extends BladeCompiler {
     /**
      * Create a new instance.
      *
+     * @param  \GrahamCampbell\HTMLMin\Classes\HTMLMin  $min
+     * @param  \Illuminate\Filesystem\Filesystem  $files
+     * @param  string  $cachePath
      * @return void
      */
-    public function __construct($min, $files, $cache) {
-        parent::__construct($files, $cache);
+    public function __construct($min, $files, $cachePath) {
+        parent::__construct($files, $cachePath);
         $this->min = $min;
         $this->compilers[] = 'Minify';
     }

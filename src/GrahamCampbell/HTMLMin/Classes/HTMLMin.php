@@ -27,20 +27,20 @@ use JSMin;
 class HTMLMin {
 
     /**
-     * The application instance.
+     * The view instance.
      *
-     * @var \Illuminate\Foundation\Application
+     * @var \Illuminate\View\Environment
      */
-    protected $app;
+    protected $view;
 
     /**
      * Create a new instance.
      *
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param  \Illuminate\View\Environment  $view
      * @return void
      */
-    public function __construct($app) {
-        $this->app = $app;
+    public function __construct($view) {
+        $this->view = $view;
     }
 
     /**
@@ -96,7 +96,7 @@ class HTMLMin {
      * @return string
      */
     public function make($view, array $data = array(), array $mergeData = array()) {
-        $value = $this->render($this->app['view']->make($view, $data, $mergeData)->render());
+        $value = $this->render($this->view->make($view, $data, $mergeData)->render());
 
         return $value;
     }
