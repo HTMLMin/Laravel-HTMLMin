@@ -53,7 +53,7 @@ class HTMLMinServiceProvider extends ServiceProvider {
             return new Classes\HTMLMin($app);
         });
 
-        // if ($app['config']['graham-campbell/htmlmin::blade']) {
+        if ($app['config']['graham-campbell/htmlmin::blade']) {
             $app->view->getEngineResolver()->register('blade.php', function() use ($app) {
                 $cache = $app['path'].'/storage/views';
                 $compiler = new Classes\HTMLMinCompiler($app['htmlmin'], $app['files'], $cache);
@@ -61,9 +61,9 @@ class HTMLMinServiceProvider extends ServiceProvider {
             });
 
             $app->view->addExtension('blade.php', 'blade.php');
-        // }
+        }
 
-        // if ($app['config']['graham-campbell/htmlmin::live']) {
+        if ($app['config']['graham-campbell/htmlmin::live']) {
             $app->after(function($request, $response) use ($app) {
                 if($response instanceof \Illuminate\Http\Response) {
                     if ($response->headers->has('Content-Type') !== false) {
@@ -75,7 +75,7 @@ class HTMLMinServiceProvider extends ServiceProvider {
                     }
                 }
             });
-        // }
+        }
     }
 
     /**
