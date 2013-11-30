@@ -51,8 +51,8 @@ class HTMLMin {
             "/<\?php/" => '<?php ',
             "/\n/" => '',
             "/\r/" => '',
-            "/\t/" => ' ',
-            "/ +/" => ' '
+            "/\t/" => '',
+            "/ +/" => ''
         );
         
         $render = preg_replace(array_keys($filters), array_values($filters), $render);
