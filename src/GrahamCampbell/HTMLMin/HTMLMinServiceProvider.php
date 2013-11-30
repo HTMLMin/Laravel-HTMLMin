@@ -21,6 +21,7 @@
  */
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Http\Response;
 use Illuminate\View\Engines\CompilerEngine;
 
 class HTMLMinServiceProvider extends ServiceProvider {
@@ -39,30 +40,21 @@ class HTMLMinServiceProvider extends ServiceProvider {
      */
     public function boot() {
         $this->package('graham-campbell/htmlmin');
-    }
 
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
-    public function register() {
         $app = $this->app;
 
-        $app['htmlmin'] = $app->share(function($app) {
-            return new Classes\HTMLMin($app);
-        });
-
-        $app->view->getEngineResolver()->register('blade.php', function() use ($app) {
-            $compiler = new Classes\HTMLMinCompiler($app['htmlmin'], $app['files'], $app['path'].'/storage/views');
-            return new CompilerEngine($compiler);
-        });
+        if ($app['config']['htmlmin::blade']) {
+            $app->view->getEngineResolver()->register('blade.php', function() use ($app) {
+                $compiler = new Classes\HTMLMinCompiler($app['htmlmin'], $app['files'], $app['path'].'/storage/views');
+                return new CompilerEngine($compiler);
+            });
+        }
 
         $app->view->addExtension('blade.php', 'blade.php');
 
-        $app->after(function($request, $response) use ($app) {
-            if ($app['config']['htmlmin::enable']) {
-                if($response instanceof \Illuminate\Http\Response) {
+        if ($app['config']['htmlmin::live']) {
+            $app->after(function($request, $response) use ($app) {
+                if($response instanceof Response) {
                     if ($response->headers->has('Content-Type') !== false) {
                         if (strpos($response->headers->get('Content-Type'), 'text/html') !== false) {
                             $output = $response->getOriginalContent();
@@ -71,7 +63,18 @@ class HTMLMinServiceProvider extends ServiceProvider {
                         }
                     }
                 }
-            }
+            });
+        }
+    }
+
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    public function register() {
+        $this->app['htmlmin'] = $this->app->share(function($app) {
+            return new Classes\HTMLMin($app);
         });
     }
 
