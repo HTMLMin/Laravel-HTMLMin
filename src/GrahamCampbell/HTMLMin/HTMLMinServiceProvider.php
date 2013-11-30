@@ -62,7 +62,7 @@ class HTMLMinServiceProvider extends ServiceProvider {
         $app->view->addExtension('blade.php', 'blade.php');
 
         $app->after(function($request, $response) {
-            if($response instanceof Illuminate\Http\Response) {
+            if($response instanceof \Illuminate\Http\Response) {
                 if ($response->headers->has('Content-Type') !== false) {
                     if (strpos($response->headers->get('Content-Type'), 'text/html') !== false) {
                         $output = $response->getOriginalContent();
