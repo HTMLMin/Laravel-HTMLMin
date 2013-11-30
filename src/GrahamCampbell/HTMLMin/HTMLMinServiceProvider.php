@@ -53,25 +53,29 @@ class HTMLMinServiceProvider extends ServiceProvider {
             return new Classes\HTMLMin($app);
         });
 
-        $app->view->getEngineResolver()->register('blade.php', function() use ($app) {
-            $cache = $app['path'].'/storage/views';
-            $compiler = new Classes\HTMLMinCompiler($app['htmlmin'], $app['files'], $cache);
-            return new CompilerEngine($compiler);
-        });
+        if ($app['config']['graham-campbell/htmlmin::blade'] === true) {
+            $app->view->getEngineResolver()->register('blade.php', function() use ($app) {
+                $cache = $app['path'].'/storage/views';
+                $compiler = new Classes\HTMLMinCompiler($app['htmlmin'], $app['files'], $cache);
+                return new CompilerEngine($compiler);
+            });
 
-        $app->view->addExtension('blade.php', 'blade.php');
+            $app->view->addExtension('blade.php', 'blade.php');
+        }
 
-        $app->after(function($request, $response) use ($app) {
-            if($response instanceof \Illuminate\Http\Response) {
-                if ($response->headers->has('Content-Type') !== false) {
-                    if (strpos($response->headers->get('Content-Type'), 'text/html') !== false) {
-                        $output = $response->getOriginalContent();
-                        $min = $app['htmlmin']->render($output);
-                        $response->setContent($min);
+        if ($app['config']['graham-campbell/htmlmin::live'] === true) {
+            $app->after(function($request, $response) use ($app) {
+                if($response instanceof \Illuminate\Http\Response) {
+                    if ($response->headers->has('Content-Type') !== false) {
+                        if (strpos($response->headers->get('Content-Type'), 'text/html') !== false) {
+                            $output = $response->getOriginalContent();
+                            $min = $app['htmlmin']->render($output);
+                            $response->setContent($min);
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
     }
 
     /**
