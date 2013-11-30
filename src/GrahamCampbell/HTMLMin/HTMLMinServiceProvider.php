@@ -21,6 +21,7 @@
  */
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\View\Engines\CompilerEngine;
 
 class HTMLMinServiceProvider extends ServiceProvider {
 
@@ -46,8 +47,30 @@ class HTMLMinServiceProvider extends ServiceProvider {
      * @return void
      */
     public function register() {
-        $this->app['htmlmin'] = $this->app->share(function($app) {
+        $app = $this->app;
+
+        $app['htmlmin'] = $app->share(function($app) {
             return new Classes\HTMLMin($app);
+        });
+
+        $app->view->getEngineResolver()->register('blade.php', function() use ($app) {
+            $cache = $app['path'].'/storage/views';
+            $compiler = new Classes\HTMLMinCompiler($app['htmlmin'], $app['files'], $cache);
+            return new CompilerEngine($compiler);
+        });
+
+        $app->view->addExtension('blade.php', 'blade.php');
+
+        $app->after(function($request, $response) {
+            if($response instanceof Illuminate\Http\Response) {
+                if ($response->headers->has('Content-Type') !== false) {
+                    if (strpos($response->headers->get('Content-Type'), 'text/html') !== false) {
+                        $output = $response->getOriginalContent();
+                        $min = $app['htmlmin']->render($output);
+                        $response->setContent($min);
+                    }
+                }
+            }
         });
     }
 

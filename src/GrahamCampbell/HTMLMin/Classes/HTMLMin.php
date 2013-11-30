@@ -47,10 +47,12 @@ class HTMLMin {
      */
     public function render($render) {
         $filters = array(
-            '/<!--([^\[|(<!)].*)/' => '',
-            '/(?<!\S)\/\/\s*[^\r\n]*/' => '',
-            '/\s{2,}/' => '',
-            '/(\r?\n)/' => '',
+            '/<!--[^\[](.*?)[^\]]-->/s' => '',
+            "/<\?php/" => '<?php ',
+            "/\n/" => '',
+            "/\r/" => '',
+            "/\t/" => ' ',
+            "/ +/" => ' '
         );
         
         $render = preg_replace(array_keys($filters), array_values($filters), $render);
