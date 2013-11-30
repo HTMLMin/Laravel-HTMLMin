@@ -53,18 +53,16 @@ class HTMLMinServiceProvider extends ServiceProvider {
             return new Classes\HTMLMin($app);
         });
 
-        if ($app['config']['graham-campbell/htmlmin::blade']) {
-            $app->view->getEngineResolver()->register('blade.php', function() use ($app) {
-                $cache = $app['path'].'/storage/views';
-                $compiler = new Classes\HTMLMinCompiler($app['htmlmin'], $app['files'], $cache);
-                return new CompilerEngine($compiler);
-            });
+        $app->view->getEngineResolver()->register('blade.php', function() use ($app) {
+            $cache = $app['path'].'/storage/views';
+            $compiler = new Classes\HTMLMinCompiler($app['htmlmin'], $app['files'], $cache);
+            return new CompilerEngine($compiler);
+        });
 
-            $app->view->addExtension('blade.php', 'blade.php');
-        }
+        $app->view->addExtension('blade.php', 'blade.php');
 
-        if ($app['config']['graham-campbell/htmlmin::live']) {
-            $app->after(function($request, $response) use ($app) {
+        $app->after(function($request, $response) use ($app) {
+            if ($app['config']['graham-campbell/htmlmin::enable']) {
                 if($response instanceof \Illuminate\Http\Response) {
                     if ($response->headers->has('Content-Type') !== false) {
                         if (strpos($response->headers->get('Content-Type'), 'text/html') !== false) {
@@ -74,8 +72,8 @@ class HTMLMinServiceProvider extends ServiceProvider {
                         }
                     }
                 }
-            });
-        }
+            }
+        });
     }
 
     /**

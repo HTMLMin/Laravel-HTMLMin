@@ -24,32 +24,19 @@ return array(
 
     /*
     |--------------------------------------------------------------------------
-    | Blade Optimizations
-    |--------------------------------------------------------------------------
-    |
-    | This option enables minification of the the blade views as they are
-    | compiled. These optimizations have little impact on php processing time
-    | as the optimizations are only applied once and are cached.
-    |
-    | Default: true
-    |
-    */
-
-    'blade' => true,
-
-    /*
-    |--------------------------------------------------------------------------
-    | Live Optimizations
+    | Enable Live Optimizations
     |--------------------------------------------------------------------------
     |
     | This option enables minification of the html responses just before they
-    | are served. These optimizations have greater impact on php processing
-    | time as the optimizations are applied on every request.
+    | are served. These optimizations have a small impact on php processing
+    | time as the optimizations are applied on every request. Note that even
+    | with this disabled, some other non-live minification optimisations are
+    | still applied.
     |
     | Default: true
     |
     */
 
-    'live' => true,
+    'enable' => true,
 
 );
