@@ -70,7 +70,9 @@ class HTMLMin {
      * @return string
      */
     public function render($value) {
-        $value = Minify_HTML::minify($value);
+        $options = array('cssMinifier', 'jsMinifier', 'jsCleanComments');
+
+        $value = Minify_HTML::minify($value, $options);
 
         return $value;
     }
