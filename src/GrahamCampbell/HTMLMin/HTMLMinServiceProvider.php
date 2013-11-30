@@ -54,8 +54,7 @@ class HTMLMinServiceProvider extends ServiceProvider {
         });
 
         $app->view->getEngineResolver()->register('blade.php', function() use ($app) {
-            $cache = $app['path'].'/storage/views';
-            $compiler = new Classes\HTMLMinCompiler($app['htmlmin'], $app['files'], $cache);
+            $compiler = new Classes\HTMLMinCompiler($app['htmlmin'], $app['files'], $app['path'].'/storage/views');
             return new CompilerEngine($compiler);
         });
 
