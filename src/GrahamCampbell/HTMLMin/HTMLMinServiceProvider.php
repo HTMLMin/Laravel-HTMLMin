@@ -39,8 +39,19 @@ class HTMLMinServiceProvider extends ServiceProvider {
      */
     public function boot() {
         $this->package('graham-campbell/htmlmin');
+    }
 
+    /**
+     * Register the service provider.
+     *
+     * @return void
+     */
+    public function register() {
         $app = $this->app;
+
+        $app['htmlmin'] = $app->share(function($app) {
+            return new Classes\HTMLMin($app);
+        });
 
         if ($app['config']['graham-campbell/htmlmin::blade']) {
             $app->view->getEngineResolver()->register('blade.php', function() use ($app) {
@@ -65,17 +76,6 @@ class HTMLMinServiceProvider extends ServiceProvider {
                 }
             });
         }
-    }
-
-    /**
-     * Register the service provider.
-     *
-     * @return void
-     */
-    public function register() {
-        $this->app['htmlmin'] = $this->app->share(function($app) {
-            return new Classes\HTMLMin($app);
-        });
     }
 
     /**
