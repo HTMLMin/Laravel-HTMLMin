@@ -48,9 +48,9 @@ class HTMLMinServiceProvider extends ServiceProvider {
                 $compiler = new Classes\HTMLMinCompiler($app['htmlmin'], $app['files'], $app['path'].'/storage/views');
                 return new CompilerEngine($compiler);
             });
-        }
 
-        $app->view->addExtension('blade.php', 'blade.php');
+            $app->view->addExtension('blade.php', 'blade.php');
+        }
 
         if ($app['config']['htmlmin::live']) {
             $app->after(function($request, $response) use ($app) {
