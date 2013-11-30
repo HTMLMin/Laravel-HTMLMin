@@ -74,7 +74,7 @@ class HTMLMin {
     public function render($value) {
         $options = array(
             'cssMinifier' => function($css) {
-                return Minify_CSS::minify($css array('preserveComments' = false));
+                return Minify_CSS::minify($css, array('preserveComments' => false));
             },
             'jsMinifier' => function($js) {
                 return JSMin::minify($js);
