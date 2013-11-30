@@ -48,6 +48,6 @@ class HTMLMinCompiler extends BladeCompiler {
     * @return string
     */
     protected function compileMinify($value) {
-        return $this->min->render($value);
+        return $this->min->blade($value);
     }
 }

@@ -20,6 +20,8 @@
  * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
 
+use Minify_HTML;
+
 class HTMLMin {
 
     /**
@@ -40,24 +42,37 @@ class HTMLMin {
     }
 
     /**
-     * Get the minified html.
+     * Get the minified blade.
      *
-     * @param  string  $render
+     * @param  string  $value
      * @return string
      */
-    public function render($render) {
-        $filters = array(
-            '/<!--[^\[](.*?)[^\]]-->/s' => '',
-            "/<\?php/" => '<?php ',
-            "/\n/" => '',
-            "/\r/" => '',
-            "/\t/" => ' ',
-            "/ +/" => ' '
-        );
-        
-        $render = preg_replace(array_keys($filters), array_values($filters), $render);
+    public function blade($blade) {
+        if (preg_match('/<(pre|textarea)/', $value) || preg_match('/<script[^\??>]*>[^<\/script>]/', $value) || preg_match('/value=("|\')(.*)([ ]{2,})(.*)("|\')/', $value)) {
+            $replace = array(
+                '/<!--[^\[](.*?)[^\]]-->/s' => '',
+                "/<\?php/" => '<?php ',
+                "/\n/" => '',
+                "/\r/" => '',
+                "/\t/" => ' ',
+                "/ +/" => ' '
+            );
+            $value = preg_replace(array_keys($replace), array_values($replace), $value);
+        }
 
-        return $render;
+        return $value;
+    }
+
+    /**
+     * Get the minified html.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function render($value) {
+        $value = Minify_HTML::minify($value);
+
+        return $value;
     }
 
     /**
@@ -69,6 +84,8 @@ class HTMLMin {
      * @return string
      */
     public function make($view, array $data = array(), array $mergeData = array()) {
-        return $this->render($this->app['view']->make($view, $data, $mergeData)->render());
+        $value = $this->render($this->app['view']->make($view, $data, $mergeData)->render());
+
+        return $value;
     }
 }

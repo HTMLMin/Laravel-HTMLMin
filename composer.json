@@ -11,7 +11,8 @@
     ],
     "require": {
         "php": ">=5.3.3",
-        "orchestra/testbench": "~2"
+        "orchestra/testbench": "~2",
+        "mrclay/minify": "dev-master"
     },
     "require-dev": {
         "mockery/mockery": "0.8.*@stable",
