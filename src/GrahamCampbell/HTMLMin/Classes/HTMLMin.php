@@ -21,6 +21,8 @@
  */
 
 use Minify_HTML;
+use Minify_CSS;
+use JSMin;
 
 class HTMLMin {
 
@@ -72,13 +74,10 @@ class HTMLMin {
     public function render($value) {
         $options = array(
             'cssMinifier' => function($css) {
-                $cssMin = new \CSSmin;
-                $css = $cssMin->run($css);
-                return $css;
+                return Minify_CSS::minify($css array('preserveComments' = false));
             },
             'jsMinifier' => function($js) {
-                $js = \JSMin::minify($js);
-                return $js;
+                return JSMin::minify($js);
             },
             'jsCleanComments' => true
         );
