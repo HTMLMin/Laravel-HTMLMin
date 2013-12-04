@@ -31,7 +31,7 @@ return array(
     | compiled. These optimizations have little impact on php processing time
     | as the optimizations are only applied once and are cached. This package
     | will do nothing by default to allow it to be used without minifying
-    | pages automatically
+    | pages automatically.
     |
     | Default: false
     |
@@ -48,7 +48,7 @@ return array(
     | are served. These optimizations have greater impact on php processing
     | time as the optimizations are applied on every request. This package
     | will do nothing by default to allow it to be used without minifying
-    | pages automatically
+    | pages automatically.
     |
     | Default: false
     |
