@@ -95,8 +95,12 @@ class HTMLMin {
      * @param  array   $mergeData
      * @return string
      */
-    public function make($view, array $data = array(), array $mergeData = array()) {
-        $value = $this->render($this->view->make($view, $data, $mergeData)->render());
+    public function make($view, array $data = array(), array $mergeData = array(), $full = false) {
+        $value = $this->blade($this->view->make($view, $data, $mergeData)->render());
+
+        if ($full) {
+            $value = $this->render($value);
+        }
 
         return $value;
     }
