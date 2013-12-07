@@ -15,6 +15,7 @@ Laravel HTMLMin
 Laravel HTMLMin is a simple HTML minifier for [Laravel 4](http://laravel.com).  
 
 * Laravel HTMLMin was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell).  
+* Laravel HTMLMin relies on Mr Clay's [Minify](https://github.com/mrclay/minify) package.  
 * Laravel HTMLMin uses [Travis CI](https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin) to run tests to check if it's working as it should.  
 * Laravel HTMLMin uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-HTMLMin) to run additional tests and checks.  
 * Laravel HTMLMin uses [Composer](https://getcomposer.org) to load and manage dependencies.  
