@@ -20,8 +20,8 @@
  * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Http\Response;
+use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Engines\CompilerEngine;
 
 class HTMLMinServiceProvider extends ServiceProvider {

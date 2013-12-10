@@ -23,6 +23,7 @@
 use Minify_HTML;
 use Minify_CSS;
 use JSMin;
+use Illuminate\View\Environment;
 
 class HTMLMin {
 
@@ -39,7 +40,7 @@ class HTMLMin {
      * @param  \Illuminate\View\Environment  $view
      * @return void
      */
-    public function __construct($view) {
+    public function __construct(Environment $view) {
         $this->view = $view;
     }
 
