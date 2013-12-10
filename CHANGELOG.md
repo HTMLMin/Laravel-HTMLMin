@@ -8,7 +8,7 @@ CHANGE LOG
 * Added unit tests
 
 
-## V0.3 Alpha (Upcoming)
+## V0.3 Alpha (10/12/2013)
 #### Major Release
 
 * Updated license
