@@ -20,6 +20,7 @@
  * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
 
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\View\Compilers\BladeCompiler;
 
 class HTMLMinCompiler extends BladeCompiler {
@@ -29,19 +30,19 @@ class HTMLMinCompiler extends BladeCompiler {
      *
      * @var \GrahamCampbell\HTMLMin\Classes\HTMLMin
      */
-    protected $min;
+    protected $htmlmin;
 
     /**
      * Create a new instance.
      *
-     * @param  \GrahamCampbell\HTMLMin\Classes\HTMLMin  $min
+     * @param  \GrahamCampbell\HTMLMin\Classes\HTMLMin  $htmlmin
      * @param  \Illuminate\Filesystem\Filesystem  $files
      * @param  string  $cachePath
      * @return void
      */
-    public function __construct($min, $files, $cachePath) {
+    public function __construct(HTMLMin $htmlmin, Filesystem $files, $cachePath) {
         parent::__construct($files, $cachePath);
-        $this->min = $min;
+        $this->htmlmin = $htmlmin;
         $this->compilers[] = 'Minify';
     }
     /**
@@ -51,6 +52,6 @@ class HTMLMinCompiler extends BladeCompiler {
     * @return string
     */
     protected function compileMinify($value) {
-        return $this->min->blade($value);
+        return $this->htmlmin->blade($value);
     }
 }
