@@ -1,6 +1,6 @@
 {
     "name": "graham-campbell/htmlmin",
-    "description": "HTMLMin Is A Simple HTML Minifier For Laravel 4",
+    "description": "HTMLMin Is A Simple HTML Minifier For Laravel 4.1",
     "keywords": ["laravel", "framework", "html minifier", "html", "minifier", "HTMLMin", "Laravel HTMLMin", "Laravel-HTMLMin", "Graham Campbell", "GrahamCampbell"],
     "license": "Apache License 2.0",
     "authors": [
@@ -10,8 +10,8 @@
         }
     ],
     "require": {
-        "php": ">=5.3.3",
-        "orchestra/testbench": "2.0.*|2.1.*",
+        "php": ">=5.4.7",
+        "orchestra/testbench": "2.1.*",
         "mrclay/minify": "2.1.*"
     },
     "require-dev": {

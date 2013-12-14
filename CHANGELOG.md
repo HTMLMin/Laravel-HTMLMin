@@ -5,6 +5,8 @@ CHANGE LOG
 ## V0.4 Alpha (Upcoming)
 #### Major Release
 
+* Dropped Laravel 4.0 support
+* Travis and Scrutinizer tweaks
 * Added unit tests
 
 
