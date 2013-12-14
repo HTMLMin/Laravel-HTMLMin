@@ -23,7 +23,8 @@
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\View\Compilers\BladeCompiler;
 
-class HTMLMinCompiler extends BladeCompiler {
+class HTMLMinCompiler extends BladeCompiler
+{
 
     /**
      * The htmlmin instance.
@@ -40,18 +41,21 @@ class HTMLMinCompiler extends BladeCompiler {
      * @param  string  $cachePath
      * @return void
      */
-    public function __construct(HTMLMin $htmlmin, Filesystem $files, $cachePath) {
+    public function __construct(HTMLMin $htmlmin, Filesystem $files, $cachePath)
+    {
         parent::__construct($files, $cachePath);
         $this->htmlmin = $htmlmin;
         $this->compilers[] = 'Minify';
     }
+
     /**
     * Minifies the HTML output before saving it.
     *
     * @param  string  $value
     * @return string
     */
-    protected function compileMinify($value) {
+    protected function compileMinify($value)
+    {
         return $this->htmlmin->blade($value);
     }
 }

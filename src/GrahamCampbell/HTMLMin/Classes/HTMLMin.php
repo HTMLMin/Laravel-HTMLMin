@@ -54,7 +54,11 @@ class HTMLMin
      */
     public function blade($value)
     {
-        if (!preg_match('/<(pre|textarea)/', $value) && !preg_match('/<script[^\??>]*>[^<\/script>]/', $value) && !preg_match('/value=("|\')(.*)([ ]{2,})(.*)("|\')/', $value)) {
+        if (
+            !preg_match('/<(pre|textarea)/', $value) &&
+            !preg_match('/<script[^\??>]*>[^<\/script>]/', $value) &&
+            !preg_match('/value=("|\')(.*)([ ]{2,})(.*)("|\')/', $value)
+        ) {
             $replace = array(
                 '/<!--[^\[](.*?)[^\]]-->/s' => '',
                 "/<\?php/" => '<?php ',
@@ -78,10 +82,10 @@ class HTMLMin
     public function render($value)
     {
         $options = array(
-            'cssMinifier' => function($css) {
+            'cssMinifier' => function ($css) {
                 return Minify_CSS::minify($css, array('preserveComments' => false));
             },
-            'jsMinifier' => function($js) {
+            'jsMinifier' => function ($js) {
                 return JSMin::minify($js);
             },
             'jsCleanComments' => true

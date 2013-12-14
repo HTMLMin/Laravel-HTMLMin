@@ -46,7 +46,7 @@ class HTMLMinServiceProvider extends ServiceProvider
         $app = $this->app;
 
         if ($app['config']['htmlmin::blade']) {
-            $app->view->getEngineResolver()->register('blade.php', function() use ($app) {
+            $app->view->getEngineResolver()->register('blade.php', function () use ($app) {
                 $compiler = new Classes\HTMLMinCompiler($app['htmlmin'], $app['files'], $app['path'].'/storage/views');
                 return new CompilerEngine($compiler);
             });
@@ -55,8 +55,8 @@ class HTMLMinServiceProvider extends ServiceProvider
         }
 
         if ($app['config']['htmlmin::live']) {
-            $app->after(function($request, $response) use ($app) {
-                if($response instanceof Response) {
+            $app->after(function ($request, $response) use ($app) {
+                if ($response instanceof Response) {
                     if ($response->headers->has('Content-Type') !== false) {
                         if (strpos($response->headers->get('Content-Type'), 'text/html') !== false) {
                             $output = $response->getOriginalContent();
@@ -76,7 +76,7 @@ class HTMLMinServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app['htmlmin'] = $this->app->share(function($app) {
+        $this->app['htmlmin'] = $this->app->share(function ($app) {
             return new Classes\HTMLMin($app['view']);
         });
     }
@@ -86,7 +86,8 @@ class HTMLMinServiceProvider extends ServiceProvider
      *
      * @return array
      */
-    public function provides() {
+    public function provides()
+    {
         return array('htmlmin');
     }
 }
