@@ -25,7 +25,8 @@ use Minify_CSS;
 use JSMin;
 use Illuminate\View\Environment;
 
-class HTMLMin {
+class HTMLMin
+{
 
     /**
      * The view instance.
@@ -40,7 +41,8 @@ class HTMLMin {
      * @param  \Illuminate\View\Environment  $view
      * @return void
      */
-    public function __construct(Environment $view) {
+    public function __construct(Environment $view)
+    {
         $this->view = $view;
     }
 
@@ -50,7 +52,8 @@ class HTMLMin {
      * @param  string  $value
      * @return string
      */
-    public function blade($value) {
+    public function blade($value)
+    {
         if (!preg_match('/<(pre|textarea)/', $value) && !preg_match('/<script[^\??>]*>[^<\/script>]/', $value) && !preg_match('/value=("|\')(.*)([ ]{2,})(.*)("|\')/', $value)) {
             $replace = array(
                 '/<!--[^\[](.*?)[^\]]-->/s' => '',
@@ -72,7 +75,8 @@ class HTMLMin {
      * @param  string  $value
      * @return string
      */
-    public function render($value) {
+    public function render($value)
+    {
         $options = array(
             'cssMinifier' => function($css) {
                 return Minify_CSS::minify($css, array('preserveComments' => false));
@@ -96,7 +100,8 @@ class HTMLMin {
      * @param  array   $mergeData
      * @return string
      */
-    public function make($view, array $data = array(), array $mergeData = array(), $full = false) {
+    public function make($view, array $data = array(), array $mergeData = array(), $full = false)
+    {
         $value = $this->blade($this->view->make($view, $data, $mergeData)->render());
 
         if ($full) {

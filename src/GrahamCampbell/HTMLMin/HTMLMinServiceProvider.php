@@ -24,7 +24,8 @@ use Illuminate\Http\Response;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Engines\CompilerEngine;
 
-class HTMLMinServiceProvider extends ServiceProvider {
+class HTMLMinServiceProvider extends ServiceProvider
+{
 
     /**
      * Indicates if loading of the provider is deferred.
@@ -38,7 +39,8 @@ class HTMLMinServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function boot() {
+    public function boot()
+    {
         $this->package('graham-campbell/htmlmin');
 
         $app = $this->app;
@@ -72,7 +74,8 @@ class HTMLMinServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function register() {
+    public function register()
+    {
         $this->app['htmlmin'] = $this->app->share(function($app) {
             return new Classes\HTMLMin($app['view']);
         });
