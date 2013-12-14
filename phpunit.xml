@@ -12,7 +12,7 @@
 >
     <testsuites>
         <testsuite name="Package Test Suite">
-            <directory suffix=".php">./src/GrahamCampbell/Core/Tests/</directory>
+            <directory suffix=".php">./src/GrahamCampbell/HTMLMin/Tests/</directory>
         </testsuite>
     </testsuites>
 </phpunit>
