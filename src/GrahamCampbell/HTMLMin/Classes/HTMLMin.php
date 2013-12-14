@@ -54,11 +54,9 @@ class HTMLMin
      */
     public function blade($value)
     {
-        if (
-            !preg_match('/<(pre|textarea)/', $value) &&
+        if (!preg_match('/<(pre|textarea)/', $value) &&
             !preg_match('/<script[^\??>]*>[^<\/script>]/', $value) &&
-            !preg_match('/value=("|\')(.*)([ ]{2,})(.*)("|\')/', $value)
-        ) {
+            !preg_match('/value=("|\')(.*)([ ]{2,})(.*)("|\')/', $value)) {
             $replace = array(
                 '/<!--[^\[](.*?)[^\]]-->/s' => '',
                 "/<\?php/" => '<?php ',
