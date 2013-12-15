@@ -27,7 +27,6 @@ use Illuminate\View\Environment;
 
 class HTMLMin
 {
-
     /**
      * The view instance.
      *

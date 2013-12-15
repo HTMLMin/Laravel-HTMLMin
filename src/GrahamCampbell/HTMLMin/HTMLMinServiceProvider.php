@@ -26,7 +26,6 @@ use Illuminate\View\Engines\CompilerEngine;
 
 class HTMLMinServiceProvider extends ServiceProvider
 {
-
     /**
      * Indicates if loading of the provider is deferred.
      *

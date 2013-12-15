@@ -25,7 +25,6 @@ use Illuminate\View\Compilers\BladeCompiler;
 
 class HTMLMinCompiler extends BladeCompiler
 {
-
     /**
      * The htmlmin instance.
      *
