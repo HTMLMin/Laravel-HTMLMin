@@ -9,38 +9,13 @@
             "email": "graham@mineuk.com"
         }
     ],
-    "repositories": [
-        {
-            "type": "package",
-            "package": {
-                "name": "sebastianbergmann/phpcov",
-                "version": "1.1.0",
-                "dist": {
-                    "url": "https://github.com/sebastianbergmann/phpcov/archive/1.1.0.zip",
-                    "type": "zip"
-                },
-                "source": {
-                    "url": "https://github.com/sebastianbergmann/phpcov.git",
-                    "type": "git",
-                    "reference": "1.1.0"
-                },
-                "bin": [
-                    "phpcov.php"
-                ]
-            }
-        }
-    ],
     "require": {
         "php": ">=5.4.7",
-        "orchestra/testbench": "2.1.*",
+        "laravel/framework": "4.1.*",
         "mrclay/minify": "2.1.*"
     },
     "require-dev": {
-        "mockery/mockery": "0.8.*",
-        "phpunit/phpunit": "3.7.*",
-        "sebastian/finder-facade": "1.1.*",
-        "sebastianbergmann/phpcov": "1.1.0",
-        "satooshi/php-coveralls": "dev-master"
+        "graham-campbell/testbench": "0.1.*"
     },
     "autoload": {
         "psr-0": {
