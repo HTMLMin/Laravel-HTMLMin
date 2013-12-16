@@ -3,10 +3,10 @@ Laravel HTMLMin
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/GrahamCampbell/Laravel-HTMLMin/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-[![Build Status](https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin.png?branch=master)](https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin)
-[![Latest Version](https://poser.pugx.org/graham-campbell/htmlmin/v/stable.png)](https://packagist.org/packages/graham-campbell/htmlmin)
-[![Total Downloads](https://poser.pugx.org/graham-campbell/htmlmin/downloads.png)](https://packagist.org/packages/graham-campbell/htmlmin)
+[![Build Status](https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin.png?branch=develop)](https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin)
+[![Coverage Status](https://coveralls.io/repos/GrahamCampbell/Laravel-HTMLMin/badge.png?branch=develop)](https://coveralls.io/r/GrahamCampbell/Laravel-HTMLMin)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-HTMLMin/badges/quality-score.png?s=b56aacf6a0c1b2e612c3d7dab63d212084e6b83b)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-HTMLMin)
+[![Latest Version](https://poser.pugx.org/graham-campbell/htmlmin/v/stable.png)](https://packagist.org/packages/graham-campbell/htmlmin)
 [![Still Maintained](http://stillmaintained.com/GrahamCampbell/Laravel-HTMLMin.png)](http://stillmaintained.com/GrahamCampbell/Laravel-HTMLMin)
 
 
@@ -17,10 +17,10 @@ Laravel HTMLMin is a simple HTML minifier for [Laravel 4.1](http://laravel.com).
 * Laravel HTMLMin was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell).  
 * Laravel HTMLMin relies on Mr Clay's [Minify](https://github.com/mrclay/minify) package.  
 * Laravel HTMLMin uses [Travis CI](https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin) to run tests to check if it's working as it should.  
-* Laravel HTMLMin uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-HTMLMin) to run additional tests and checks.  
+* Laravel HTMLMin uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-HTMLMin) and [Coveralls](https://coveralls.io/r/GrahamCampbell/Laravel-HTMLMin) to run additional tests and checks.  
 * Laravel HTMLMin uses [Composer](https://getcomposer.org) to load and manage dependencies.  
-* Laravel HTMLMin provides a [change log](https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-HTMLMin/releases), and a [wiki](https://github.com/GrahamCampbell/Laravel-HTMLMin/wiki).  
-* Laravel HTMLMin is licensed under the Apache License, available [here](https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md).  
+* Laravel HTMLMin provides a [change log](https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/develop/CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-HTMLMin/releases), and a [wiki](https://github.com/GrahamCampbell/Laravel-HTMLMin/wiki).  
+* Laravel HTMLMin is licensed under the Apache License, available [here](https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/develop/LICENSE.md).  
 
 
 ## System Requirements
@@ -42,7 +42,7 @@ You'll then need to run `composer install` or `composer update` to download it a
 
 Once Laravel HTMLMin is installed, you need to register the service provider. Open up `app/config/app.php` and add the following to the `providers` key.
 
-`'GrahamCampbell\HTMLMin\HTMLMinServiceProvider'`
+`'GrahamCampbell\HTMLMin\Support\HTMLMinServiceProvider'`
 
 You can register the HTMLMin facade in the `aliases` key of your `app/config/app.php` file if you like.
 
