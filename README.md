@@ -42,7 +42,7 @@ You'll then need to run `composer install` or `composer update` to download it a
 
 Once Laravel HTMLMin is installed, you need to register the service provider. Open up `app/config/app.php` and add the following to the `providers` key.
 
-`'GrahamCampbell\HTMLMin\Support\HTMLMinServiceProvider'`
+`'GrahamCampbell\HTMLMin\HTMLMinServiceProvider'`
 
 You can register the HTMLMin facade in the `aliases` key of your `app/config/app.php` file if you like.
 

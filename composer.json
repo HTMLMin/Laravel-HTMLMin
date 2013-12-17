@@ -40,9 +40,7 @@
     },
     "autoload": {
         "psr-0": {
-            "GrahamCampbell\\HTMLMin\\Classes": "src/",
-            "GrahamCampbell\\HTMLMin\\Facades": "src/",
-            "GrahamCampbell\\HTMLMin\\Support": "src/",
+            "GrahamCampbell\\HTMLMin": "src/",
             "GrahamCampbell\\HTMLMin\\Tests": "tests/"
         }
     },
