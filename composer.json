@@ -41,7 +41,7 @@
     "autoload": {
         "psr-0": {
             "GrahamCampbell\\HTMLMin": "src/",
-            "GrahamCampbell\\HTMLMin\\Tests": "tests/"
+            "GrahamCampbell\\Tests\\HTMLMin": "tests/"
         }
     },
     "extra": {
