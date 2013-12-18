@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\HTMLMin;
+<?php
 
 /**
  * This file is part of Laravel HTMLMin by Graham Campbell.
@@ -12,18 +12,23 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * @package    Laravel-HTMLMin
- * @author     Graham Campbell
- * @license    Apache License
- * @copyright  Copyright 2013 Graham Campbell
- * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
+
+namespace GrahamCampbell\HTMLMin;
 
 use Illuminate\Http\Response;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Engines\CompilerEngine;
 
+/**
+ * This is the htmlmin service provider class.
+ *
+ * @package    Laravel-HTMLMin
+ * @author     Graham Campbell
+ * @copyright  Copyright 2013 Graham Campbell
+ * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/develop/LICENSE.md
+ * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
+ */
 class HTMLMinServiceProvider extends ServiceProvider
 {
     /**
@@ -46,7 +51,7 @@ class HTMLMinServiceProvider extends ServiceProvider
 
         if ($app['config']['htmlmin::blade']) {
             $app->view->getEngineResolver()->register('blade.php', function () use ($app) {
-                $compiler = new Classes\HTMLMinCompiler($app['htmlmin'], $app['files'], $app['path'].'/storage/views');
+                $compiler = new Compilers\HTMLMinCompiler($app['htmlmin'], $app['files'], $app['path'].'/storage/views');
                 return new CompilerEngine($compiler);
             });
 

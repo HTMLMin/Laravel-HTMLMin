@@ -10,6 +10,7 @@ CHANGE LOG
 * Coding style fixes
 * Added unit tests
 
+
 ## V0.3.1 Alpha (12/12/2013)
 #### Minor Release
 

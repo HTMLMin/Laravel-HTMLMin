@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\HTMLMin\Facades;
+<?php
 
 /**
  * This file is part of Laravel HTMLMin by Graham Campbell.
@@ -12,16 +12,21 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * @package    Laravel-HTMLMin
- * @author     Graham Campbell
- * @license    Apache License
- * @copyright  Copyright 2013 Graham Campbell
- * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
+
+namespace GrahamCampbell\HTMLMin\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
+/**
+ * This is the htmlmin facade class.
+ *
+ * @package    Laravel-HTMLMin
+ * @author     Graham Campbell
+ * @copyright  Copyright 2013 Graham Campbell
+ * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/develop/LICENSE.md
+ * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
+ */
 class HTMLMin extends Facade
 {
     /**
