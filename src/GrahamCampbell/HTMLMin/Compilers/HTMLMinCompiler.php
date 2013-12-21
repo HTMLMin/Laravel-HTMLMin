@@ -18,6 +18,7 @@ namespace GrahamCampbell\HTMLMin\Compilers;
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\View\Compilers\BladeCompiler;
+use GrahamCampbell\HTMLMin\Classes\HTMLMin;
 
 /**
  * This is the htmlmin compiler class.
