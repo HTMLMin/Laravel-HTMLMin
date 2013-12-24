@@ -47,30 +47,65 @@ class HTMLMinServiceProvider extends ServiceProvider
     {
         $this->package('graham-campbell/htmlmin');
 
+        // setup blade optimisations if enabled
+        if ($this->app['config']['htmlmin::blade']) {
+            $this->enableBladeOptimisations();
+        }
+
+        // setup live optimisations if enabled
+        if ($app['config']['htmlmin::live']) {
+            $this->enableLiveOptimisations();
+        }
+    }
+
+    /**
+     * Enable blade optimisations.
+     *
+     * @return void
+     */
+    protected function enableBladeOptimisations()
+    {
         $app = $this->app;
 
-        if ($app['config']['htmlmin::blade']) {
-            $app->view->getEngineResolver()->register('blade.php', function () use ($app) {
-                $compiler = new Compilers\HTMLMinCompiler($app['htmlmin'], $app['files'], $app['path'].'/storage/views');
-                return new CompilerEngine($compiler);
-            });
+        // register a new compiler
+        $app->view->getEngineResolver()->register('blade.php', function () use ($app) {
+            $htmlmin = $app['htmlmin'];
+            $files = $app['files'];
+            $storagePath = $app['path'].'/storage/views';
 
-            $app->view->addExtension('blade.php', 'blade.php');
-        }
+            $compiler = new Compilers\HTMLMinCompiler($htmlmin, $files, $storagePath);
 
-        if ($app['config']['htmlmin::live']) {
-            $app->after(function ($request, $response) use ($app) {
-                if ($response instanceof Response) {
-                    if ($response->headers->has('Content-Type') !== false) {
-                        if (strpos($response->headers->get('Content-Type'), 'text/html') !== false) {
-                            $output = $response->getOriginalContent();
-                            $min = $app['htmlmin']->render($output);
-                            $response->setContent($min);
-                        }
-                    }
+            return new CompilerEngine($compiler);
+        });
+
+        // add the extension
+        $app->view->addExtension('blade.php', 'blade.php');
+    }
+
+    /**
+     * Enable live optimisations.
+     *
+     * @return void
+     */
+    protected function enableLiveOptimisations()
+    {
+        $app = $this->app;
+
+        // after filter
+        $app->after(function ($request, $response) use ($app) {
+            // check if the response has a content type header
+            if ($response->headers->has('Content-Type') !== false) {
+                // check if the contact type header is html
+                if (strpos($response->headers->get('Content-Type'), 'text/html') !== false) {
+                    // get the response body
+                    $output = $response->getOriginalContent();
+                    // minify the response body
+                    $min = $app['htmlmin']->render($output);
+                    // set the response body
+                    $response->setContent($min);
                 }
-            });
-        }
+            }
+        });
     }
 
     /**
@@ -80,8 +115,20 @@ class HTMLMinServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app['htmlmin'] = $this->app->share(function ($app) {
-            return new Classes\HTMLMin($app['view']);
+        $this->registerHTMLMin();
+    }
+
+    /**
+     * Register the htmlmin class.
+     *
+     * @return void
+     */
+    protected function registerHTMLMin()
+    {
+        $this->app->bindShared('htmlmin', function ($app) {
+            $view = $app['view'];
+
+            return new Classes\HTMLMin($view);
         });
     }
 
