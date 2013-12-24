@@ -53,7 +53,7 @@ class HTMLMinServiceProvider extends ServiceProvider
         }
 
         // setup live optimisations if enabled
-        if ($app['config']['htmlmin::live']) {
+        if ($this->app['config']['htmlmin::live']) {
             $this->enableLiveOptimisations();
         }
     }
