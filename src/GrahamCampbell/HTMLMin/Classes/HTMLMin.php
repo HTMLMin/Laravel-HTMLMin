@@ -124,6 +124,6 @@ class HTMLMin
      */
     public function getView()
     {
-    return $this->view;
+        return $this->view;
     }
 }

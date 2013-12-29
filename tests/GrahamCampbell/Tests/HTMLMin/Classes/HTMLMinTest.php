@@ -70,8 +70,6 @@ class HTMLMinTest extends PHPUnit_Framework_TestCase
     {
         $htmlmin = $this->getHTMLMin();
         $html = 'test<style>font-size: 12pt;</style><script>alert("Hello");</script>';
-        $css = 'font-size: 12pt;';
-        $js = 'alert("Hello");';
 
         $return = $htmlmin->render($html);
 
@@ -98,8 +96,6 @@ class HTMLMinTest extends PHPUnit_Framework_TestCase
     {
         $htmlmin = $this->getHTMLMin();
         $html = 'test<style>font-size: 12pt;</style><script>alert("Hello");</script>';
-        $css = 'font-size: 12pt;';
-        $js = 'alert("Hello");';
 
         $view = Mockery::mock('Illuminate\View\View');
 
