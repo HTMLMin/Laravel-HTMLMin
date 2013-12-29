@@ -16,9 +16,9 @@
 
 namespace GrahamCampbell\HTMLMin\Classes;
 
-use Minify_HTML;
-use Minify_CSS;
-use JSMin;
+use Minify_HTML as HTML;
+use Minify_CSS as CSS;
+use JSMin as JS;
 use Illuminate\View\Environment;
 
 /**
@@ -40,14 +40,41 @@ class HTMLMin
     protected $view;
 
     /**
+     * The html instance.
+     *
+     * @var \Minify_HTML
+     */
+    protected $html;
+
+    /**
+     * The css instance.
+     *
+     * @var \Minify_CSS
+     */
+    protected $css;
+
+    /**
+     * The js instance.
+     *
+     * @var \JSMin
+     */
+    protected $js;
+
+    /**
      * Create a new instance.
      *
      * @param  \Illuminate\View\Environment  $view
+     * @param  \Minify_HTML  $html
+     * @param  \Minify_CSS  $css
+     * @param  \JSMin  $js
      * @return void
      */
-    public function __construct(Environment $view)
+    public function __construct(Environment $view, HTML $html, CSS $css, JS $js)
     {
         $this->view = $view;
+        $this->html = $html;
+        $this->css = $css;
+        $this->js = $js;
     }
 
     /**
@@ -83,17 +110,21 @@ class HTMLMin
      */
     public function render($value)
     {
+        $htmlmin = $this->html;
+        $cssmin = $this->css;
+        $jsmin = $this->css;
+
         $options = array(
-            'cssMinifier' => function ($css) {
-                return Minify_CSS::minify($css, array('preserveComments' => false));
+            'cssMinifier' => function ($css) use ($cssmin) {
+                return $cssmin->minify($css, array('preserveComments' => false));
             },
-            'jsMinifier' => function ($js) {
-                return JSMin::minify($js);
+            'jsMinifier' => function ($js) use ($jsmin) {
+                return $jsmin->minify($js);
             },
             'jsCleanComments' => true
         );
 
-        $value = Minify_HTML::minify($value, $options);
+        $value = $htmlmin->minify($value, $options);
 
         return $value;
     }
@@ -115,5 +146,45 @@ class HTMLMin
         }
 
         return $value;
+    }
+
+    /**
+     * Return the view instance.
+     *
+     * @return \Illuminate\View\Environment
+     */
+    public function getView()
+    {
+        return $this->view;
+    }
+
+    /**
+     * Return the html instance.
+     *
+     * @return \Minify_HTML
+     */
+    public function getHTML()
+    {
+        return $this->html;
+    }
+
+    /**
+     * Return the css instance.
+     *
+     * @return \Minify_CSS
+     */
+    public function getCSS()
+    {
+        return $this->css;
+    }
+
+    /**
+     * Return the js instance.
+     *
+     * @return \JSMin
+     */
+    public function getJS()
+    {
+        return $this->js;
     }
 }
