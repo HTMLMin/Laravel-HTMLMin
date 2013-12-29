@@ -16,9 +16,6 @@
 
 namespace GrahamCampbell\HTMLMin;
 
-use Minify_HTML as HTML;
-use Minify_CSS as CSS;
-use JSMin as JS;
 use Illuminate\Http\Response;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Engines\CompilerEngine;
@@ -130,11 +127,8 @@ class HTMLMinServiceProvider extends ServiceProvider
     {
         $this->app->bindShared('htmlmin', function ($app) {
             $view = $app['view'];
-            $html = new HTML(''); //empty string required for constructor
-            $css = new CSS(); // no constructor parameters required
-            $js = new JS(''); //empty string required for constructor
 
-            return new Classes\HTMLMin($view, $html, $css, $js);
+            return new Classes\HTMLMin($view);
         });
     }
 

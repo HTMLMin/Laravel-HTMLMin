@@ -63,14 +63,4 @@ class HTMLMinCompiler extends BladeCompiler
     {
         return $this->htmlmin->blade($value);
     }
-
-    /**
-     * Return the htmlmin instance.
-     *
-     * @return \GrahamCampbell\HTMLMin\Classes\HTMLMin
-     */
-    public function getHTMLMin()
-    {
-        return $this->htmlmin;
-    }
 }
