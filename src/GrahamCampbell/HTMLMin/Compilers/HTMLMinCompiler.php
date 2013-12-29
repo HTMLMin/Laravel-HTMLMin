@@ -59,8 +59,28 @@ class HTMLMinCompiler extends BladeCompiler
     * @param  string  $value
     * @return string
     */
-    protected function compileMinify($value)
+    public function compileMinify($value)
     {
         return $this->htmlmin->blade($value);
+    }
+
+    /**
+     * Return the compilers.
+     *
+     * @return array
+     */
+    public function getCompilers()
+    {
+        return $this->compilers;
+    }
+
+    /**
+     * Return the htmlmin instance.
+     *
+     * @return \GrahamCampbell\HTMLMin\Classes\HTMLMin
+     */
+    public function getHTMLMin()
+    {
+        return $this->htmlmin;
     }
 }
