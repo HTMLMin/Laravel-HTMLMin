@@ -33,37 +33,16 @@ class HTMLMinTest extends PHPUnit_Framework_TestCase
 {
     public function testBlade()
     {
-        $htmlmin = $this->getHTMLMin();
-
-        $return = $htmlmin->blade('test   ');
-        $this->assertEquals($return, 'test');
-
-        $return = $htmlmin->blade('<div></div>test   ');
-        $this->assertEquals($return, '<div></div>test');
-
-        $return = $htmlmin->blade('<textarea></textarea>test   ');
-        $this->assertEquals($return, '<textarea></textarea>test   ');
-
-        $return = $htmlmin->blade('<pre></pre>test   ');
-        $this->assertEquals($return, '<pre></pre>test   ');
+        // TODO
     }
 
     public function testRender()
     {
-        $htmlmin = $this->getHTMLMin();
-
-        $htmlmin->getHTML()->shouldReceive('render')->once()
-            ->with('test', typeOf('array'))->andReturn('test');
-
-        $return = $htmlmin->render('test');
-
-        $this->assertEquals($return, 'test');
+        // TODO
     }
 
     public function testMake()
     {
-        $htmlmin = $this->getHTMLMin();
-
         // TODO
     }
 

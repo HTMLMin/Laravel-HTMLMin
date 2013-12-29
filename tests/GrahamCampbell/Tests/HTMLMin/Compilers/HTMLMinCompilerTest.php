@@ -35,7 +35,7 @@ class HTMLMinCompilerTest extends PHPUnit_Framework_TestCase
     {
         $compiler = $this->getCompiler();
 
-        $compiler->getHTMLMin()->shouldReceive('blade')->once()
+        $compiler->getHTMLMin()->shouldRecieve('blade')->once()
             ->with('test')->andReturn('test');
 
         $return = $compiler->compileMinify('test');
