@@ -31,29 +31,20 @@ use GrahamCampbell\HTMLMin\Classes\HTMLMin;
  */
 class HTMLMinTest extends PHPUnit_Framework_TestCase
 {
-    public function testBladeEnabled()
+    public function testBlade()
     {
         $htmlmin = $this->getHTMLMin();
 
         $return = $htmlmin->blade('test   ');
-
         $this->assertEquals($return, 'test');
 
         $return = $htmlmin->blade('<div></div>test   ');
-
         $this->assertEquals($return, '<div></div>test');
-    }
-
-    public function testBladeDisabled()
-    {
-        $htmlmin = $this->getHTMLMin();
 
         $return = $htmlmin->blade('<textarea></textarea>test   ');
-
         $this->assertEquals($return, '<textarea></textarea>test   ');
 
         $return = $htmlmin->blade('<pre></pre>test   ');
-
         $this->assertEquals($return, '<pre></pre>test   ');
     }
 
@@ -62,46 +53,18 @@ class HTMLMinTest extends PHPUnit_Framework_TestCase
         $htmlmin = $this->getHTMLMin();
 
         $htmlmin->getHTML()->shouldReceive('render')->once()
-            ->with('test', Mockery::type('array'))->andReturn('test');
+            ->with('test', typeOf('array'))->andReturn('test');
 
         $return = $htmlmin->render('test');
 
         $this->assertEquals($return, 'test');
     }
 
-    public function testMakeQuick()
+    public function testMake()
     {
         $htmlmin = $this->getHTMLMin();
 
-        $view = Mockery::mock('Illuminate\View\View');
-
-        $view->shouldReceive('render')->once()->andReturn('test');
-
-        $htmlmin->getView()->shouldReceive('make')->once()
-            ->with('test', array('example' => 'qwerty'))->andReturn($view);
-
-        $return = $htmlmin->make('test', array('example' => 'qwerty'));
-
-        $this->assertEquals($return, 'test');
-    }
-
-    public function testMakeFull()
-    {
-        $htmlmin = $this->getHTMLMin();
-        
-        $view = Mockery::mock('Illuminate\View\View');
-
-        $view->shouldReceive('render')->once()->andReturn('test');
-
-        $htmlmin->getView()->shouldReceive('make')->once()
-            ->with('test', array('example' => 'qwerty'))->andReturn($view);
-
-        $htmlmin->getHTML()->shouldReceive('render')->once()
-            ->with('test', Mockery::type('array'))->andReturn('test');
-
-        $return = $htmlmin->make('test', array('example' => 'qwerty'), true);
-
-        $this->assertEquals($return, 'test');
+        // TODO
     }
 
     protected function getHTMLMin()
