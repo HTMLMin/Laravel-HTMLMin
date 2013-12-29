@@ -166,4 +166,24 @@ class HTMLMin
     {
         return $this->html;
     }
+
+    /**
+     * Return the css instance.
+     *
+     * @return \Minify_CSS
+     */
+    public function getCSS()
+    {
+        return $this->css;
+    }
+
+    /**
+     * Return the js instance.
+     *
+     * @return \JSMin
+     */
+    public function getJS()
+    {
+        return $this->js;
+    }
 }
