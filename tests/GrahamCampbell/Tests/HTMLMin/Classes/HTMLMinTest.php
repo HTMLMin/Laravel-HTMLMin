@@ -57,19 +57,40 @@ class HTMLMinTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($return, 'test    <pre></pre>');
     }
 
-    public function testRender()
+    public function testRenderQuick()
     {
         $htmlmin = $this->getHTMLMin();
 
         $htmlmin->getHTML()->shouldReceive('render')->once()
-            ->with('test', Mockery::type('array'))->andReturn('test');
+            ->with('test', Mockery::any())->andReturn('test');
 
         $return = $htmlmin->render('test');
 
         $this->assertEquals($return, 'test');
     }
 
-    public function testMakeQuick()
+    public function testRenderFull()
+    {
+        $htmlmin = $this->getHTMLMin();
+        $html = 'test<style>font-size: 12pt;</style><script>alert("Hello");</script>';
+        $css = 'font-size: 12pt;';
+        $js = 'alert("Hello");';
+
+        $htmlmin->getHTML()->shouldReceive('render')->once()
+            ->with($html, Mockery::any())->andReturn($html);
+
+        $htmlmin->getCSS()->shouldReceive('minify')->once()
+            ->with($css, Mockery::any())->andReturn($css);
+
+        $htmlmin->getJS()->shouldReceive('minify')->once()
+            ->with($js, Mockery::any())->andReturn($js);
+
+        $return = $htmlmin->render($html);
+
+        $this->assertEquals($return, $html);
+    }
+
+    public function testMakeBlade()
     {
         $htmlmin = $this->getHTMLMin();
 
@@ -85,7 +106,7 @@ class HTMLMinTest extends PHPUnit_Framework_TestCase
         $this->assertEquals($return, 'test');
     }
 
-    public function testMakeFull()
+    public function testMakeQuick()
     {
         $htmlmin = $this->getHTMLMin();
         
@@ -97,11 +118,39 @@ class HTMLMinTest extends PHPUnit_Framework_TestCase
             ->with('test', array('example' => 'qwerty'))->andReturn($view);
 
         $htmlmin->getHTML()->shouldReceive('render')->once()
-            ->with('test', Mockery::type('array'))->andReturn('test');
+            ->with('test', Mockery::any())->andReturn('test');
 
         $return = $htmlmin->make('test', array('example' => 'qwerty'), true);
 
         $this->assertEquals($return, 'test');
+    }
+
+    public function testMakeFull()
+    {
+        $htmlmin = $this->getHTMLMin();
+        $html = 'test<style>font-size: 12pt;</style><script>alert("Hello");</script>';
+        $css = 'font-size: 12pt;';
+        $js = 'alert("Hello");';
+
+        $view = Mockery::mock('Illuminate\View\View');
+
+        $view->shouldReceive('render')->once()->andReturn($html);
+
+        $htmlmin->getView()->shouldReceive('make')->once()
+            ->with($html, array('example' => 'qwerty'))->andReturn($view);
+
+        $htmlmin->getHTML()->shouldReceive('render')->once()
+            ->with($html, Mockery::any())->andReturn($html);
+
+        $htmlmin->getCSS()->shouldReceive('minify')->once()
+            ->with($css, Mockery::any())->andReturn($css);
+
+        $htmlmin->getJS()->shouldReceive('minify')->once()
+            ->with($js, Mockery::any())->andReturn($js);
+
+        $return = $htmlmin->make($html, array('example' => 'qwerty'), true);
+
+        $this->assertEquals($return, $html);
     }
 
     protected function getHTMLMin()
