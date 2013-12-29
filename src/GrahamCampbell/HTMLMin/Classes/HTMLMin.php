@@ -110,6 +110,7 @@ class HTMLMin
      */
     public function render($value)
     {
+        $htmlmin = $this->html;
         $cssmin = $this->css;
         $jsmin = $this->css;
 
@@ -123,7 +124,7 @@ class HTMLMin
             'jsCleanComments' => true
         );
 
-        $value = $this->htmlmin->minify($value, $options);
+        $value = $htmlmin->minify($value, $options);
 
         return $value;
     }
@@ -165,5 +166,25 @@ class HTMLMin
     public function getHTML()
     {
         return $this->html;
+    }
+
+    /**
+     * Return the css instance.
+     *
+     * @return \Minify_CSS
+     */
+    public function getCSS()
+    {
+        return $this->css;
+    }
+
+    /**
+     * Return the js instance.
+     *
+     * @return \JSMin
+     */
+    public function getJS()
+    {
+        return $this->js;
     }
 }
