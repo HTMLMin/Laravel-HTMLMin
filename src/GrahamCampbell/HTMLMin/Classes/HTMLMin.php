@@ -123,7 +123,7 @@ class HTMLMin
             'jsCleanComments' => true
         );
 
-        $value = $this->htmlmin->minify($value, $options);
+        $value = $this->html->minify($value, $options);
 
         return $value;
     }
