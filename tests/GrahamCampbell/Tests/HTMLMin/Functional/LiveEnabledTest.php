@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\Tests\HTMLMin;
+namespace GrahamCampbell\Tests\Functional\HTMLMin;
+
+use GrahamCampbell\Tests\HTMLMin\AbstractTestCase;
 
 /**
  * This is the live enabled test class.
@@ -46,7 +48,7 @@ class LiveEnabledTest extends AbstractTestCase
     {
         $this->app->register($this->getServiceProviderClass());
 
-        $this->app['view']->addNamespace('stubs', realpath(__DIR__.'/../../../views'));
+        $this->app['view']->addNamespace('stubs', realpath(__DIR__.'/../../../../views'));
 
         $this->app['router']->get('htmlmin-test-route', function () {
             return $this->app['view']->make('stubs::test');

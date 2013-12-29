@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\Tests\HTMLMin;
+namespace GrahamCampbell\Tests\Functional\HTMLMin;
+
+use GrahamCampbell\Tests\HTMLMin\AbstractTestCase;
 
 /**
  * This is the blade enabled test class.
@@ -44,7 +46,7 @@ class BladeEnabledTest extends AbstractTestCase
     {
         $this->app->register($this->getServiceProviderClass());
 
-        $this->app['view']->addNamespace('stubs', realpath(__DIR__.'/../../../views'));
+        $this->app['view']->addNamespace('stubs', realpath(__DIR__.'/../../../../views'));
 
         $return = $this->app['view']->make('stubs::test')->render();
 
