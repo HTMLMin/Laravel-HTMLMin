@@ -18,7 +18,7 @@ namespace GrahamCampbell\Tests\HTMLMin\Classes;
 
 use Mockery;
 use GrahamCampbell\HTMLMin\Classes\HTMLMin;
-use GrahamCampbell\TestBench\Classes\AbstractTestCase as TestCase;
+use GrahamCampbell\TestBench\Classes\AbstractTestCase;
 
 /**
  * This is the htmlmin test class.
@@ -29,7 +29,7 @@ use GrahamCampbell\TestBench\Classes\AbstractTestCase as TestCase;
  * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
-class HTMLMinTest extends TestCase
+class HTMLMinTest extends AbstractTestCase
 {
     public function testBladeEnabled()
     {
