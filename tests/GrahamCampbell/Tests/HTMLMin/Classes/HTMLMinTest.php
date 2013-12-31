@@ -41,7 +41,7 @@ class HTMLMinTest extends AbstractTestCase
 
         $return = $htmlmin->blade('test    <div></div>');
 
-        $this->assertEquals($return, 'test <div></div>');
+        $this->assertEquals('test <div></div>', $return);
     }
 
     public function testBladeDisabled()
@@ -50,11 +50,11 @@ class HTMLMinTest extends AbstractTestCase
 
         $return = $htmlmin->blade('test    <textarea></textarea>');
 
-        $this->assertEquals($return, 'test    <textarea></textarea>');
+        $this->assertEquals('test    <textarea></textarea>', $return);
 
         $return = $htmlmin->blade('test    <pre></pre>');
 
-        $this->assertEquals($return, 'test    <pre></pre>');
+        $this->assertEquals('test    <pre></pre>', $return);
     }
 
     public function testRenderQuick()
@@ -63,7 +63,7 @@ class HTMLMinTest extends AbstractTestCase
 
         $return = $htmlmin->render('test');
 
-        $this->assertEquals($return, 'test');
+        $this->assertEquals('test', $return);
     }
 
     public function testRenderFull()
@@ -73,7 +73,7 @@ class HTMLMinTest extends AbstractTestCase
 
         $return = $htmlmin->render($html);
 
-        $this->assertEquals($return, $html);
+        $this->assertEquals($html, $return);
     }
 
     public function testMakeBlade()
@@ -89,7 +89,7 @@ class HTMLMinTest extends AbstractTestCase
 
         $return = $htmlmin->make('test', array('example' => 'qwerty'));
 
-        $this->assertEquals($return, 'test');
+        $this->assertEquals('test', $return);
     }
 
     public function testMakeFull()
@@ -106,7 +106,7 @@ class HTMLMinTest extends AbstractTestCase
 
         $return = $htmlmin->make($html, array('example' => 'qwerty'), true);
 
-        $this->assertEquals($return, $html);
+        $this->assertEquals($html, $return);
     }
 
     protected function getHTMLMin()

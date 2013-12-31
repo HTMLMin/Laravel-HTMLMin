@@ -62,6 +62,6 @@ class LiveEnabledTest extends AbstractTestCase
 
         $return = $this->call('GET', 'htmlmin-test-route')->getContent();
 
-        $this->assertEquals($return, "<h1>Test</h1>");
+        $this->assertEquals("<h1>Test</h1>", $return);
     }
 }

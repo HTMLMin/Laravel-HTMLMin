@@ -40,7 +40,7 @@ class HTMLMinCompilerTest extends AbstractTestCase
 
         $return = $compiler->compileMinify('test');
 
-        $this->assertEquals($return, 'test');
+        $this->assertEquals('test', $return);
     }
 
     public function testCompilers()
@@ -49,7 +49,7 @@ class HTMLMinCompilerTest extends AbstractTestCase
 
         $compilers = $compiler->getCompilers();
 
-        $this->assertTrue(in_array('Minify', $compilers));
+        $this->assertInArray('Minify', $compilers);
     }
 
     protected function getCompiler()
