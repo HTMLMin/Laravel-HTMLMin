@@ -16,8 +16,11 @@
 
 namespace GrahamCampbell\Tests\HTMLMin\Facades;
 
+use GrahamCampbell\Tests\HTMLMin\AbstractTestCase;
+use GrahamCampbell\TestBench\Traits\FacadeTestCaseTrait;
+
 /**
- * This is the htmlmin facade test case class.
+ * This is the htmlmin facade test class.
  *
  * @package    Laravel-HTMLMin
  * @author     Graham Campbell
@@ -25,8 +28,10 @@ namespace GrahamCampbell\Tests\HTMLMin\Facades;
  * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
-class HTMLMinTest extends AbstractFacadeTestCase
+class HTMLMinTest extends AbstractTestCase
 {
+    use FacadeTestCaseTrait;
+
     /**
      * Get the facade accessor.
      *

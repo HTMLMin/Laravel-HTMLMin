@@ -30,17 +30,23 @@ use GrahamCampbell\Tests\HTMLMin\AbstractTestCase;
 class LiveEnabledTest extends AbstractTestCase
 {
     /**
-     * Setup the application environment.
+     * Specify if routing filters are enabled.
+     *
+     * @return bool
+     */
+    protected function enableFilters()
+    {
+        return true;
+    }
+
+    /**
+     * Additional application environment setup.
      *
      * @param  \Illuminate\Foundation\Application  $app
      * @return void
      */
-    protected function getEnvironmentSetUp($app)
+    protected function additionalSetup($app)
     {
-        parent::getEnvironmentSetUp($app);
-
-        $app['router']->enableFilters();
-
         $app['config']->set('htmlmin::live', true);
     }
 

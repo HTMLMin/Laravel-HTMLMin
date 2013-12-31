@@ -17,8 +17,8 @@
 namespace GrahamCampbell\Tests\HTMLMin\Compilers;
 
 use Mockery;
-use PHPUnit_Framework_TestCase;
 use GrahamCampbell\HTMLMin\Compilers\HTMLMinCompiler;
+use GrahamCampbell\TestBench\Classes\AbstractTestCase as TestCase;
 
 /**
  * This is the htmlmin compiler test class.
@@ -29,7 +29,7 @@ use GrahamCampbell\HTMLMin\Compilers\HTMLMinCompiler;
  * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
-class HTMLMinCompilerTest extends PHPUnit_Framework_TestCase
+class HTMLMinCompilerTest extends TestCase
 {
     public function testMinify()
     {

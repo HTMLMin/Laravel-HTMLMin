@@ -30,15 +30,13 @@ use GrahamCampbell\Tests\HTMLMin\AbstractTestCase;
 class BladeEnabledTest extends AbstractTestCase
 {
     /**
-     * Setup the application environment.
+     * Additional application environment setup.
      *
      * @param  \Illuminate\Foundation\Application  $app
      * @return void
      */
-    protected function getEnvironmentSetUp($app)
+    protected function additionalSetup($app)
     {
-        parent::getEnvironmentSetUp($app);
-
         $app['config']->set('htmlmin::blade', true);
     }
 
