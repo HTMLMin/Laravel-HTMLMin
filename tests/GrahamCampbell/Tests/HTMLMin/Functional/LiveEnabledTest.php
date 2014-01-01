@@ -23,7 +23,7 @@ use GrahamCampbell\Tests\HTMLMin\AbstractTestCase;
  *
  * @package    Laravel-HTMLMin
  * @author     Graham Campbell
- * @copyright  Copyright 2013 Graham Campbell
+ * @copyright  Copyright 2013-2014 Graham Campbell
  * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/develop/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
