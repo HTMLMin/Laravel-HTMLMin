@@ -36,7 +36,7 @@ Please check the system requirements before installing Laravel HTMLMin.
 
 To get the latest version of Laravel HTMLMin, simply require it in your `composer.json` file.  
 
-`"graham-campbell/htmlmin": "dev-master"`  
+`"graham-campbell/htmlmin": "*"`  
 
 You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.  
 
