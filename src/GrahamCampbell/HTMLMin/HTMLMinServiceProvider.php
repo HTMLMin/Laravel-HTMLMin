@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\HTMLMin;
+<?php
 
 /**
  * This file is part of Laravel HTMLMin by Graham Campbell.
@@ -12,20 +12,24 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * @package    Laravel-HTMLMin
- * @author     Graham Campbell
- * @license    Apache License
- * @copyright  Copyright 2013 Graham Campbell
- * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
 
-use Illuminate\Http\Response;
+namespace GrahamCampbell\HTMLMin;
+
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Engines\CompilerEngine;
 
-class HTMLMinServiceProvider extends ServiceProvider {
-
+/**
+ * This is the htmlmin service provider class.
+ *
+ * @package    Laravel-HTMLMin
+ * @author     Graham Campbell
+ * @copyright  Copyright 2013-2014 Graham Campbell
+ * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
+ * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
+ */
+class HTMLMinServiceProvider extends ServiceProvider
+{
     /**
      * Indicates if loading of the provider is deferred.
      *
@@ -38,33 +42,69 @@ class HTMLMinServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function boot() {
+    public function boot()
+    {
         $this->package('graham-campbell/htmlmin');
 
+        // setup blade optimisations if enabled
+        if ($this->app['config']['htmlmin::blade']) {
+            $this->enableBladeOptimisations();
+        }
+
+        // setup live optimisations if enabled
+        if ($this->app['config']['htmlmin::live']) {
+            $this->enableLiveOptimisations();
+        }
+    }
+
+    /**
+     * Enable blade optimisations.
+     *
+     * @return void
+     */
+    protected function enableBladeOptimisations()
+    {
         $app = $this->app;
 
-        if ($app['config']['htmlmin::blade']) {
-            $app->view->getEngineResolver()->register('blade.php', function() use ($app) {
-                $compiler = new Classes\HTMLMinCompiler($app['htmlmin'], $app['files'], $app['path'].'/storage/views');
-                return new CompilerEngine($compiler);
-            });
+        // register a new compiler
+        $app->view->getEngineResolver()->register('blade.php', function () use ($app) {
+            $htmlmin = $app['htmlmin'];
+            $files = $app['files'];
+            $storagePath = $app['path'].'/storage/views';
 
-            $app->view->addExtension('blade.php', 'blade.php');
-        }
+            $compiler = new Compilers\HTMLMinCompiler($htmlmin, $files, $storagePath);
 
-        if ($app['config']['htmlmin::live']) {
-            $app->after(function($request, $response) use ($app) {
-                if($response instanceof Response) {
-                    if ($response->headers->has('Content-Type') !== false) {
-                        if (strpos($response->headers->get('Content-Type'), 'text/html') !== false) {
-                            $output = $response->getOriginalContent();
-                            $min = $app['htmlmin']->render($output);
-                            $response->setContent($min);
-                        }
-                    }
+            return new CompilerEngine($compiler);
+        });
+
+        // add the extension
+        $app->view->addExtension('blade.php', 'blade.php');
+    }
+
+    /**
+     * Enable live optimisations.
+     *
+     * @return void
+     */
+    protected function enableLiveOptimisations()
+    {
+        $app = $this->app;
+
+        // after filter
+        $app->after(function ($request, $response) use ($app) {
+            // check if the response has a content type header
+            if ($response->headers->has('Content-Type') !== false) {
+                // check if the contact type header is html
+                if (strpos($response->headers->get('Content-Type'), 'text/html') !== false) {
+                    // get the response body
+                    $output = $response->getOriginalContent();
+                    // minify the response body
+                    $min = $app['htmlmin']->render($output);
+                    // set the response body
+                    $response->setContent($min);
                 }
-            });
-        }
+            }
+        });
     }
 
     /**
@@ -72,9 +112,22 @@ class HTMLMinServiceProvider extends ServiceProvider {
      *
      * @return void
      */
-    public function register() {
-        $this->app['htmlmin'] = $this->app->share(function($app) {
-            return new Classes\HTMLMin($app['view']);
+    public function register()
+    {
+        $this->registerHTMLMin();
+    }
+
+    /**
+     * Register the htmlmin class.
+     *
+     * @return void
+     */
+    protected function registerHTMLMin()
+    {
+        $this->app->bindShared('htmlmin', function ($app) {
+            $view = $app['view'];
+
+            return new Classes\HTMLMin($view);
         });
     }
 
@@ -83,7 +136,10 @@ class HTMLMinServiceProvider extends ServiceProvider {
      *
      * @return array
      */
-    public function provides() {
-        return array('htmlmin');
+    public function provides()
+    {
+        return array(
+            'htmlmin'
+        );
     }
 }

@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\HTMLMin\Facades;
+namespace GrahamCampbell\Tests\HTMLMin;
 
-use Illuminate\Support\Facades\Facade;
+use GrahamCampbell\TestBench\Classes\AbstractLaravelTestCase;
 
 /**
- * This is the htmlmin facade class.
+ * This is the abstract test case class.
  *
  * @package    Laravel-HTMLMin
  * @author     Graham Campbell
@@ -27,15 +27,25 @@ use Illuminate\Support\Facades\Facade;
  * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
-class HTMLMin extends Facade
+abstract class AbstractTestCase extends AbstractLaravelTestCase
 {
     /**
-     * Get the registered name of the component.
+     * Get the application base path.
      *
      * @return string
      */
-    protected static function getFacadeAccessor()
+    protected function getBasePath()
     {
-        return 'htmlmin';
+        return __DIR__.'/../../../../src';
+    }
+
+    /**
+     * Get the service provider class.
+     *
+     * @return string
+     */
+    protected function getServiceProviderClass()
+    {
+        return 'GrahamCampbell\HTMLMin\HTMLMinServiceProvider';
     }
 }

@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\HTMLMin\Classes;
+<?php
 
 /**
  * This file is part of Laravel HTMLMin by Graham Campbell.
@@ -12,21 +12,26 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * @package    Laravel-HTMLMin
- * @author     Graham Campbell
- * @license    Apache License
- * @copyright  Copyright 2013 Graham Campbell
- * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
+
+namespace GrahamCampbell\HTMLMin\Classes;
 
 use Minify_HTML;
 use Minify_CSS;
 use JSMin;
 use Illuminate\View\Environment;
 
-class HTMLMin {
-
+/**
+ * This is the htmlmin class.
+ *
+ * @package    Laravel-HTMLMin
+ * @author     Graham Campbell
+ * @copyright  Copyright 2013-2014 Graham Campbell
+ * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
+ * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
+ */
+class HTMLMin
+{
     /**
      * The view instance.
      *
@@ -40,7 +45,8 @@ class HTMLMin {
      * @param  \Illuminate\View\Environment  $view
      * @return void
      */
-    public function __construct(Environment $view) {
+    public function __construct(Environment $view)
+    {
         $this->view = $view;
     }
 
@@ -50,8 +56,11 @@ class HTMLMin {
      * @param  string  $value
      * @return string
      */
-    public function blade($value) {
-        if (!preg_match('/<(pre|textarea)/', $value) && !preg_match('/<script[^\??>]*>[^<\/script>]/', $value) && !preg_match('/value=("|\')(.*)([ ]{2,})(.*)("|\')/', $value)) {
+    public function blade($value)
+    {
+        if (!preg_match('/<(pre|textarea)/', $value) &&
+            !preg_match('/<script[^\??>]*>[^<\/script>]/', $value) &&
+            !preg_match('/value=("|\')(.*)([ ]{2,})(.*)("|\')/', $value)) {
             $replace = array(
                 '/<!--[^\[](.*?)[^\]]-->/s' => '',
                 "/<\?php/" => '<?php ',
@@ -72,12 +81,13 @@ class HTMLMin {
      * @param  string  $value
      * @return string
      */
-    public function render($value) {
+    public function render($value)
+    {
         $options = array(
-            'cssMinifier' => function($css) {
+            'cssMinifier' => function ($css) {
                 return Minify_CSS::minify($css, array('preserveComments' => false));
             },
-            'jsMinifier' => function($js) {
+            'jsMinifier' => function ($js) {
                 return JSMin::minify($js);
             },
             'jsCleanComments' => true
@@ -93,16 +103,27 @@ class HTMLMin {
      *
      * @param  string  $view
      * @param  array   $data
-     * @param  array   $mergeData
+     * @param  bool    $full
      * @return string
      */
-    public function make($view, array $data = array(), array $mergeData = array(), $full = false) {
-        $value = $this->blade($this->view->make($view, $data, $mergeData)->render());
+    public function make($view, array $data = array(), $full = false)
+    {
+        $value = $this->blade($this->view->make($view, $data)->render());
 
         if ($full) {
             $value = $this->render($value);
         }
 
         return $value;
+    }
+
+    /**
+     * Return the view instance.
+     *
+     * @return \Illuminate\View\Environment
+     */
+    public function getView()
+    {
+        return $this->view;
     }
 }

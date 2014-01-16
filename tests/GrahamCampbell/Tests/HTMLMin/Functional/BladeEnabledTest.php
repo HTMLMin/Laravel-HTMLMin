@@ -14,12 +14,12 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\HTMLMin\Facades;
+namespace GrahamCampbell\Tests\Functional\HTMLMin;
 
-use Illuminate\Support\Facades\Facade;
+use GrahamCampbell\Tests\HTMLMin\AbstractTestCase;
 
 /**
- * This is the htmlmin facade class.
+ * This is the blade enabled test class.
  *
  * @package    Laravel-HTMLMin
  * @author     Graham Campbell
@@ -27,15 +27,27 @@ use Illuminate\Support\Facades\Facade;
  * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
-class HTMLMin extends Facade
+class BladeEnabledTest extends AbstractTestCase
 {
     /**
-     * Get the registered name of the component.
+     * Additional application environment setup.
      *
-     * @return string
+     * @param  \Illuminate\Foundation\Application  $app
+     * @return void
      */
-    protected static function getFacadeAccessor()
+    protected function additionalSetup($app)
     {
-        return 'htmlmin';
+        $app['config']->set('htmlmin::blade', true);
+    }
+
+    public function testNewSetup()
+    {
+        $this->app->register($this->getServiceProviderClass());
+
+        $this->app['view']->addNamespace('stubs', realpath(__DIR__.'/../../../../views'));
+
+        $return = $this->app['view']->make('stubs::test')->render();
+
+        $this->assertEquals('<h1>Test</h1>', $return);
     }
 }

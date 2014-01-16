@@ -1,4 +1,4 @@
-<?php namespace GrahamCampbell\HTMLMin\Classes;
+<?php
 
 /**
  * This file is part of Laravel HTMLMin by Graham Campbell.
@@ -12,19 +12,25 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
  * See the License for the specific language governing permissions and
  * limitations under the License.
- *
- * @package    Laravel-HTMLMin
- * @author     Graham Campbell
- * @license    Apache License
- * @copyright  Copyright 2013 Graham Campbell
- * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
+
+namespace GrahamCampbell\HTMLMin\Compilers;
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\View\Compilers\BladeCompiler;
+use GrahamCampbell\HTMLMin\Classes\HTMLMin;
 
-class HTMLMinCompiler extends BladeCompiler {
-
+/**
+ * This is the htmlmin compiler class.
+ *
+ * @package    Laravel-HTMLMin
+ * @author     Graham Campbell
+ * @copyright  Copyright 2013-2014 Graham Campbell
+ * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
+ * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
+ */
+class HTMLMinCompiler extends BladeCompiler
+{
     /**
      * The htmlmin instance.
      *
@@ -40,18 +46,41 @@ class HTMLMinCompiler extends BladeCompiler {
      * @param  string  $cachePath
      * @return void
      */
-    public function __construct(HTMLMin $htmlmin, Filesystem $files, $cachePath) {
+    public function __construct(HTMLMin $htmlmin, Filesystem $files, $cachePath)
+    {
         parent::__construct($files, $cachePath);
         $this->htmlmin = $htmlmin;
         $this->compilers[] = 'Minify';
     }
+
     /**
     * Minifies the HTML output before saving it.
     *
     * @param  string  $value
     * @return string
     */
-    protected function compileMinify($value) {
+    public function compileMinify($value)
+    {
         return $this->htmlmin->blade($value);
+    }
+
+    /**
+     * Return the compilers.
+     *
+     * @return array
+     */
+    public function getCompilers()
+    {
+        return $this->compilers;
+    }
+
+    /**
+     * Return the htmlmin instance.
+     *
+     * @return \GrahamCampbell\HTMLMin\Classes\HTMLMin
+     */
+    public function getHTMLMin()
+    {
+        return $this->htmlmin;
     }
 }
