@@ -16,8 +16,8 @@ Laravel HTMLMin is a simple HTML minifier for [Laravel 4.1](http://laravel.com).
 
 * Laravel HTMLMin was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell).  
 * Laravel HTMLMin relies on Mr Clay's [Minify](https://github.com/mrclay/minify) package.  
-* Laravel HTMLMin uses [Travis CI](https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin) to run tests to check if it's working as it should.  
-* Laravel HTMLMin uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-HTMLMin) and [Coveralls](https://coveralls.io/r/GrahamCampbell/Laravel-HTMLMin) to run additional tests and checks.  
+* Laravel HTMLMin uses [Travis CI](https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin) with [Coveralls](https://coveralls.io/r/GrahamCampbell/Laravel-HTMLMin) to check everything is working.  
+* Laravel HTMLMin uses [Scrutinizer CI](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-HTMLMin) and [SensioLabsInsight](https://insight.sensiolabs.com/projects/bd487912-2c9a-454e-85f7-270928cf0c5f) to run additional checks.  
 * Laravel HTMLMin uses [Composer](https://getcomposer.org) to load and manage dependencies.  
 * Laravel HTMLMin provides a [change log](https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-HTMLMin/releases), and [api docs](http://grahamcampbell.github.io/Laravel-HTMLMin).  
 * Laravel HTMLMin is licensed under the Apache License, available [here](https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md).  
