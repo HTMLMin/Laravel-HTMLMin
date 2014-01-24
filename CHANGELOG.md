@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V1.0 Beta 2 (Upcoming)
+
+* Tweaked blade minification
+
+
 ## V1.0 Beta 1 (21/01/2014)
 
 * Dropped Laravel 4.0 support

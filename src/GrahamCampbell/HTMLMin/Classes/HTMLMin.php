@@ -63,12 +63,14 @@ class HTMLMin
             !preg_match('/value=("|\')(.*)([ ]{2,})(.*)("|\')/', $value)) {
             $replace = array(
                 '/<!--[^\[](.*?)[^\]]-->/s' => '',
-                "/<\?php/" => '<?php ',
-                "/\n/" => '',
-                "/\r/" => '',
-                "/\t/" => ' ',
-                "/ +/" => ' '
+                "/<\?php/"    => '<?php ',
+                "/\n([\S])/"  => ' $1',
+                "/\r/"        => '',
+                "/\n/"        => '',
+                "/\t/"        => ' ',
+                "/ +/"        => ' '
             );
+
             $value = preg_replace(array_keys($replace), array_values($replace), $value);
         }
 
