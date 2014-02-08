@@ -67,17 +67,13 @@ This option (`'live'`) enables minification of the html responses just before th
 
 ## Usage
 
-**Getting Started**
-
-The class of most interest is `Classes\HTMLMin`. It is bound to the ioc container as `'htmlmin'` and can be accessed using the `Facades\HTMLMin` facade.
-
 **Classes\HTMLMin**
 
-There are three public methods of interest.
+This is the class of most interest It is bound to the ioc container as `'htmlmin'` and can be accessed using the `Facades\HTMLMin` facade. There are three public methods of interest.
 
 The `'blade'` method will parse a string as blade and minify it as quickly as possible. This is method the compiler class uses when blade minification is enabled.
 
-The `'render'` method will parse a string as html and will minify it as best as possible using Mr Clay's [Minify](https://github.com/mrclay/minify) package. This method can be more time consuming than the blade method, but will usually achieve an overall smaller result. This is the method that is used in an after filter when live minification is enabled.
+The `'render'` method will parse a string as html and will minify it as best as possible using Mr Clay's [Minify](https://github.com/mrclay/minify) package. This method can be more time consuming than the blade method, but will usually achieve an overall smaller result. This is the method that is automatically used in an after filter when live minification is enabled.
 
 The `'make'` method will return a minified view after being parsed by the `'blade'` method. Note that the minification occurs after the view has been executed unlike in the compiler where the view is minified and cached before it is executed.
 
@@ -87,11 +83,11 @@ This class contains no public methods of interest. This class used to minify bla
 
 **Facades\HTMLMin**
 
-This facade will dynamically pass static method calls to the `'htmlmin'` object in the ioc container which by default is the `'Classes\HTMLMin'` class.
+This facade will dynamically pass static method calls to the `'htmlmin'` object in the ioc container which by default is the `Classes\HTMLMin` class.
 
 **HTMLMinServiceProvider**
 
-This class contains no public methods of interest. This class should be added to the providers array in `'app/config/app.php'`. This class will setup ioc bindings and register automatic blade/live minification based on the config.
+This class contains no public methods of interest. This class should be added to the providers array in `app/config/app.php`. This class will setup ioc bindings and register automatic blade/live minification based on the config.
 
 **Further Information**
 
