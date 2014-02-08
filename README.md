@@ -69,7 +69,7 @@ This option (`'live'`) enables minification of the html responses just before th
 
 **Classes\HTMLMin**
 
-This is the class of most interest It is bound to the ioc container as `'htmlmin'` and can be accessed using the `Facades\HTMLMin` facade. There are three public methods of interest.
+This is the class of most interest. It is bound to the ioc container as `'htmlmin'` and can be accessed using the `Facades\HTMLMin` facade. There are three public methods of interest.
 
 The `'blade'` method will parse a string as blade and minify it as quickly as possible. This is method the compiler class uses when blade minification is enabled.
 
