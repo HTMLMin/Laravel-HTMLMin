@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V1.0 Beta 2 (Upcoming)
+## V1.0 RC 1 (Upcoming)
 
 * PSR-4 autoloading
 * Updated docs

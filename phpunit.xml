@@ -19,6 +19,9 @@
         <whitelist addUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./src</directory>
             <exclude>
+                <directory>./src/config</directory>
+                <directory>./src/migrations</directory>
+                <directory>./src/views</directory>
                 <directory>./tests</directory>
                 <directory>./vendor</directory>
             </exclude>

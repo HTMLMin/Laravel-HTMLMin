@@ -37,7 +37,7 @@ class BladeEnabledTest extends AbstractTestCase
      */
     protected function additionalSetup($app)
     {
-        $app['config']->set('htmlmin::blade', true);
+        $app['config']->set('graham-campbell/htmlmin::blade', true);
     }
 
     public function testNewSetup()

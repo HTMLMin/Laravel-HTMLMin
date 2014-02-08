@@ -44,15 +44,15 @@ class HTMLMinServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->package('graham-campbell/htmlmin');
+        $this->package('graham-campbell/htmlmin', 'graham-campbell/htmlmin', __DIR__);
 
         // setup blade optimisations if enabled
-        if ($this->app['config']['htmlmin::blade']) {
+        if ($this->app['config']['graham-campbell/htmlmin::blade']) {
             $this->enableBladeOptimisations();
         }
 
         // setup live optimisations if enabled
-        if ($this->app['config']['htmlmin::live']) {
+        if ($this->app['config']['graham-campbell/htmlmin::live']) {
             $this->enableLiveOptimisations();
         }
     }

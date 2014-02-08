@@ -47,7 +47,7 @@ class LiveEnabledTest extends AbstractTestCase
      */
     protected function additionalSetup($app)
     {
-        $app['config']->set('htmlmin::live', true);
+        $app['config']->set('graham-campbell/htmlmin::live', true);
     }
 
     public function testNewSetup()
