@@ -54,7 +54,7 @@ class LiveEnabledTest extends AbstractTestCase
     {
         $this->app->register($this->getServiceProviderClass());
 
-        $this->app['view']->addNamespace('stubs', realpath(__DIR__.'/../views'));
+        $this->app['view']->addNamespace('stubs', realpath(__DIR__.'/stubs'));
 
         $this->app['router']->get('htmlmin-test-route', function () {
             return $this->app['view']->make('stubs::test');

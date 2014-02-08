@@ -44,7 +44,7 @@ class BladeEnabledTest extends AbstractTestCase
     {
         $this->app->register($this->getServiceProviderClass());
 
-        $this->app['view']->addNamespace('stubs', realpath(__DIR__.'/../views'));
+        $this->app['view']->addNamespace('stubs', realpath(__DIR__.'/stubs'));
 
         $return = $this->app['view']->make('stubs::test')->render();
 
