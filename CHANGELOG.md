@@ -4,6 +4,8 @@ CHANGE LOG
 
 ## V1.0 Beta 2 (Upcoming)
 
+* PSR-4 autoloading
+* Updated docs
 * Tweaked blade minification
 
 
