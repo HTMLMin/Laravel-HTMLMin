@@ -12,12 +12,12 @@
 >
     <testsuites>
         <testsuite name="Package Test Suite">
-            <directory suffix=".php">./tests/GrahamCampbell/Tests/HTMLMin</directory>
+            <directory suffix=".php">./tests</directory>
         </testsuite>
     </testsuites>
     <filter>
         <whitelist addUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./src/GrahamCampbell/HTMLMin</directory>
+            <directory suffix=".php">./src</directory>
             <exclude>
                 <directory>./tests</directory>
                 <directory>./vendor</directory>
