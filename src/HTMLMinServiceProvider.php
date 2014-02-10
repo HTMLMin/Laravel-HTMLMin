@@ -16,6 +16,7 @@
 
 namespace GrahamCampbell\HTMLMin;
 
+use Illuminate\Http\Response;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Engines\CompilerEngine;
 
@@ -92,16 +93,19 @@ class HTMLMinServiceProvider extends ServiceProvider
 
         // after filter
         $app->after(function ($request, $response) use ($app) {
-            // check if the response has a content type header
-            if ($response->headers->has('Content-Type') !== false) {
-                // check if the contact type header is html
-                if (strpos($response->headers->get('Content-Type'), 'text/html') !== false) {
-                    // get the response body
-                    $output = $response->getOriginalContent();
-                    // minify the response body
-                    $min = $app['htmlmin']->render($output);
-                    // set the response body
-                    $response->setContent($min);
+            // check if the response is a real response and not a redirect
+            if ($response instanceof Response) {
+                // check if the response has a content type header
+                if ($response->headers->has('Content-Type') !== false) {
+                    // check if the contact type header is html
+                    if (strpos($response->headers->get('Content-Type'), 'text/html') !== false) {
+                        // get the response body
+                        $output = $response->getOriginalContent();
+                        // minify the response body
+                        $min = $app['htmlmin']->render($output);
+                        // set the response body
+                        $response->setContent($min);
+                    }
                 }
             }
         });
