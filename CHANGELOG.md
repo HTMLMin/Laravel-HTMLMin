@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V1.0 RC 2 (10/02/2014)
+
+* Fix live minification redirect issue
+
+
 ## V1.0 RC 1 (08/02/2014)
 
 * PSR-4 autoloading
