@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V1.0 (12/02/2014)
+
+* Bumped to stable
+
+
 ## V1.0 RC 2 (10/02/2014)
 
 * Fix live minification redirect issue
