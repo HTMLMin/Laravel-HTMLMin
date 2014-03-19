@@ -14,7 +14,7 @@
         "laravel/framework": "4.1.*",
         "symfony/config": "2.4.*",
         "symfony/filesystem": "2.4.*",
-        "mrclay/minify": "2.1.*"
+        "mrclay/minify": "2.2.*"
     },
     "require-dev": {
         "graham-campbell/testbench": "0.3.*"
