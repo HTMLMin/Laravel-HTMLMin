@@ -5,7 +5,7 @@ Laravel HTMLMin
 [![Build Status](https://img.shields.io/travis/GrahamCampbell/Laravel-HTMLMin/master.svg)](https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin)
 [![Coverage Status](https://img.shields.io/coveralls/GrahamCampbell/Laravel-HTMLMin/master.svg)](https://coveralls.io/r/GrahamCampbell/Laravel-HTMLMin)
 [![Software License](https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg)](https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md)
-[![Latest Version](https://img.shields.io/github/tag/GrahamCampbell/Laravel-HTMLMin.svg)](https://github.com/GrahamCampbell/Laravel-HTMLMin/releases)
+[![Latest Version](https://img.shields.io/github/release/GrahamCampbell/Laravel-HTMLMin.svg)](https://github.com/GrahamCampbell/Laravel-HTMLMin/releases)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-HTMLMin/badges/quality-score.png?s=b56aacf6a0c1b2e612c3d7dab63d212084e6b83b)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-HTMLMin)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/bd487912-2c9a-454e-85f7-270928cf0c5f/mini.png)](https://insight.sensiolabs.com/projects/bd487912-2c9a-454e-85f7-270928cf0c5f)
 
