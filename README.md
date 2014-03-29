@@ -2,13 +2,12 @@ Laravel HTMLMin
 ===============
 
 
-[![Build Status](https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin.png)](https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin)
-[![Coverage Status](https://coveralls.io/repos/GrahamCampbell/Laravel-HTMLMin/badge.png)](https://coveralls.io/r/GrahamCampbell/Laravel-HTMLMin)
+[![Build Status](https://img.shields.io/travis/GrahamCampbell/Laravel-HTMLMin/master.svg)](https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin)
+[![Coverage Status](https://img.shields.io/coveralls/GrahamCampbell/Laravel-HTMLMin/master.svg)](https://coveralls.io/r/GrahamCampbell/Laravel-HTMLMin)
+[![Software License](https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg)](https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md)
+[![Latest Version](https://img.shields.io/github/tag/GrahamCampbell/Laravel-HTMLMin.svg)](https://github.com/GrahamCampbell/Laravel-HTMLMin/releases)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-HTMLMin/badges/quality-score.png?s=b56aacf6a0c1b2e612c3d7dab63d212084e6b83b)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-HTMLMin)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/bd487912-2c9a-454e-85f7-270928cf0c5f/mini.png)](https://insight.sensiolabs.com/projects/bd487912-2c9a-454e-85f7-270928cf0c5f)
-[![Software License](https://poser.pugx.org/graham-campbell/htmlmin/license.png)](https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md)
-[![Latest Version](https://poser.pugx.org/graham-campbell/htmlmin/v/stable.png)](https://packagist.org/packages/graham-campbell/htmlmin)
-[![Still Maintained](http://stillmaintained.com/GrahamCampbell/Laravel-HTMLMin.png)](http://stillmaintained.com/GrahamCampbell/Laravel-HTMLMin)
 
 
 ## What Is Laravel HTMLMin?
@@ -26,7 +25,7 @@ Laravel HTMLMin is a simple HTML minifier for [Laravel 4.1](http://laravel.com).
 
 ## System Requirements
 
-* PHP 5.4.7+ or HHVM 2.4+ is required.
+* PHP 5.4.7+ or HHVM 3.0+ is required.
 * You will need [Laravel 4.1](http://laravel.com) because this package is designed for it.
 * You will need [Composer](https://getcomposer.org) installed to load the dependencies of Laravel HTMLMin.
 
