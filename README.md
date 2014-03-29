@@ -2,13 +2,13 @@ Laravel HTMLMin
 ===============
 
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/GrahamCampbell/Laravel-HTMLMin/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 [![Build Status](https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin.png)](https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin)
 [![Coverage Status](https://coveralls.io/repos/GrahamCampbell/Laravel-HTMLMin/badge.png)](https://coveralls.io/r/GrahamCampbell/Laravel-HTMLMin)
 [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-HTMLMin/badges/quality-score.png?s=b56aacf6a0c1b2e612c3d7dab63d212084e6b83b)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-HTMLMin)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/bd487912-2c9a-454e-85f7-270928cf0c5f/mini.png)](https://insight.sensiolabs.com/projects/bd487912-2c9a-454e-85f7-270928cf0c5f)
 [![Software License](https://poser.pugx.org/graham-campbell/htmlmin/license.png)](https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md)
 [![Latest Version](https://poser.pugx.org/graham-campbell/htmlmin/v/stable.png)](https://packagist.org/packages/graham-campbell/htmlmin)
+[![Still Maintained](http://stillmaintained.com/GrahamCampbell/Laravel-HTMLMin.png)](http://stillmaintained.com/GrahamCampbell/Laravel-HTMLMin)
 
 
 ## What Is Laravel HTMLMin?
@@ -26,7 +26,7 @@ Laravel HTMLMin is a simple HTML minifier for [Laravel 4.1](http://laravel.com).
 
 ## System Requirements
 
-* PHP 5.4.7+ or PHP 5.5+ is required.
+* PHP 5.4.7+ or HHVM 2.4+ is required.
 * You will need [Laravel 4.1](http://laravel.com) because this package is designed for it.
 * You will need [Composer](https://getcomposer.org) installed to load the dependencies of Laravel HTMLMin.
 
@@ -35,7 +35,7 @@ Laravel HTMLMin is a simple HTML minifier for [Laravel 4.1](http://laravel.com).
 
 Please check the system requirements before installing Laravel HTMLMin.
 
-To get the latest version of Laravel HTMLMin, simply require `"graham-campbell/htmlmin": "1.0.*"` in your `composer.json` file. You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
+To get the latest version of Laravel HTMLMin, simply require `"graham-campbell/htmlmin": "1.1.*@dev"` in your `composer.json` file. You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
 
 Once Laravel HTMLMin is installed, you need to register the service provider. Open up `app/config/app.php` and add the following to the `providers` key.
 
@@ -92,7 +92,7 @@ This class contains no public methods of interest. This class should be added to
 **Further Information**
 
 Feel free to check out the [API Documentation](http://grahamcampbell.github.io/Laravel-HTMLMin
-) for Laravel HTMLMin. You may see an example of implementation in [Laravel Navigation](https://github.com/GrahamCampbell/Laravel-Navigation) or [CMS Core](https://github.com/GrahamCampbell/CMS-Core).
+) for Laravel HTMLMin. You may see an example of implementation in [Laravel Navigation](https://github.com/GrahamCampbell/Laravel-Navigation) or [Bootstrap CMS](https://github.com/GrahamCampbell/Bootstrap-CMS).
 
 
 ## Updating Your Fork
