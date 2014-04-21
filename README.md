@@ -34,7 +34,7 @@ Laravel HTMLMin is a simple HTML minifier for [Laravel 4.1](http://laravel.com).
 
 Please check the system requirements before installing Laravel HTMLMin.
 
-To get the latest version of Laravel HTMLMin, simply require `"graham-campbell/htmlmin": "1.1.*@dev"` in your `composer.json` file. You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
+To get the latest version of Laravel HTMLMin, simply require `"graham-campbell/htmlmin": "1.1.*"` in your `composer.json` file. You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
 
 Once Laravel HTMLMin is installed, you need to register the service provider. Open up `app/config/app.php` and add the following to the `providers` key.
 
@@ -91,7 +91,9 @@ This class contains no public methods of interest. This class should be added to
 **Further Information**
 
 Feel free to check out the [API Documentation](http://grahamcampbell.github.io/Laravel-HTMLMin
-) for Laravel HTMLMin. You may see an example of implementation in [Laravel Navigation](https://github.com/GrahamCampbell/Laravel-Navigation) or [Bootstrap CMS](https://github.com/GrahamCampbell/Bootstrap-CMS).
+) for Laravel HTMLMin.
+
+You may see an example of implementation in [Laravel Navigation](https://github.com/GrahamCampbell/Laravel-Navigation) or [Bootstrap CMS](https://github.com/GrahamCampbell/Bootstrap-CMS).
 
 
 ## Updating Your Fork
