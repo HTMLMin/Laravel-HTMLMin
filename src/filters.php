@@ -15,6 +15,7 @@
  */
 
 use Illuminate\Http\Response;
+use GrahamCampbell\HTMLMin\Facades\HTMLMin;
 
 Route::filter('htmlmin', function ($route, $request, $response) {
     // check if the response is a real response and not a redirect
