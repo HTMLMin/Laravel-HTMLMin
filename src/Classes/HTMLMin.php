@@ -19,7 +19,7 @@ namespace GrahamCampbell\HTMLMin\Classes;
 use Minify_HTML;
 use Minify_CSS;
 use JSMin;
-use Illuminate\View\Environment;
+use Illuminate\View\Factory;
 
 /**
  * This is the htmlmin class.
@@ -35,17 +35,17 @@ class HTMLMin
     /**
      * The view instance.
      *
-     * @var \Illuminate\View\Environment
+     * @var \Illuminate\View\Factory
      */
     protected $view;
 
     /**
      * Create a new instance.
      *
-     * @param  \Illuminate\View\Environment  $view
+     * @param  \Illuminate\View\Factory  $view
      * @return void
      */
-    public function __construct(Environment $view)
+    public function __construct(Factory $view)
     {
         $this->view = $view;
     }
@@ -122,7 +122,7 @@ class HTMLMin
     /**
      * Return the view instance.
      *
-     * @return \Illuminate\View\Environment
+     * @return \Illuminate\View\Factory
      */
     public function getView()
     {

@@ -111,7 +111,7 @@ class HTMLMinTest extends AbstractTestCase
 
     protected function getHTMLMin()
     {
-        $view = Mockery::mock('Illuminate\View\Environment');
+        $view = Mockery::mock('Illuminate\View\Factory');
 
         return new HTMLMin($view);
     }
