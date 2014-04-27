@@ -12,7 +12,7 @@ Laravel HTMLMin
 
 ## What Is Laravel HTMLMin?
 
-Laravel HTMLMin is a simple HTML minifier for [Laravel 4.1](http://laravel.com).
+Laravel HTMLMin is a simple HTML minifier for [Laravel 4.2](http://laravel.com).
 
 * Laravel HTMLMin was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell).
 * Laravel HTMLMin relies on Mr Clay's [Minify](https://github.com/mrclay/minify) package.
@@ -25,8 +25,8 @@ Laravel HTMLMin is a simple HTML minifier for [Laravel 4.1](http://laravel.com).
 
 ## System Requirements
 
-* PHP 5.4.7+ or HHVM 3.0+ is required.
-* You will need [Laravel 4.1](http://laravel.com) because this package is designed for it.
+* PHP 5.4.7+ or HHVM 3.1+ is required.
+* You will need [Laravel 4.2](http://laravel.com) because this package is designed for it.
 * You will need [Composer](https://getcomposer.org) installed to load the dependencies of Laravel HTMLMin.
 
 
@@ -34,7 +34,7 @@ Laravel HTMLMin is a simple HTML minifier for [Laravel 4.1](http://laravel.com).
 
 Please check the system requirements before installing Laravel HTMLMin.
 
-To get the latest version of Laravel HTMLMin, simply require `"graham-campbell/htmlmin": "1.1.*"` in your `composer.json` file. You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
+To get the latest version of Laravel HTMLMin, simply require `"graham-campbell/htmlmin": "~2.0"` in your `composer.json` file. You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
 
 Once Laravel HTMLMin is installed, you need to register the service provider. Open up `app/config/app.php` and add the following to the `providers` key.
 
