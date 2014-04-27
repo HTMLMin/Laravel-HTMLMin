@@ -88,6 +88,10 @@ This facade will dynamically pass static method calls to the `'htmlmin'` object 
 
 This class contains no public methods of interest. This class should be added to the providers array in `app/config/app.php`. This class will setup ioc bindings and register automatic blade/live minification based on the config.
 
+**Filters**
+
+You may put the `htmlmin` filter in front of your routes to live minify their responses. This filter will always minify them even when live minification is disabled because the live minification config setting defines if all html responses should be minified. This filter allows you to selectively choose which routes to minify.
+
 **Further Information**
 
 Feel free to check out the [API Documentation](http://grahamcampbell.github.io/Laravel-HTMLMin

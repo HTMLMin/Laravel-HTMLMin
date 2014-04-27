@@ -56,6 +56,8 @@ class HTMLMinServiceProvider extends ServiceProvider
         if ($this->app['config']['graham-campbell/htmlmin::live']) {
             $this->enableLiveOptimisations();
         }
+
+        include __DIR__.'/filters.php';
     }
 
     /**

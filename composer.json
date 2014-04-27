@@ -13,6 +13,7 @@
         "php": ">=5.4.7",
         "illuminate/filesystem": "4.2.*",
         "illuminate/http": "4.2.*",
+        "illuminate/routing": "4.2.*",
         "illuminate/support": "4.2.*",
         "illuminate/view": "4.2.*",
         "mrclay/minify": "~2.2"
