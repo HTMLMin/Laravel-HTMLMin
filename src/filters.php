@@ -16,7 +16,7 @@
 
 use Illuminate\Http\Response;
 
-Route::filter('htmlmin', function ($route, $request) {
+Route::filter('htmlmin', function ($route, $request, $response) {
     // check if the response is a real response and not a redirect
     if ($response instanceof Response) {
         // check if the response has a content type header
