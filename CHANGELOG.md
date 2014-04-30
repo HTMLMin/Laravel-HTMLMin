@@ -7,6 +7,12 @@ CHANGE LOG
 * Upgrade to Laravel 4.2
 
 
+## V1.1.1 (Upcoming)
+
+* Blade extensions fix
+* Fixed storage path
+
+
 ## V1.1 (21/04/2014)
 
 * PHP 5.6 and HHVM compatibility

@@ -68,10 +68,10 @@ class HTMLMinServiceProvider extends ServiceProvider
         $app = $this->app;
 
         // register a new compiler
-        $app->view->getEngineResolver()->register('blade.php', function () use ($app) {
+        $app->view->getEngineResolver()->register('blade', function () use ($app) {
             $htmlmin = $app['htmlmin'];
             $files = $app['files'];
-            $storagePath = $app['path'].'/storage/views';
+            $storagePath = $app['path.storage'].'/views';
 
             $compiler = new Compilers\HTMLMinCompiler($htmlmin, $files, $storagePath);
 
@@ -79,7 +79,7 @@ class HTMLMinServiceProvider extends ServiceProvider
         });
 
         // add the extension
-        $app->view->addExtension('blade.php', 'blade.php');
+        $app->view->addExtension('blade.php', 'blade');
     }
 
     /**
