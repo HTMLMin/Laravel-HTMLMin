@@ -7,7 +7,7 @@ CHANGE LOG
 * Upgrade to Laravel 4.2
 
 
-## V1.1.1 (Upcoming)
+## V1.1.1 (30/04/2014)
 
 * Blade extensions fix
 * Fixed storage path
