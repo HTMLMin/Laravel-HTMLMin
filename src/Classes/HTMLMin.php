@@ -16,10 +16,9 @@
 
 namespace GrahamCampbell\HTMLMin\Classes;
 
-use Minify_HTML;
-use Minify_CSS;
-use JSMin;
-use Illuminate\View\Factory;
+use Illuminate\Http\Response;
+use GrahamCampbell\HTMLMin\Minifiers\Html;
+use GrahamCampbell\HTMLMin\Minifiers\Blade;
 
 /**
  * This is the htmlmin class.
@@ -33,21 +32,41 @@ use Illuminate\View\Factory;
 class HTMLMin
 {
     /**
-     * The view instance.
+     * The html minifier instance.
      *
-     * @var \Illuminate\View\Factory
+     * @var \GrahamCampbell\HTMLMin\Minifiers\Html
      */
-    protected $view;
+    protected $html;
+
+    /**
+     * The blade minifier instance.
+     *
+     * @var \GrahamCampbell\HTMLMin\Minifiers\Blade
+     */
+    protected $blade;
 
     /**
      * Create a new instance.
      *
-     * @param  \Illuminate\View\Factory  $view
+     * @param  \GrahamCampbell\HTMLMin\Minifiers\Html  $html
+     * @param  \GrahamCampbell\HTMLMin\Minifiers\Blade  $blade
      * @return void
      */
-    public function __construct(Factory $view)
+    public function __construct(Html $html, Blade $blade)
     {
-        $this->view = $view;
+        $this->html = $html;
+        $this->blade = $blade;
+    }
+
+    /**
+     * Get the minified html.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function html($value)
+    {
+        return $this->html->render($value);
     }
 
     /**
@@ -58,74 +77,50 @@ class HTMLMin
      */
     public function blade($value)
     {
-        if (!preg_match('/<(pre|textarea)/', $value) &&
-            !preg_match('/<script[^\??>]*>[^<\/script>]/', $value) &&
-            !preg_match('/value=("|\')(.*)([ ]{2,})(.*)("|\')/', $value)) {
-            $replace = array(
-                '/<!--[^\[](.*?)[^\]]-->/s' => '',
-                "/<\?php/"    => '<?php ',
-                "/\n([\S])/"  => ' $1',
-                "/\r/"        => '',
-                "/\n/"        => '',
-                "/\t/"        => ' ',
-                "/ +/"        => ' '
-            );
-
-            $value = preg_replace(array_keys($replace), array_values($replace), $value);
-        }
-
-        return $value;
+        return $this->blade->render($value);
     }
 
     /**
-     * Get the minified html.
+     * Get the minified response.
      *
      * @param  string  $value
      * @return string
      */
-    public function render($value)
+    public function live($response)
     {
-        $options = array(
-            'cssMinifier' => function ($css) {
-                return Minify_CSS::minify($css, array('preserveComments' => false));
-            },
-            'jsMinifier' => function ($js) {
-                return JSMin::minify($js);
-            },
-            'jsCleanComments' => true
-        );
-
-        $value = Minify_HTML::minify($value, $options);
-
-        return $value;
-    }
-
-    /**
-     * Get the minified view.
-     *
-     * @param  string  $view
-     * @param  array   $data
-     * @param  bool    $full
-     * @return string
-     */
-    public function make($view, array $data = array(), $full = false)
-    {
-        $value = $this->blade($this->view->make($view, $data)->render());
-
-        if ($full) {
-            $value = $this->render($value);
+        if ($response instanceof Response) {
+            // check if the response has a content type header
+            if ($response->headers->has('Content-Type') !== false) {
+                // check if the contact type header is html
+                if (strpos($response->headers->get('Content-Type'), 'text/html') !== false) {
+                    // get the response body
+                    $output = $response->getOriginalContent();
+                    // minify the response body
+                    $min = $this->html->render($output);
+                    // set the response body
+                    $response->setContent($min);
+                }
+            }
         }
-
-        return $value;
     }
 
     /**
-     * Return the view instance.
+     * Return the html minifier instance.
      *
-     * @return \Illuminate\View\Factory
+     * @return \GrahamCampbell\HTMLMin\Minifiers\Html
      */
-    public function getView()
+    public function getHtml()
     {
-        return $this->view;
+        return $this->html;
+    }
+
+    /**
+     * Return the blade minifier instance.
+     *
+     * @return \GrahamCampbell\HTMLMin\Minifiers\Blade
+     */
+    public function getBlade()
+    {
+        return $this->blade;
     }
 }

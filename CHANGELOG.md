@@ -6,6 +6,7 @@ CHANGE LOG
 
 * Upgrade to Laravel 4.2
 * Added minification filter
+* Large refactoring
 
 
 ## V1.1.1 (30/04/2014)

@@ -69,19 +69,12 @@ class HTMLMinServiceProvider extends ServiceProvider
     {
         $app = $this->app;
 
-        // register a new compiler
-        $app->view->getEngineResolver()->register('blade', function () use ($app) {
-            $htmlmin = $app['htmlmin'];
-            $files = $app['files'];
-            $storagePath = $app['path.storage'].'/views';
-
-            $compiler = new Compilers\HTMLMinCompiler($htmlmin, $files, $storagePath);
+        // add the compiler and extension
+        $app['view']->addExtension('blade.php', 'blade', function () use ($app) {
+            $compiler = $app['htmlmin.compiler'];
 
             return new CompilerEngine($compiler);
         });
-
-        // add the extension
-        $app->view->addExtension('blade.php', 'blade');
     }
 
     /**
@@ -93,23 +86,9 @@ class HTMLMinServiceProvider extends ServiceProvider
     {
         $app = $this->app;
 
-        // after filter
+        // register a new filter
         $app->after(function ($request, $response) use ($app) {
-            // check if the response is a real response and not a redirect
-            if ($response instanceof Response) {
-                // check if the response has a content type header
-                if ($response->headers->has('Content-Type') !== false) {
-                    // check if the contact type header is html
-                    if (strpos($response->headers->get('Content-Type'), 'text/html') !== false) {
-                        // get the response body
-                        $output = $response->getOriginalContent();
-                        // minify the response body
-                        $min = $app['htmlmin']->render($output);
-                        // set the response body
-                        $response->setContent($min);
-                    }
-                }
-            }
+            $this->app['htmlmin']->live($response);
         });
     }
 
@@ -120,7 +99,50 @@ class HTMLMinServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->registerHtmlMinifier();
+        $this->registerBladeMinifier();
+        $this->registerMinifyCompiler();
         $this->registerHTMLMin();
+    }
+
+    /**
+     * Register the html minifier class.
+     *
+     * @return void
+     */
+    protected function registerHtmlMinifier()
+    {
+        $this->app->bindShared('htmlmin.html', function ($app) {
+            return new Minifiers\Html();
+        });
+    }
+
+    /**
+     * Register the blade minifier class.
+     *
+     * @return void
+     */
+    protected function registerBladeMinifier()
+    {
+        $this->app->bindShared('htmlmin.blade', function ($app) {
+            return new Minifiers\Blade();
+        });
+    }
+
+    /**
+     * Register the minify compiler class.
+     *
+     * @return void
+     */
+    protected function registerMinifyCompiler()
+    {
+        $this->app->bindShared('htmlmin.compiler', function ($app) {
+            $blade = $app['htmlmin.blade'];
+            $files = $app['files'];
+            $storagePath = $app['path.storage'].'/views';
+
+            return new Compilers\MinifyCompiler($blade, $files, $storagePath);
+        });
     }
 
     /**
@@ -131,9 +153,10 @@ class HTMLMinServiceProvider extends ServiceProvider
     protected function registerHTMLMin()
     {
         $this->app->bindShared('htmlmin', function ($app) {
-            $view = $app['view'];
+            $html = $app['htmlmin.html'];
+            $blade = $app['htmlmin.blade'];
 
-            return new Classes\HTMLMin($view);
+            return new Classes\HTMLMin($html, $blade);
         });
     }
 
@@ -145,7 +168,10 @@ class HTMLMinServiceProvider extends ServiceProvider
     public function provides()
     {
         return array(
-            'htmlmin'
+            'htmlmin',
+            'htmlmin.html',
+            'htmlmin.blade',
+            'htmlmin.compiler'
         );
     }
 }

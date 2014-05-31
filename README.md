@@ -70,15 +70,11 @@ This option (`'live'`) enables minification of the html responses just before th
 
 This is the class of most interest. It is bound to the ioc container as `'htmlmin'` and can be accessed using the `Facades\HTMLMin` facade. There are three public methods of interest.
 
+The `'html'` method will parse a string as html and will minify it as best as possible using Mr Clay's [Minify](https://github.com/mrclay/minify) package. This is the method that is automatically used in an after filter when live minification is enabled.
+
 The `'blade'` method will parse a string as blade and minify it as quickly as possible. This is method the compiler class uses when blade minification is enabled.
 
-The `'render'` method will parse a string as html and will minify it as best as possible using Mr Clay's [Minify](https://github.com/mrclay/minify) package. This method can be more time consuming than the blade method, but will usually achieve an overall smaller result. This is the method that is automatically used in an after filter when live minification is enabled.
-
-The `'make'` method will return a minified view after being parsed by the `'blade'` method. Note that the minification occurs after the view has been executed unlike in the compiler where the view is minified and cached before it is executed.
-
-**Compilers\HTMLMinCompiler**
-
-This class contains no public methods of interest. This class used to minify blade at compile time so it is minified and cached before execution if blade minification is enabled.
+The `'live'` method accepts a response object as a first parameter and will first determine if it can be minified, and then will set the response body to a minified version of the body of the response using the html minifier.
 
 **Facades\HTMLMin**
 
@@ -93,6 +89,8 @@ This class contains no public methods of interest. This class should be added to
 You may put the `htmlmin` filter in front of your routes to live minify their responses. This filter will always minify them even when live minification is disabled because the live minification config setting defines if all html responses should be minified. This filter allows you to selectively choose which routes to minify.
 
 **Further Information**
+
+There are other classes in this package that are not documented here. This is because they are not intended for public use and are used internally by this package.
 
 Feel free to check out the [API Documentation](http://grahamcampbell.github.io/Laravel-HTMLMin
 ) for Laravel HTMLMin.

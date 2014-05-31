@@ -14,8 +14,24 @@
  * limitations under the License.
  */
 
-use GrahamCampbell\HTMLMin\Facades\HTMLMin;
+namespace GrahamCampbell\HTMLMin\Interfaces;
 
-Route::filter('htmlmin', function ($route, $request, $response) {
-    HTMLMin::live($response);
-});
+/**
+ * This is the minifier interface.
+ *
+ * @package    Laravel-HTMLMin
+ * @author     Graham Campbell
+ * @copyright  Copyright 2013-2014 Graham Campbell
+ * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
+ * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
+ */
+interface MinifierInterface
+{
+    /**
+     * Get the minified value.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function render($value);
+}

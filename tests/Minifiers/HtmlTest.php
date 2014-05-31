@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\Tests\HTMLMin\Classes;
+namespace GrahamCampbell\Tests\HTMLMin\Minifiers;
 
 use Mockery;
-use GrahamCampbell\HTMLMin\Classes\HTMLMin;
+use GrahamCampbell\HTMLMin\Minifiers\Html;
 use GrahamCampbell\TestBench\Classes\AbstractTestCase;
 
 /**
- * This is the htmlmin test class.
+ * This is the html minifier test class.
  *
  * @package    Laravel-HTMLMin
  * @author     Graham Campbell
@@ -29,42 +29,29 @@ use GrahamCampbell\TestBench\Classes\AbstractTestCase;
  * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
-class HTMLMinTest extends AbstractTestCase
+class HtmlTest extends AbstractTestCase
 {
-    public function testHtml()
+    public function testRenderQuick()
     {
-        $htmlmin = $this->getHTMLMin();
+        $html = $this->getHtml();
 
-        $htmlmin->getHtml()->shouldReceive('render')
-            ->once()->andReturn('abc');
+        $return = $html->render('test');
 
-        $return = $htmlmin->html('test');
-
-        $this->assertEquals($return, 'abc');
+        $this->assertEquals('test', $return);
     }
 
-    public function testBlade()
+    public function testRenderFull()
     {
-        $htmlmin = $this->getHTMLMin();
+        $html = $this->getHtml();
+        $text = 'test<style>font-size: 12pt;</style><script>alert("Hello");</script>';
 
-        $htmlmin->getBlade()->shouldReceive('render')
-            ->once()->andReturn('abc');
+        $return = $html->render($text);
 
-        $return = $htmlmin->blade('test');
-
-        $this->assertEquals($return, 'abc');
+        $this->assertEquals($text, $return);
     }
 
-    public function testLive()
+    protected function getHtml()
     {
-        // TODO
-    }
-
-    protected function getHTMLMin()
-    {
-        $html = Mockery::mock('GrahamCampbell\HTMLMin\Minifiers\Html');
-        $blade = Mockery::mock('GrahamCampbell\HTMLMin\Minifiers\Blade');
-
-        return new HTMLMin($html, $blade);
+        return new Html();
     }
 }

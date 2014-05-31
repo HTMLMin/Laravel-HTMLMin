@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\Tests\HTMLMin\Compilers;
+namespace GrahamCampbell\Tests\HTMLMin\Minifiers;
 
 use Mockery;
-use GrahamCampbell\HTMLMin\Compilers\HTMLMinCompiler;
+use GrahamCampbell\HTMLMin\Minifiers\Blade;
 use GrahamCampbell\TestBench\Classes\AbstractTestCase;
 
 /**
- * This is the htmlmin compiler test class.
+ * This is the blade minifier test class.
  *
  * @package    Laravel-HTMLMin
  * @author     Graham Campbell
@@ -29,35 +29,36 @@ use GrahamCampbell\TestBench\Classes\AbstractTestCase;
  * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
-class HTMLMinCompilerTest extends AbstractTestCase
+class BladeTest extends AbstractTestCase
 {
-    public function testMinify()
+    public function testRenderEnabled()
     {
-        $compiler = $this->getCompiler();
+        $blade = $this->getBlade();
 
-        $compiler->getHTMLMin()->shouldReceive('blade')->once()
-            ->with('test')->andReturn('test');
+        $return = $blade->render('test    123');
 
-        $return = $compiler->compileMinify('test');
+        $this->assertEquals($return, 'test 123');
 
-        $this->assertEquals('test', $return);
+        $return = $blade->render('test    <div></div>');
+
+        $this->assertEquals('test <div></div>', $return);
     }
 
-    public function testCompilers()
+    public function testRenderDisabled()
     {
-        $compiler = $this->getCompiler();
+        $blade = $this->getBlade();
 
-        $compilers = $compiler->getCompilers();
+        $return = $blade->render('test    <textarea></textarea>');
 
-        $this->assertInArray('Minify', $compilers);
+        $this->assertEquals('test    <textarea></textarea>', $return);
+
+        $return = $blade->render('test    <pre></pre>');
+
+        $this->assertEquals('test    <pre></pre>', $return);
     }
 
-    protected function getCompiler()
+    protected function getBlade()
     {
-        $htmlmin = Mockery::mock('GrahamCampbell\HTMLMin\Classes\HTMLMin');
-        $files = Mockery::mock('Illuminate\Filesystem\Filesystem');
-        $cachePath = __DIR__;
-
-        return new HTMLMinCompiler($htmlmin, $files, $cachePath);
+        return new Blade();
     }
 }
