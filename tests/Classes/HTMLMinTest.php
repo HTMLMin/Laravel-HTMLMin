@@ -55,7 +55,28 @@ class HTMLMinTest extends AbstractTestCase
         $this->assertEquals($return, 'abc');
     }
 
-    public function testLive()
+    public function testLiveError()
+    {
+        $htmlmin = $this->getHTMLMin();
+
+        $response = 'hello';
+
+        $return = $htmlmin->live($response);
+
+        $this->assertEquals($return, $response);
+    }
+
+    public function testLiveJson()
+    {
+        // TODO
+    }
+
+    public function testLiveHtml()
+    {
+        // TODO
+    }
+
+    public function testLiveMocked()
     {
         // TODO
     }

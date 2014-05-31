@@ -30,7 +30,7 @@ use GrahamCampbell\HTMLMin\Interfaces\MinifierInterface;
 class Blade implements MinifierInterface
 {
     /**
-     * Get the minified blade.
+     * Get the minified value.
      *
      * @param  string  $value
      * @return string

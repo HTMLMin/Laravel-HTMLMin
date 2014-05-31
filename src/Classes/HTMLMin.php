@@ -83,8 +83,8 @@ class HTMLMin
     /**
      * Get the minified response.
      *
-     * @param  string  $value
-     * @return string
+     * @param  mixed  $response
+     * @return mixed
      */
     public function live($response)
     {
@@ -102,6 +102,8 @@ class HTMLMin
                 }
             }
         }
+
+        return $response;
     }
 
     /**

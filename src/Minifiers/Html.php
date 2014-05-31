@@ -33,7 +33,7 @@ use JSMin;
 class Html implements MinifierInterface
 {
     /**
-     * Get the minified html.
+     * Get the minified value.
      *
      * @param  string  $value
      * @return string
