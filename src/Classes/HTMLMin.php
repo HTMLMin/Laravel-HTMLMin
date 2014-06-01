@@ -94,7 +94,7 @@ class HTMLMin
                 // check if the contact type header is html
                 if (strpos($response->headers->get('Content-Type'), 'text/html') !== false) {
                     // get the response body
-                    $output = $response->getOriginalContent();
+                    $output = $response->getContent();
                     // minify the response body
                     $min = $this->html->render($output);
                     // set the response body

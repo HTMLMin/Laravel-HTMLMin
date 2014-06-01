@@ -41,8 +41,6 @@ class FilterEnabledTest extends AbstractTestCase
 
     public function testNewSetup()
     {
-        $this->app->register($this->getServiceProviderClass());
-
         $this->app['view']->addNamespace('stubs', realpath(__DIR__.'/stubs'));
 
         $this->app['router']->get('htmlmin-test-route', array('after' => 'htmlmin', function () {

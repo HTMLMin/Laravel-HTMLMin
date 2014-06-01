@@ -17,6 +17,8 @@
 namespace GrahamCampbell\Tests\HTMLMin\Classes;
 
 use Mockery;
+use Illuminate\Http\Response;
+use Illuminate\Http\RedirectResponse;
 use GrahamCampbell\HTMLMin\Classes\HTMLMin;
 use GrahamCampbell\TestBench\Classes\AbstractTestCase;
 
@@ -66,19 +68,51 @@ class HTMLMinTest extends AbstractTestCase
         $this->assertEquals($return, $response);
     }
 
+    public function testLiveRedirect()
+    {
+        $htmlmin = $this->getHTMLMin();
+
+        $content = 'http://example.com/';
+
+        $response = new RedirectResponse($content);
+
+        $return = $htmlmin->live($response);
+
+        $this->assertEquals($return, $response);
+        $this->assertEquals($return->getTargetUrl(), $content);
+    }
+
     public function testLiveJson()
     {
-        // TODO
+        $htmlmin = $this->getHTMLMin();
+
+        $content = array('<p>123</p>        <p>123</p>');
+
+        $response = new Response($content);
+
+        $return = $htmlmin->live($response);
+
+        $this->assertEquals($return, $response);
+        $this->assertEquals($return->getContent(), '["<p>123<\/p>        <p>123<\/p>"]');
     }
 
     public function testLiveHtml()
     {
-        // TODO
-    }
+        $htmlmin = $this->getHTMLMin();
 
-    public function testLiveMocked()
-    {
-        // TODO
+        $content = '<p>123</p>        <p>123</p>';
+
+        $response = new Response($content);
+
+        $response->headers->set('Content-Type', 'text/html');
+
+        $htmlmin->getHtml()->shouldReceive('render')->once()
+            ->with($content)->andReturn('<p>123</p><p>123</p>');
+
+        $return = $htmlmin->live($response);
+
+        $this->assertEquals($return, $response);
+        $this->assertEquals($return->getContent(), '<p>123</p><p>123</p>');
     }
 
     protected function getHTMLMin()

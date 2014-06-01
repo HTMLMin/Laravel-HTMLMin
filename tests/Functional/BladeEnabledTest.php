@@ -42,16 +42,10 @@ class BladeEnabledTest extends AbstractTestCase
 
     public function testNewSetup()
     {
-        $this->app->register($this->getServiceProviderClass());
-
         $this->app['view']->addNamespace('stubs', realpath(__DIR__.'/stubs'));
 
         $return = $this->app['view']->make('stubs::test')->render();
 
-        if (DIRECTORY_SEPARATOR == '/') {
-            $this->assertEquals("<h1>Test</h1>\n", $return);
-        } else {
-            $this->assertEquals("<h1>Test</h1>\r\n", $return);
-        }
+        $this->assertEquals('<h1>Test</h1>'.PHP_EOL, $return);
     }
 }
