@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\Tests\Functional\HTMLMin;
+namespace GrahamCampbell\Tests\HTMLMin\Functional;
 
 use GrahamCampbell\Tests\HTMLMin\AbstractTestCase;
 
