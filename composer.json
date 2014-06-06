@@ -1,6 +1,6 @@
 {
     "name": "graham-campbell/htmlmin",
-    "description": "HTMLMin Is A Simple HTML Minifier For Laravel 4.2",
+    "description": "HTMLMin Is A Simple HTML Minifier For Laravel 4.2+",
     "keywords": ["laravel", "framework", "html minifier", "html", "minifier", "HTMLMin", "Laravel HTMLMin", "Laravel-HTMLMin", "Graham Campbell", "GrahamCampbell"],
     "license": "Apache-2.0",
     "authors": [
@@ -11,11 +11,11 @@
     ],
     "require": {
         "php": ">=5.4.7",
-        "illuminate/filesystem": "4.2.*",
-        "illuminate/http": "4.2.*",
-        "illuminate/routing": "4.2.*",
-        "illuminate/support": "4.2.*",
-        "illuminate/view": "4.2.*",
+        "illuminate/filesystem": "~4.2",
+        "illuminate/http": "~4.2",
+        "illuminate/routing": "~4.2",
+        "illuminate/support": "~4.2",
+        "illuminate/view": "~4.2",
         "mrclay/minify": "~2.2"
     },
     "require-dev": {
