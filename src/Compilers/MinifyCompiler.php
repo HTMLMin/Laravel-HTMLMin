@@ -39,6 +39,18 @@ class MinifyCompiler extends BladeCompiler
     protected $blade;
 
     /**
+     * All of the available compiler functions.
+     *
+     * @var array
+     */
+    protected $compilers = array(
+        'Extensions',
+        'Statements',
+        'Comments',
+        'Echos'
+    );
+
+    /**
      * Create a new instance.
      *
      * @param  \GrahamCampbell\HTMLMin\Minifiers\Blade  $blade
@@ -62,6 +74,27 @@ class MinifyCompiler extends BladeCompiler
     public function compileMinify($value)
     {
         return $this->blade->render($value);
+    }
+
+    /**
+     * Parse the tokens from the template.
+     *
+     * @param  array  $token
+     * @return string
+     */
+    protected function parseToken($token)
+    {
+        list($id, $content) = $token;
+
+        if ($id == T_INLINE_HTML)
+        {
+            foreach ($this->compilers as $type)
+            {
+                $content = $this->{"compile{$type}"}($content);
+            }
+        }
+
+        return $content;
     }
 
     /**
