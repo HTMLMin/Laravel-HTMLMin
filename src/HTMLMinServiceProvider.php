@@ -69,12 +69,15 @@ class HTMLMinServiceProvider extends ServiceProvider
     {
         $app = $this->app;
 
-        // add the compiler and extension
-        $app['view']->addExtension('blade.php', 'blade', function () use ($app) {
+        // register a new compiler
+        $app['view']->getEngineResolver()->register('blade', function () use ($app) {
             $compiler = $app['htmlmin.compiler'];
 
             return new CompilerEngine($compiler);
         });
+
+        // add the extension
+        $app->view->addExtension('blade.php', 'blade');
     }
 
     /**
