@@ -49,6 +49,6 @@ class FilterEnabledTest extends AbstractTestCase
 
         $return = $this->call('GET', 'htmlmin-test-route')->getContent();
 
-        $this->assertEquals("<h1>Test</h1>", $return);
+        $this->assertEquals('<h1>Test</h1>', $return);
     }
 }

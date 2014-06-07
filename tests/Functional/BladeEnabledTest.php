@@ -46,6 +46,6 @@ class BladeEnabledTest extends AbstractTestCase
 
         $return = $this->app['view']->make('stubs::test')->render();
 
-        $this->assertEquals('<h1>Test</h1>'.PHP_EOL, $return);
+        $this->assertEquals('<h1>Test</h1>', $return);
     }
 }
