@@ -69,7 +69,7 @@ class HTMLMinServiceProvider extends ServiceProvider
     {
         $app = $this->app;
 
-        // register a new compiler
+        // register a new engine
         $app['view']->getEngineResolver()->register('blade', function () use ($app) {
             $compiler = $app['htmlmin.compiler'];
 
