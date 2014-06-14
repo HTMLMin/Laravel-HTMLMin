@@ -57,8 +57,21 @@ class BladeTest extends AbstractTestCase
         $this->assertEquals('test    <pre></pre>', $return);
     }
 
-    protected function getBlade()
+    public function testRenderForced()
     {
-        return new Blade();
+        $blade = $this->getBlade(true);
+
+        $return = $blade->render('test    <textarea></textarea>');
+
+        $this->assertEquals('test <textarea></textarea>', $return);
+
+        $return = $blade->render('test    <pre></pre>');
+
+        $this->assertEquals('test <pre></pre>', $return);
+    }
+
+    protected function getBlade($force = false)
+    {
+        return new Blade($force);
     }
 }

@@ -53,11 +53,15 @@ To get started, first publish the package config file:
 
     php artisan config:publish graham-campbell/htmlmin
 
-There are two config options:
+There are a few config options:
 
 **Automatic Blade Optimizations**
 
 This option (`'blade'`) enables minification of the the blade views as they are compiled. These optimizations have little impact on php processing time as the optimizations are only applied once and are cached. This package will do nothing by default to allow it to be used without minifying pages automatically. The default value for this setting is `false`.
+
+**Force Blade Optimizations**
+
+This option (`'force'`) forces blade minification on views where there such minification may be dangerous. This should only be used if you are fully aware of the potential issues this may cause. Obviously this setting is dependent on blade minification actually being enabled. The default value for this setting is `false`.
 
 **Automatic Live Optimizations**
 

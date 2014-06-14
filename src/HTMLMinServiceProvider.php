@@ -128,7 +128,9 @@ class HTMLMinServiceProvider extends ServiceProvider
     protected function registerBladeMinifier()
     {
         $this->app->bindShared('htmlmin.blade', function ($app) {
-            return new Minifiers\Blade();
+            $force = $app['config']['graham-campbell/htmlmin::force'];
+
+            return new Minifiers\Blade($force);
         });
     }
 

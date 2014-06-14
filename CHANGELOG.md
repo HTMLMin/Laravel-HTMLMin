@@ -6,6 +6,7 @@ CHANGE LOG
 
 * Upgrade to Laravel 4.2+
 * Added minification filter
+* Added the option to force minification
 * Large refactoring
 
 

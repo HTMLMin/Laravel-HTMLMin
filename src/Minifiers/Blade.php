@@ -30,6 +30,24 @@ use GrahamCampbell\HTMLMin\Interfaces\MinifierInterface;
 class Blade implements MinifierInterface
 {
     /**
+     * Should minification be forcefully enabled.
+     *
+     * @var bool
+     */
+    protected $force;
+
+    /**
+     * Create a new instance.
+     *
+     * @param  bool  $force
+     * @return void
+     */
+    public function __construct($force)
+    {
+        $this->force = $force;
+    }
+
+    /**
      * Get the minified value.
      *
      * @param  string  $value
@@ -55,15 +73,19 @@ class Blade implements MinifierInterface
     }
 
     /**
-     * Determine if you blade should be minified.
+     * Determine the blade should be minified.
      *
      * @param  string  $value
      * @return bool
      */
     protected function shouldMinify($value)
     {
-        return (!preg_match('/<(pre|textarea)/', $value) &&
-            !preg_match('/<script[^\??>]*>[^<\/script>]/', $value) &&
-            !preg_match('/value=("|\')(.*)([ ]{2,})(.*)("|\')/', $value));
+        if ($this->force) {
+            return true;
+        } else {
+            return (!preg_match('/<(pre|textarea)/', $value) &&
+                !preg_match('/<script[^\??>]*>[^<\/script>]/', $value) &&
+                !preg_match('/value=("|\')(.*)([ ]{2,})(.*)("|\')/', $value));
+        }
     }
 }
