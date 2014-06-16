@@ -73,7 +73,7 @@ class Blade implements MinifierInterface
     }
 
     /**
-     * Determine the blade should be minified.
+     * Determine if the blade should be minified.
      *
      * @param  string  $value
      * @return bool
