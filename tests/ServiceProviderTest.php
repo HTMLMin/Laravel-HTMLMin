@@ -31,6 +31,21 @@ class ServiceProviderTest extends AbstractTestCase
 {
     use ServiceProviderTestCaseTrait;
 
+    public function testHtmlMinifierIsInjectable()
+    {
+        $this->assertIsInjectable('GrahamCampbell\HTMLMin\Minifiers\Html');
+    }
+
+    public function testBladeMinifierIsInjectable()
+    {
+        $this->assertIsInjectable('GrahamCampbell\HTMLMin\Minifiers\Blade');
+    }
+
+    public function testCompilerIsInjectable()
+    {
+        $this->assertIsInjectable('GrahamCampbell\HTMLMin\Compilers\MinifyCompiler');
+    }
+
     public function testHTMLMinIsInjectable()
     {
         $this->assertIsInjectable('GrahamCampbell\HTMLMin\HTMLMin');
