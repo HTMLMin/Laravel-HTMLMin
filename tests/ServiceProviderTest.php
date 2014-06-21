@@ -33,6 +33,6 @@ class ServiceProviderTest extends AbstractTestCase
 
     public function testHTMLMinIsInjectable()
     {
-        $this->assertIsInjectable('GrahamCampbell\HTMLMin\HTMLMin');
+        $this->assertIsInjectable('GrahamCampbell\HTMLMin\HTMLMinn');
     }
 }
