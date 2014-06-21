@@ -8,6 +8,7 @@ CHANGE LOG
 * Added minification filter
 * Added the option to force minification
 * Large refactoring
+* Added di aliases
 
 
 ## V1.1.1 (30/04/2014)

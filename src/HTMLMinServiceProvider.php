@@ -118,6 +118,8 @@ class HTMLMinServiceProvider extends ServiceProvider
         $this->app->bindShared('htmlmin.html', function ($app) {
             return new Minifiers\Html();
         });
+
+        $this->app->alias('htmlmin.html', 'GrahamCampbell\HTMLMin\Minifiers\Html');
     }
 
     /**
@@ -132,6 +134,8 @@ class HTMLMinServiceProvider extends ServiceProvider
 
             return new Minifiers\Blade($force);
         });
+
+        $this->app->alias('htmlmin.blade', 'GrahamCampbell\HTMLMin\Minifiers\Blade');
     }
 
     /**
@@ -148,6 +152,8 @@ class HTMLMinServiceProvider extends ServiceProvider
 
             return new Compilers\MinifyCompiler($blade, $files, $storagePath);
         });
+
+        $this->app->alias('htmlmin.compiler', 'GrahamCampbell\HTMLMin\Compilers\MinifyCompiler');
     }
 
     /**
@@ -163,6 +169,8 @@ class HTMLMinServiceProvider extends ServiceProvider
 
             return new HTMLMin($html, $blade);
         });
+
+        $this->app->alias('htmlmin', 'GrahamCampbell\HTMLMin\HTMLMin');
     }
 
     /**
