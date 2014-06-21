@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\Tests\HTMLMin\Classes;
+namespace GrahamCampbell\Tests\HTMLMin;
 
 use Mockery;
 use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
-use GrahamCampbell\HTMLMin\Classes\HTMLMin;
-use GrahamCampbell\TestBench\Classes\AbstractTestCase;
+use GrahamCampbell\HTMLMin\HTMLMin;
+use GrahamCampbell\TestBench\AbstractTestCase;
 
 /**
  * This is the htmlmin test class.

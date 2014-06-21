@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\HTMLMin\Classes;
+namespace GrahamCampbell\HTMLMin;
 
 use Illuminate\Http\Response;
 use GrahamCampbell\HTMLMin\Minifiers\Html;

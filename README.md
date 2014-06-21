@@ -70,7 +70,7 @@ This option (`'live'`) enables minification of the html responses just before th
 
 ## Usage
 
-**Classes\HTMLMin**
+**HTMLMin**
 
 This is the class of most interest. It is bound to the ioc container as `'htmlmin'` and can be accessed using the `Facades\HTMLMin` facade. There are three public methods of interest.
 
@@ -82,7 +82,7 @@ The `'live'` method accepts a response object as a first parameter and will firs
 
 **Facades\HTMLMin**
 
-This facade will dynamically pass static method calls to the `'htmlmin'` object in the ioc container which by default is the `Classes\HTMLMin` class.
+This facade will dynamically pass static method calls to the `'htmlmin'` object in the ioc container which by default is the `HTMLMin` class.
 
 **HTMLMinServiceProvider**
 

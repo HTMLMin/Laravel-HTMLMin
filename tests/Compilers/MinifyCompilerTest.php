@@ -18,7 +18,7 @@ namespace GrahamCampbell\Tests\HTMLMin\Compilers;
 
 use Mockery;
 use GrahamCampbell\HTMLMin\Compilers\MinifyCompiler;
-use GrahamCampbell\TestBench\Classes\AbstractTestCase;
+use GrahamCampbell\TestBench\AbstractTestCase;
 
 /**
  * This is the minify compiler test class.

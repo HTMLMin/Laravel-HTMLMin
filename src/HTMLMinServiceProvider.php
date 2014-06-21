@@ -161,7 +161,7 @@ class HTMLMinServiceProvider extends ServiceProvider
             $html = $app['htmlmin.html'];
             $blade = $app['htmlmin.blade'];
 
-            return new Classes\HTMLMin($html, $blade);
+            return new HTMLMin($html, $blade);
         });
     }
 

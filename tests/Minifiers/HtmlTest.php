@@ -18,7 +18,7 @@ namespace GrahamCampbell\Tests\HTMLMin\Minifiers;
 
 use Mockery;
 use GrahamCampbell\HTMLMin\Minifiers\Html;
-use GrahamCampbell\TestBench\Classes\AbstractTestCase;
+use GrahamCampbell\TestBench\AbstractTestCase;
 
 /**
  * This is the html minifier test class.

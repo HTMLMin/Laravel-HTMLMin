@@ -59,6 +59,6 @@ class HTMLMinTest extends AbstractTestCase
      */
     protected function getFacadeRoot()
     {
-        return 'GrahamCampbell\HTMLMin\Classes\HTMLMin';
+        return 'GrahamCampbell\HTMLMin\HTMLMin';
     }
 }

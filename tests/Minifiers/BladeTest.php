@@ -18,7 +18,7 @@ namespace GrahamCampbell\Tests\HTMLMin\Minifiers;
 
 use Mockery;
 use GrahamCampbell\HTMLMin\Minifiers\Blade;
-use GrahamCampbell\TestBench\Classes\AbstractTestCase;
+use GrahamCampbell\TestBench\AbstractTestCase;
 
 /**
  * This is the blade minifier test class.
