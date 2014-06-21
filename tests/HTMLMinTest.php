@@ -20,7 +20,7 @@ use Mockery;
 use Illuminate\Http\Response;
 use Illuminate\Http\RedirectResponse;
 use GrahamCampbell\HTMLMin\HTMLMin;
-use GrahamCampbell\TestBench\AbstractTestCase;
+use GrahamCampbell\TestBench\AbstractTestCase as AbstractTestBenchTestCase;
 
 /**
  * This is the htmlmin test class.
@@ -31,7 +31,7 @@ use GrahamCampbell\TestBench\AbstractTestCase;
  * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
-class HTMLMinTest extends AbstractTestCase
+class HTMLMinTest extends AbstractTestBenchTestCase
 {
     public function testHtml()
     {
