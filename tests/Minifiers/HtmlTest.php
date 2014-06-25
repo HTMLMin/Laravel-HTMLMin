@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\Tests\HTMLMin\Compilers;
+namespace GrahamCampbell\Tests\HTMLMin\Minifiers;
 
 use Mockery;
-use GrahamCampbell\HTMLMin\Compilers\HTMLMinCompiler;
-use GrahamCampbell\TestBench\Classes\AbstractTestCase;
+use GrahamCampbell\HTMLMin\Minifiers\Html;
+use GrahamCampbell\TestBench\AbstractTestCase;
 
 /**
- * This is the htmlmin compiler test class.
+ * This is the html minifier test class.
  *
  * @package    Laravel-HTMLMin
  * @author     Graham Campbell
@@ -29,35 +29,29 @@ use GrahamCampbell\TestBench\Classes\AbstractTestCase;
  * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
-class HTMLMinCompilerTest extends AbstractTestCase
+class HtmlTest extends AbstractTestCase
 {
-    public function testMinify()
+    public function testRenderQuick()
     {
-        $compiler = $this->getCompiler();
+        $html = $this->getHtml();
 
-        $compiler->getHTMLMin()->shouldReceive('blade')->once()
-            ->with('test')->andReturn('test');
-
-        $return = $compiler->compileMinify('test');
+        $return = $html->render('test');
 
         $this->assertEquals('test', $return);
     }
 
-    public function testCompilers()
+    public function testRenderFull()
     {
-        $compiler = $this->getCompiler();
+        $html = $this->getHtml();
+        $text = 'test<style>font-size: 12pt;</style><script>alert("Hello");</script>';
 
-        $compilers = $compiler->getCompilers();
+        $return = $html->render($text);
 
-        $this->assertInArray('Minify', $compilers);
+        $this->assertEquals($text, $return);
     }
 
-    protected function getCompiler()
+    protected function getHtml()
     {
-        $htmlmin = Mockery::mock('GrahamCampbell\HTMLMin\Classes\HTMLMin');
-        $files = Mockery::mock('Illuminate\Filesystem\Filesystem');
-        $cachePath = __DIR__;
-
-        return new HTMLMinCompiler($htmlmin, $files, $cachePath);
+        return new Html();
     }
 }

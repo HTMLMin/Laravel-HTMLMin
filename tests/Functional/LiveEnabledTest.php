@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\Tests\Functional\HTMLMin;
+namespace GrahamCampbell\Tests\HTMLMin\Functional;
 
 use GrahamCampbell\Tests\HTMLMin\AbstractTestCase;
 
@@ -52,8 +52,6 @@ class LiveEnabledTest extends AbstractTestCase
 
     public function testNewSetup()
     {
-        $this->app->register($this->getServiceProviderClass());
-
         $this->app['view']->addNamespace('stubs', realpath(__DIR__.'/stubs'));
 
         $this->app['router']->get('htmlmin-test-route', function () {
@@ -62,6 +60,6 @@ class LiveEnabledTest extends AbstractTestCase
 
         $return = $this->call('GET', 'htmlmin-test-route')->getContent();
 
-        $this->assertEquals("<h1>Test</h1>", $return);
+        $this->assertEquals('<h1>Test</h1>', $return);
     }
 }

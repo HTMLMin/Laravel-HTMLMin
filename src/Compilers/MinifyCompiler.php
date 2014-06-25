@@ -18,10 +18,10 @@ namespace GrahamCampbell\HTMLMin\Compilers;
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\View\Compilers\BladeCompiler;
-use GrahamCampbell\HTMLMin\Classes\HTMLMin;
+use GrahamCampbell\HTMLMin\Minifiers\Blade;
 
 /**
- * This is the htmlmin compiler class.
+ * This is the minify compiler class.
  *
  * @package    Laravel-HTMLMin
  * @author     Graham Campbell
@@ -29,39 +29,39 @@ use GrahamCampbell\HTMLMin\Classes\HTMLMin;
  * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
-class HTMLMinCompiler extends BladeCompiler
+class MinifyCompiler extends BladeCompiler
 {
     /**
-     * The htmlmin instance.
+     * The blade minifier instance.
      *
-     * @var \GrahamCampbell\HTMLMin\Classes\HTMLMin
+     * @var \GrahamCampbell\HTMLMin\Minifiers\Blade
      */
-    protected $htmlmin;
+    protected $blade;
 
     /**
      * Create a new instance.
      *
-     * @param  \GrahamCampbell\HTMLMin\Classes\HTMLMin  $htmlmin
+     * @param  \GrahamCampbell\HTMLMin\Minifiers\Blade  $blade
      * @param  \Illuminate\Filesystem\Filesystem  $files
      * @param  string  $cachePath
      * @return void
      */
-    public function __construct(HTMLMin $htmlmin, Filesystem $files, $cachePath)
+    public function __construct(Blade $blade, Filesystem $files, $cachePath)
     {
         parent::__construct($files, $cachePath);
-        $this->htmlmin = $htmlmin;
+        $this->blade = $blade;
         $this->compilers[] = 'Minify';
     }
 
     /**
-    * Minifies the HTML output before saving it.
+    * Minifies the output before saving it.
     *
     * @param  string  $value
     * @return string
     */
     public function compileMinify($value)
     {
-        return $this->htmlmin->blade($value);
+        return $this->blade->render($value);
     }
 
     /**
@@ -75,12 +75,12 @@ class HTMLMinCompiler extends BladeCompiler
     }
 
     /**
-     * Return the htmlmin instance.
+     * Return the blade minifier instance.
      *
-     * @return \GrahamCampbell\HTMLMin\Classes\HTMLMin
+     * @return \GrahamCampbell\HTMLMin\Minifiers\Blade
      */
-    public function getHTMLMin()
+    public function getBlade()
     {
-        return $this->htmlmin;
+        return $this->blade;
     }
 }

@@ -14,12 +14,10 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\Tests\HTMLMin\Functional;
-
-use GrahamCampbell\Tests\HTMLMin\AbstractTestCase;
+namespace GrahamCampbell\HTMLMin\Interfaces;
 
 /**
- * This is the blade enabled test class.
+ * This is the minifier interface.
  *
  * @package    Laravel-HTMLMin
  * @author     Graham Campbell
@@ -27,25 +25,13 @@ use GrahamCampbell\Tests\HTMLMin\AbstractTestCase;
  * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
-class BladeEnabledTest extends AbstractTestCase
+interface MinifierInterface
 {
     /**
-     * Additional application environment setup.
+     * Get the minified value.
      *
-     * @param  \Illuminate\Foundation\Application  $app
-     * @return void
+     * @param  string  $value
+     * @return string
      */
-    protected function additionalSetup($app)
-    {
-        $app['config']->set('graham-campbell/htmlmin::blade', true);
-    }
-
-    public function testNewSetup()
-    {
-        $this->app['view']->addNamespace('stubs', realpath(__DIR__.'/stubs'));
-
-        $return = $this->app['view']->make('stubs::test')->render();
-
-        $this->assertEquals('<h1>Test</h1>', $return);
-    }
+    public function render($value);
 }

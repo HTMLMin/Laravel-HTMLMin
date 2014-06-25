@@ -19,7 +19,7 @@ namespace GrahamCampbell\Tests\HTMLMin\Functional;
 use GrahamCampbell\Tests\HTMLMin\AbstractTestCase;
 
 /**
- * This is the blade enabled test class.
+ * This is the filter enabled test class.
  *
  * @package    Laravel-HTMLMin
  * @author     Graham Campbell
@@ -27,24 +27,27 @@ use GrahamCampbell\Tests\HTMLMin\AbstractTestCase;
  * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
-class BladeEnabledTest extends AbstractTestCase
+class FilterEnabledTest extends AbstractTestCase
 {
     /**
-     * Additional application environment setup.
+     * Specify if routing filters are enabled.
      *
-     * @param  \Illuminate\Foundation\Application  $app
-     * @return void
+     * @return bool
      */
-    protected function additionalSetup($app)
+    protected function enableFilters()
     {
-        $app['config']->set('graham-campbell/htmlmin::blade', true);
+        return true;
     }
 
     public function testNewSetup()
     {
         $this->app['view']->addNamespace('stubs', realpath(__DIR__.'/stubs'));
 
-        $return = $this->app['view']->make('stubs::test')->render();
+        $this->app['router']->get('htmlmin-test-route', array('after' => 'htmlmin', function () {
+            return $this->app['view']->make('stubs::test');
+        }));
+
+        $return = $this->call('GET', 'htmlmin-test-route')->getContent();
 
         $this->assertEquals('<h1>Test</h1>', $return);
     }
