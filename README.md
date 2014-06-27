@@ -11,7 +11,7 @@ Laravel HTMLMin
 
 ## Introduction
 
-Laravel HTMLMin was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a simple HTML minifier for [Laravel 4.2+](http://laravel.com). It relies on Mr Clay's [Minify](https://github.com/mrclay/minify) package to minify entire responses, but can also minify blade at compile time. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-HTMLMin/releases), [license](LICENSE.md), [api docs](http://grahamcampbell.github.io/Laravel-HTMLMin), and [contribution guidelines](CONTRIBUTING.md).
+Laravel HTMLMin was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a simple HTML minifier for [Laravel 4.2+](http://laravel.com). It utilises Mr Clay's [Minify](https://github.com/mrclay/minify) package to minify entire responses, but can also minify blade at compile time. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-HTMLMin/releases), [license](LICENSE.md), [api docs](http://grahamcampbell.github.io/Laravel-HTMLMin), and [contribution guidelines](CONTRIBUTING.md).
 
 
 ## Installation
