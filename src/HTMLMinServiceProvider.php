@@ -16,7 +16,6 @@
 
 namespace GrahamCampbell\HTMLMin;
 
-use Illuminate\Http\Response;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Engines\CompilerEngine;
 
