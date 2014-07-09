@@ -45,7 +45,7 @@ This option (`'blade'`) enables minification of the the blade views as they are 
 
 **Force Blade Optimizations**
 
-This option (`'force'`) forces blade minification on views where there such minification may be dangerous. This should only be used if you are fully aware of the potential issues this may cause. Obviously this setting is dependent on blade minification actually being enabled. The default value for this setting is `false`.
+This option (`'force'`) forces blade minification on views where there such minification may be dangerous. This should only be used if you are fully aware of the potential issues this may cause. Obviously, this setting is dependent on blade minification actually being enabled. The default value for this setting is `false`.
 
 **Automatic Live Optimizations**
 
