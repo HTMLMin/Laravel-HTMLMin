@@ -50,6 +50,9 @@ class Blade implements MinifierInterface
     /**
      * Get the minified value.
      *
+     * All credit to Trevor Fitzgerald for the regex here.
+     * See the original here: http://bit.ly/U7mv7a.
+     *
      * @param  string  $value
      * @return string
      */
