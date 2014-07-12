@@ -44,8 +44,10 @@ class BladeEnabledTest extends AbstractTestCase
     {
         $this->app['view']->addNamespace('stubs', realpath(__DIR__.'/stubs'));
 
-        $return = $this->app['view']->make('stubs::test')->render();
+        $actual = $this->app['view']->make('stubs::test')->render();
 
-        $this->assertEquals('<h1>Test</h1>', $return);
+        $expected = substr(file_get_contents(__DIR__.'/stubs/blade.txt'), 0, -1);
+
+        $this->assertEquals($actual, $expected);
     }
 }

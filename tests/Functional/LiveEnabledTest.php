@@ -58,8 +58,10 @@ class LiveEnabledTest extends AbstractTestCase
             return $this->app['view']->make('stubs::test');
         });
 
-        $return = $this->call('GET', 'htmlmin-test-route')->getContent();
+        $actual = $this->call('GET', 'htmlmin-test-route')->getContent();
 
-        $this->assertEquals('<h1>Test</h1>', $return);
+        $expected = substr(file_get_contents(__DIR__.'/stubs/live.txt'), 0, -1);
+
+        $this->assertEquals($actual, $expected);
     }
 }
