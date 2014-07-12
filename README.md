@@ -80,8 +80,7 @@ You may put the `htmlmin` filter in front of your routes to live minify their re
 
 There are other classes in this package that are not documented here. This is because they are not intended for public use and are used internally by this package.
 
-Feel free to check out the [API Documentation](http://grahamcampbell.github.io/Laravel-HTMLMin
-) for Laravel HTMLMin.
+Feel free to check out the [API Documentation](http://docs.grahamjcampbell.co.uk) for Laravel HTMLMin.
 
 You may see an example of implementation in [Bootstrap CMS](https://github.com/GrahamCampbell/Bootstrap-CMS).
 
