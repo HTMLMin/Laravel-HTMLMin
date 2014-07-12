@@ -9,7 +9,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="A simple HTML minifier for Laravel 4.2+" name="description">
     <meta content="Graham Campbell" name="author">
-    <link href="http://test.grahamjcampbell.co.uk/favicon.ico" rel="shortcut icon">
+    <link href="http://example.com/favicon.ico" rel="shortcut icon">
 </head>
 
 <body>
