@@ -74,7 +74,7 @@ This class contains no public methods of interest. This class should be added to
 
 ##### Filters
 
-You may put the `htmlmin` filter in front of your routes to live minify their responses. This filter will always minify them even when live minification is disabled because the live minification config setting defines if all html responses should be minified. This filter allows you to selectively choose which routes to minify.
+You may put the `htmlmin` filter in front of your routes to live minify their responses. This filter will always minify them even when live minification is disabled because the live minification config setting defines if all html responses should be minified. This filter allows you to selectively choose which routes to minify. It may be useful for you to take a look at the [source](https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/src/filters.php) for this, read the [tests](https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/tests/Functional/FilterEnabledTest.php), or check out Laravel's [documentation](http://laravel.com/docs/routing#route-filters) if you need to.
 
 ##### Further Information
 
