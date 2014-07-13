@@ -39,22 +39,22 @@ To get started, first publish the package config file:
 
 There are a few config options:
 
-**Automatic Blade Optimizations**
+##### Automatic Blade Optimizations
 
 This option (`'blade'`) enables minification of the the blade views as they are compiled. These optimizations have little impact on php processing time as the optimizations are only applied once and are cached. This package will do nothing by default to allow it to be used without minifying pages automatically. The default value for this setting is `false`.
 
-**Force Blade Optimizations**
+##### Force Blade Optimizations
 
 This option (`'force'`) forces blade minification on views where there such minification may be dangerous. This should only be used if you are fully aware of the potential issues this may cause. Obviously, this setting is dependent on blade minification actually being enabled. The default value for this setting is `false`.
 
-**Automatic Live Optimizations**
+##### Automatic Live Optimizations
 
 This option (`'live'`) enables minification of the html responses just before they are served. These optimizations have greater impact on php processing time as the optimizations are applied on every request. This package will do nothing by default to allow it to be used without minifying pages automatically. The default value for this setting is `false`.
 
 
 ## Usage
 
-**HTMLMin**
+##### HTMLMin
 
 This is the class of most interest. It is bound to the ioc container as `'htmlmin'` and can be accessed using the `Facades\HTMLMin` facade. There are three public methods of interest.
 
@@ -64,19 +64,19 @@ The `'blade'` method will parse a string as blade and minify it as quickly as po
 
 The `'live'` method accepts a response object as a first parameter and will first determine if it can be minified, and then will set the response body to a minified version of the body of the response using the html minifier.
 
-**Facades\HTMLMin**
+##### Facades\HTMLMin
 
 This facade will dynamically pass static method calls to the `'htmlmin'` object in the ioc container which by default is the `HTMLMin` class.
 
-**HTMLMinServiceProvider**
+##### HTMLMinServiceProvider
 
 This class contains no public methods of interest. This class should be added to the providers array in `app/config/app.php`. This class will setup ioc bindings and register automatic blade/live minification based on the config.
 
-**Filters**
+##### Filters
 
 You may put the `htmlmin` filter in front of your routes to live minify their responses. This filter will always minify them even when live minification is disabled because the live minification config setting defines if all html responses should be minified. This filter allows you to selectively choose which routes to minify.
 
-**Further Information**
+##### Further Information
 
 There are other classes in this package that are not documented here. This is because they are not intended for public use and are used internally by this package.
 
