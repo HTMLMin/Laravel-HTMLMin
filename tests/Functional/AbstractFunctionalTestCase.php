@@ -16,8 +16,10 @@
 
 namespace GrahamCampbell\Tests\HTMLMin\Functional;
 
+use GrahamCampbell\Tests\HTMLMin\AbstractTestCase;
+
 /**
- * This is the blade enabled test class.
+ * This is the abstract functional test case class.
  *
  * @package    Laravel-HTMLMin
  * @author     Graham Campbell
@@ -25,27 +27,19 @@ namespace GrahamCampbell\Tests\HTMLMin\Functional;
  * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
-class BladeEnabledTest extends AbstractFunctionalTestCase
+abstract class AbstractFunctionalTestCase extends AbstractTestCase
 {
     /**
-     * Additional application environment setup.
+     * Normalise eol characters in a string.
      *
-     * @param  \Illuminate\Foundation\Application  $app
-     * @return void
+     * @param  string  $string
+     * @return string
      */
-    protected function additionalSetup($app)
+    protected function normalize($string)
     {
-        $app['config']->set('graham-campbell/htmlmin::blade', true);
-    }
-
-    public function testNewSetup()
-    {
-        $this->app['view']->addNamespace('stubs', realpath(__DIR__.'/stubs'));
-
-        $actual = $this->app['view']->make('stubs::test')->render();
-
-        $expected = file_get_contents(__DIR__.'/stubs/blade.txt');
-
-        $this->assertEquals($this->normalize($actual), $this->normalize($expected));
+        $string = str_replace("\r\n", "\n", $string);
+        $string = str_replace("\r", "\n", $string);
+        $string = preg_replace("/\n{2,}/", "\n\n", $string);
+        return rtrim($string);
     }
 }

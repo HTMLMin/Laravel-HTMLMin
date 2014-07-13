@@ -16,8 +16,6 @@
 
 namespace GrahamCampbell\Tests\HTMLMin\Functional;
 
-use GrahamCampbell\Tests\HTMLMin\AbstractTestCase;
-
 /**
  * This is the live enabled test class.
  *
@@ -27,7 +25,7 @@ use GrahamCampbell\Tests\HTMLMin\AbstractTestCase;
  * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
-class LiveEnabledTest extends AbstractTestCase
+class LiveEnabledTest extends AbstractFunctionalTestCase
 {
     /**
      * Specify if routing filters are enabled.
@@ -60,8 +58,8 @@ class LiveEnabledTest extends AbstractTestCase
 
         $actual = $this->call('GET', 'htmlmin-test-route')->getContent();
 
-        $expected = substr(file_get_contents(__DIR__.'/stubs/live.txt'), 0, -1);
+        $expected = file_get_contents(__DIR__.'/stubs/live.txt');
 
-        $this->assertEquals($actual, $expected);
+        $this->assertEquals($this->normalize($actual), $this->normalize($expected));
     }
 }
