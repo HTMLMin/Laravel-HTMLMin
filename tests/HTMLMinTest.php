@@ -37,7 +37,7 @@ class HTMLMinTest extends AbstractTestBenchTestCase
     {
         $htmlmin = $this->getHTMLMin();
 
-        $htmlmin->getHtml()->shouldReceive('render')
+        $htmlmin->getHtmlMinifier()->shouldReceive('render')
             ->once()->andReturn('abc');
 
         $return = $htmlmin->html('test');
@@ -49,7 +49,7 @@ class HTMLMinTest extends AbstractTestBenchTestCase
     {
         $htmlmin = $this->getHTMLMin();
 
-        $htmlmin->getBlade()->shouldReceive('render')
+        $htmlmin->getBladeMinifier()->shouldReceive('render')
             ->once()->andReturn('abc');
 
         $return = $htmlmin->blade('test');
@@ -106,7 +106,7 @@ class HTMLMinTest extends AbstractTestBenchTestCase
 
         $response->headers->set('Content-Type', 'text/html');
 
-        $htmlmin->getHtml()->shouldReceive('render')->once()
+        $htmlmin->getHtmlMinifier()->shouldReceive('render')->once()
             ->with($content)->andReturn('<p>123</p><p>123</p>');
 
         $return = $htmlmin->live($response);
@@ -117,8 +117,8 @@ class HTMLMinTest extends AbstractTestBenchTestCase
 
     protected function getHTMLMin()
     {
-        $html = Mockery::mock('GrahamCampbell\HTMLMin\Minifiers\Html');
-        $blade = Mockery::mock('GrahamCampbell\HTMLMin\Minifiers\Blade');
+        $html = Mockery::mock('GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier');
+        $blade = Mockery::mock('GrahamCampbell\HTMLMin\Minifiers\BladeMinifier');
 
         return new HTMLMin($html, $blade);
     }

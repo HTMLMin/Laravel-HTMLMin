@@ -35,7 +35,7 @@ class MinifyCompilerTest extends AbstractTestCase
     {
         $compiler = $this->getCompiler();
 
-        $compiler->getBlade()->shouldReceive('render')->once()
+        $compiler->getBladeMinifier()->shouldReceive('render')->once()
             ->with('test')->andReturn('abc');
 
         $return = $compiler->compileMinify('test');
@@ -54,7 +54,7 @@ class MinifyCompilerTest extends AbstractTestCase
 
     protected function getCompiler()
     {
-        $blade = Mockery::mock('GrahamCampbell\HTMLMin\Minifiers\Blade');
+        $blade = Mockery::mock('GrahamCampbell\HTMLMin\Minifiers\BladeMinifier');
         $files = Mockery::mock('Illuminate\Filesystem\Filesystem');
         $cachePath = __DIR__;
 

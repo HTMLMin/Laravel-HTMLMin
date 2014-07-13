@@ -17,8 +17,8 @@
 namespace GrahamCampbell\HTMLMin;
 
 use Illuminate\Http\Response;
-use GrahamCampbell\HTMLMin\Minifiers\Html;
-use GrahamCampbell\HTMLMin\Minifiers\Blade;
+use GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier;
+use GrahamCampbell\HTMLMin\Minifiers\BladeMinifier;
 
 /**
  * This is the htmlmin class.
@@ -34,25 +34,25 @@ class HTMLMin
     /**
      * The html minifier instance.
      *
-     * @var \GrahamCampbell\HTMLMin\Minifiers\Html
+     * @var \GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier
      */
     protected $html;
 
     /**
      * The blade minifier instance.
      *
-     * @var \GrahamCampbell\HTMLMin\Minifiers\Blade
+     * @var \GrahamCampbell\HTMLMin\Minifiers\BladeMinifier
      */
     protected $blade;
 
     /**
      * Create a new instance.
      *
-     * @param  \GrahamCampbell\HTMLMin\Minifiers\Html  $html
-     * @param  \GrahamCampbell\HTMLMin\Minifiers\Blade  $blade
+     * @param  \GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier  $html
+     * @param  \GrahamCampbell\HTMLMin\Minifiers\BladeMinifier  $blade
      * @return void
      */
-    public function __construct(Html $html, Blade $blade)
+    public function __construct(HtmlMinifier $html, BladeMinifier $blade)
     {
         $this->html = $html;
         $this->blade = $blade;
@@ -109,9 +109,9 @@ class HTMLMin
     /**
      * Return the html minifier instance.
      *
-     * @return \GrahamCampbell\HTMLMin\Minifiers\Html
+     * @return \GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier
      */
-    public function getHtml()
+    public function getHtmlMinifier()
     {
         return $this->html;
     }
@@ -119,9 +119,9 @@ class HTMLMin
     /**
      * Return the blade minifier instance.
      *
-     * @return \GrahamCampbell\HTMLMin\Minifiers\Blade
+     * @return \GrahamCampbell\HTMLMin\Minifiers\BladeMinifier
      */
-    public function getBlade()
+    public function getBladeMinifier()
     {
         return $this->blade;
     }

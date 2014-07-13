@@ -17,7 +17,7 @@
 namespace GrahamCampbell\Tests\HTMLMin\Minifiers;
 
 use Mockery;
-use GrahamCampbell\HTMLMin\Minifiers\Html;
+use GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier;
 use GrahamCampbell\TestBench\AbstractTestCase;
 
 /**
@@ -29,11 +29,11 @@ use GrahamCampbell\TestBench\AbstractTestCase;
  * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
-class HtmlTest extends AbstractTestCase
+class HtmlMinifierTest extends AbstractTestCase
 {
     public function testRenderQuick()
     {
-        $html = $this->getHtml();
+        $html = $this->getHtmlMinifier();
 
         $return = $html->render('test');
 
@@ -42,7 +42,7 @@ class HtmlTest extends AbstractTestCase
 
     public function testRenderFull()
     {
-        $html = $this->getHtml();
+        $html = $this->getHtmlMinifier();
         $text = 'test<style>font-size: 12pt;</style><script>alert("Hello");</script>';
 
         $return = $html->render($text);
@@ -50,8 +50,8 @@ class HtmlTest extends AbstractTestCase
         $this->assertEquals($text, $return);
     }
 
-    protected function getHtml()
+    protected function getHtmlMinifier()
     {
-        return new Html();
+        return new HtmlMinifier();
     }
 }

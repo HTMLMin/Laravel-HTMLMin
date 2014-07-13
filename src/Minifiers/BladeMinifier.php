@@ -16,8 +16,6 @@
 
 namespace GrahamCampbell\HTMLMin\Minifiers;
 
-use GrahamCampbell\HTMLMin\Interfaces\MinifierInterface;
-
 /**
  * This is the blade minifier class.
  *
@@ -27,7 +25,7 @@ use GrahamCampbell\HTMLMin\Interfaces\MinifierInterface;
  * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
-class Blade implements MinifierInterface
+class BladeMinifier implements MinifierInterface
 {
     /**
      * Should minification be forcefully enabled.

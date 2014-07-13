@@ -17,7 +17,7 @@
 namespace GrahamCampbell\Tests\HTMLMin\Minifiers;
 
 use Mockery;
-use GrahamCampbell\HTMLMin\Minifiers\Blade;
+use GrahamCampbell\HTMLMin\Minifiers\BladeMinifier;
 use GrahamCampbell\TestBench\AbstractTestCase;
 
 /**
@@ -29,11 +29,11 @@ use GrahamCampbell\TestBench\AbstractTestCase;
  * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
-class BladeTest extends AbstractTestCase
+class BladeMinifierTest extends AbstractTestCase
 {
     public function testRenderEnabled()
     {
-        $blade = $this->getBlade();
+        $blade = $this->getBladeMinifier();
 
         $return = $blade->render('test    123');
 
@@ -46,7 +46,7 @@ class BladeTest extends AbstractTestCase
 
     public function testRenderDisabled()
     {
-        $blade = $this->getBlade();
+        $blade = $this->getBladeMinifier();
 
         $return = $blade->render('test    <textarea></textarea>');
 
@@ -59,7 +59,7 @@ class BladeTest extends AbstractTestCase
 
     public function testRenderForced()
     {
-        $blade = $this->getBlade(true);
+        $blade = $this->getBladeMinifier(true);
 
         $return = $blade->render('test    <textarea></textarea>');
 
@@ -70,8 +70,8 @@ class BladeTest extends AbstractTestCase
         $this->assertEquals('test <pre></pre>', $return);
     }
 
-    protected function getBlade($force = false)
+    protected function getBladeMinifier($force = false)
     {
-        return new Blade($force);
+        return new BladeMinifier($force);
     }
 }

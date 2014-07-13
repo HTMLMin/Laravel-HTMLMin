@@ -16,7 +16,6 @@
 
 namespace GrahamCampbell\HTMLMin\Minifiers;
 
-use GrahamCampbell\HTMLMin\Interfaces\MinifierInterface;
 use Minify_HTML;
 use Minify_CSS;
 use JSMin;
@@ -30,7 +29,7 @@ use JSMin;
  * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
  * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
  */
-class Html implements MinifierInterface
+class HtmlMinifier implements MinifierInterface
 {
     /**
      * Get the minified value.

@@ -18,7 +18,7 @@ namespace GrahamCampbell\HTMLMin\Compilers;
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\View\Compilers\BladeCompiler;
-use GrahamCampbell\HTMLMin\Minifiers\Blade;
+use GrahamCampbell\HTMLMin\Minifiers\BladeMinifier;
 
 /**
  * This is the minify compiler class.
@@ -34,19 +34,19 @@ class MinifyCompiler extends BladeCompiler
     /**
      * The blade minifier instance.
      *
-     * @var \GrahamCampbell\HTMLMin\Minifiers\Blade
+     * @var \GrahamCampbell\HTMLMin\Minifiers\BladeMinifier
      */
     protected $blade;
 
     /**
      * Create a new instance.
      *
-     * @param  \GrahamCampbell\HTMLMin\Minifiers\Blade  $blade
+     * @param  \GrahamCampbell\HTMLMin\Minifiers\BladeMinifier  $blade
      * @param  \Illuminate\Filesystem\Filesystem  $files
      * @param  string  $cachePath
      * @return void
      */
-    public function __construct(Blade $blade, Filesystem $files, $cachePath)
+    public function __construct(BladeMinifier $blade, Filesystem $files, $cachePath)
     {
         parent::__construct($files, $cachePath);
         $this->blade = $blade;
@@ -77,9 +77,9 @@ class MinifyCompiler extends BladeCompiler
     /**
      * Return the blade minifier instance.
      *
-     * @return \GrahamCampbell\HTMLMin\Minifiers\Blade
+     * @return \GrahamCampbell\HTMLMin\Minifiers\BladeMinifier
      */
-    public function getBlade()
+    public function getBladeMinifier()
     {
         return $this->blade;
     }

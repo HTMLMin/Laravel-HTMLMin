@@ -115,10 +115,10 @@ class HTMLMinServiceProvider extends ServiceProvider
     protected function registerHtmlMinifier()
     {
         $this->app->bindShared('htmlmin.html', function ($app) {
-            return new Minifiers\Html();
+            return new Minifiers\HtmlMinifier();
         });
 
-        $this->app->alias('htmlmin.html', 'GrahamCampbell\HTMLMin\Minifiers\Html');
+        $this->app->alias('htmlmin.html', 'GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier');
     }
 
     /**
@@ -131,10 +131,10 @@ class HTMLMinServiceProvider extends ServiceProvider
         $this->app->bindShared('htmlmin.blade', function ($app) {
             $force = $app['config']['graham-campbell/htmlmin::force'];
 
-            return new Minifiers\Blade($force);
+            return new Minifiers\BladeMinifier($force);
         });
 
-        $this->app->alias('htmlmin.blade', 'GrahamCampbell\HTMLMin\Minifiers\Blade');
+        $this->app->alias('htmlmin.blade', 'GrahamCampbell\HTMLMin\Minifiers\BladeMinifier');
     }
 
     /**

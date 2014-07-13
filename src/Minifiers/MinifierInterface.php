@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-namespace GrahamCampbell\HTMLMin\Interfaces;
+namespace GrahamCampbell\HTMLMin\Minifiers;
 
 /**
  * This is the minifier interface.
