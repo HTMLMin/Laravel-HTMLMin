@@ -60,9 +60,7 @@ This is the class of most interest. It is bound to the ioc container as `'htmlmi
 
 The `'blade'` method will parse a string as blade and minify it as quickly as possible. This is method the compiler class uses when blade minification is enabled.
 
-The `'css'` method will parse a string as css and will minify it as best as possible using Mr Clay's [Minify](https://github.com/mrclay/minify) package.
-
-The `'js'` method will parse a string as js and will minify it as best as possible using Mr Clay's [Minify](https://github.com/mrclay/minify) package.
+The `'css'` and `'js'` methods will parse a string as css/js and will minify it using Mr Clay's [Minify](https://github.com/mrclay/minify) package.
 
 The `'html'` method will parse a string as html and will minify it as best as possible using Mr Clay's [Minify](https://github.com/mrclay/minify) package. It will also be able to minify inline css and js. This is the method that is automatically used in an after filter when live minification is enabled.
 
