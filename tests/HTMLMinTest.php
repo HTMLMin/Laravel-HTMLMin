@@ -33,26 +33,27 @@ use GrahamCampbell\TestBench\AbstractTestCase as AbstractTestBenchTestCase;
  */
 class HTMLMinTest extends AbstractTestBenchTestCase
 {
-    public function testHtml()
+    public function methodProvider()
     {
-        $htmlmin = $this->getHTMLMin();
-
-        $htmlmin->getHtmlMinifier()->shouldReceive('render')
-            ->once()->andReturn('abc');
-
-        $return = $htmlmin->html('test');
-
-        $this->assertEquals($return, 'abc');
+        return array(
+            array('blade', 'getBladeMinifier'),
+            array('css', 'getCssMinifier'),
+            array('js', 'getJsMinifier'),
+            array('html', 'getHtmlMinifier')
+        );
     }
 
-    public function testBlade()
+    /**
+     * @dataProvider methodProvider
+     */
+    public function testMethods($method, $class)
     {
         $htmlmin = $this->getHTMLMin();
 
-        $htmlmin->getBladeMinifier()->shouldReceive('render')
+        $htmlmin->$class()->shouldReceive('render')
             ->once()->andReturn('abc');
 
-        $return = $htmlmin->blade('test');
+        $return = $htmlmin->$method('test');
 
         $this->assertEquals($return, 'abc');
     }
@@ -117,9 +118,11 @@ class HTMLMinTest extends AbstractTestBenchTestCase
 
     protected function getHTMLMin()
     {
-        $html = Mockery::mock('GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier');
         $blade = Mockery::mock('GrahamCampbell\HTMLMin\Minifiers\BladeMinifier');
+        $css = Mockery::mock('GrahamCampbell\HTMLMin\Minifiers\CssMinifier');
+        $js = Mockery::mock('GrahamCampbell\HTMLMin\Minifiers\JsMinifier');
+        $html = Mockery::mock('GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier');
 
-        return new HTMLMin($html, $blade);
+        return new HTMLMin($blade, $css, $js, $html);
     }
 }

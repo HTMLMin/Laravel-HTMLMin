@@ -17,8 +17,6 @@
 namespace GrahamCampbell\HTMLMin\Minifiers;
 
 use Minify_HTML;
-use Minify_CSS;
-use JSMin;
 
 /**
  * This is the html minifier class.
@@ -32,6 +30,33 @@ use JSMin;
 class HtmlMinifier implements MinifierInterface
 {
     /**
+     * The css minifier instance.
+     *
+     * @var \GrahamCampbell\HTMLMin\Minifiers\CssMinifier
+     */
+    protected $css;
+
+    /**
+     * The js minifier instance.
+     *
+     * @var \GrahamCampbell\HTMLMin\Minifiers\JsMinifier
+     */
+    protected $js;
+
+    /**
+     * Create a new instance.
+     *
+     * @param  \GrahamCampbell\HTMLMin\Minifiers\CssMinifier  $css
+     * @param  \GrahamCampbell\HTMLMin\Minifiers\JsMinifier  $js
+     * @return void
+     */
+    public function __construct(CssMinifier $css, JsMinifier $js)
+    {
+        $this->css = $css;
+        $this->js = $js;
+    }
+
+    /**
      * Get the minified value.
      *
      * @param  string  $value
@@ -41,16 +66,34 @@ class HtmlMinifier implements MinifierInterface
     {
         $options = array(
             'cssMinifier' => function ($css) {
-                return Minify_CSS::minify($css, array('preserveComments' => false));
+                return $this->css->render($css);
             },
             'jsMinifier' => function ($js) {
-                return JSMin::minify($js);
+                return $this->js->render($js);
             },
             'jsCleanComments' => true
         );
 
-        $value = Minify_HTML::minify($value, $options);
+        return Minify_HTML::minify($value, $options);
+    }
 
-        return $value;
+    /**
+     * Return the css minifier instance.
+     *
+     * @return \GrahamCampbell\HTMLMin\Minifiers\CssMinifier
+     */
+    public function getCssMinifier()
+    {
+        return $this->css;
+    }
+
+    /**
+     * Return the js minifier instance.
+     *
+     * @return \GrahamCampbell\HTMLMin\Minifiers\JsMinifier
+     */
+    public function getJsMinifier()
+    {
+        return $this->js;
     }
 }

@@ -56,11 +56,15 @@ This option (`'live'`) enables minification of the html responses just before th
 
 ##### HTMLMin
 
-This is the class of most interest. It is bound to the ioc container as `'htmlmin'` and can be accessed using the `Facades\HTMLMin` facade. There are three public methods of interest.
-
-The `'html'` method will parse a string as html and will minify it as best as possible using Mr Clay's [Minify](https://github.com/mrclay/minify) package. This is the method that is automatically used in an after filter when live minification is enabled.
+This is the class of most interest. It is bound to the ioc container as `'htmlmin'` and can be accessed using the `Facades\HTMLMin` facade. There are five public methods of interest.
 
 The `'blade'` method will parse a string as blade and minify it as quickly as possible. This is method the compiler class uses when blade minification is enabled.
+
+The `'css'` method will parse a string as css and will minify it as best as possible using Mr Clay's [Minify](https://github.com/mrclay/minify) package.
+
+The `'js'` method will parse a string as js and will minify it as best as possible using Mr Clay's [Minify](https://github.com/mrclay/minify) package.
+
+The `'html'` method will parse a string as html and will minify it as best as possible using Mr Clay's [Minify](https://github.com/mrclay/minify) package. It will also be able to minify inline css and js. This is the method that is automatically used in an after filter when live minification is enabled.
 
 The `'live'` method accepts a response object as a first parameter and will first determine if it can be minified, and then will set the response body to a minified version of the body of the response using the html minifier.
 

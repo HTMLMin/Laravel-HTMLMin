@@ -101,10 +101,40 @@ class HTMLMinServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        $this->registerJsMinifier();
+        $this->registerCssMinifier();
         $this->registerHtmlMinifier();
         $this->registerBladeMinifier();
         $this->registerMinifyCompiler();
         $this->registerHTMLMin();
+    }
+
+    /**
+     * Register the css minifier class.
+     *
+     * @return void
+     */
+    protected function registerCssMinifier()
+    {
+        $this->app->bindShared('htmlmin.css', function ($app) {
+            return new Minifiers\CssMinifier();
+        });
+
+        $this->app->alias('htmlmin.css', 'GrahamCampbell\HTMLMin\Minifiers\CssMinifier');
+    }
+
+    /**
+     * Register the js minifier class.
+     *
+     * @return void
+     */
+    protected function registerJsMinifier()
+    {
+        $this->app->bindShared('htmlmin.js', function ($app) {
+            return new Minifiers\JsMinifier();
+        });
+
+        $this->app->alias('htmlmin.js', 'GrahamCampbell\HTMLMin\Minifiers\JsMinifier');
     }
 
     /**
@@ -115,7 +145,10 @@ class HTMLMinServiceProvider extends ServiceProvider
     protected function registerHtmlMinifier()
     {
         $this->app->bindShared('htmlmin.html', function ($app) {
-            return new Minifiers\HtmlMinifier();
+            $css = $app['htmlmin.css'];
+            $js = $app['htmlmin.js'];
+
+            return new Minifiers\HtmlMinifier($css, $js);
         });
 
         $this->app->alias('htmlmin.html', 'GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier');
@@ -163,10 +196,12 @@ class HTMLMinServiceProvider extends ServiceProvider
     protected function registerHTMLMin()
     {
         $this->app->bindShared('htmlmin', function ($app) {
-            $html = $app['htmlmin.html'];
             $blade = $app['htmlmin.blade'];
+            $css = $app['htmlmin.css'];
+            $js = $app['htmlmin.js'];
+            $html = $app['htmlmin.html'];
 
-            return new HTMLMin($html, $blade);
+            return new HTMLMin($blade, $css, $js, $html);
         });
 
         $this->app->alias('htmlmin', 'GrahamCampbell\HTMLMin\HTMLMin');
@@ -181,6 +216,8 @@ class HTMLMinServiceProvider extends ServiceProvider
     {
         return array(
             'htmlmin',
+            'htmlmin.js',
+            'htmlmin.css',
             'htmlmin.html',
             'htmlmin.blade',
             'htmlmin.compiler'

@@ -45,13 +45,22 @@ class HtmlMinifierTest extends AbstractTestCase
         $html = $this->getHtmlMinifier();
         $text = 'test<style>font-size: 12pt;</style><script>alert("Hello");</script>';
 
+        $html->getCssMinifier()->shouldReceive('render')->once()
+            ->with('font-size: 12pt;')->andReturn('foo');
+
+        $html->getJsMinifier()->shouldReceive('render')->once()
+            ->with('alert("Hello");')->andReturn('bar');
+
         $return = $html->render($text);
 
-        $this->assertEquals($text, $return);
+        $this->assertEquals('test<style>foo</style><script>bar</script>', $return);
     }
 
     protected function getHtmlMinifier()
     {
-        return new HtmlMinifier();
+        $css = Mockery::mock('GrahamCampbell\HTMLMin\Minifiers\CssMinifier');
+        $js = Mockery::mock('GrahamCampbell\HTMLMin\Minifiers\JsMinifier');
+
+        return new HtmlMinifier($css, $js);
     }
 }
