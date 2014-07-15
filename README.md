@@ -70,6 +70,10 @@ The `'live'` method accepts a response object as a first parameter and will firs
 
 This facade will dynamically pass static method calls to the `'htmlmin'` object in the ioc container which by default is the `HTMLMin` class.
 
+##### Minifiers\MinifierInterface
+
+This interface defines the public method a minifier class must implement. Such a class must only provide a `'render'` method which takes one parameter as a string, and should return a string. This package ships with 4 implementations of this interface, but these classes are not intended for public use, so have no been documented here. You can see the source [here](https://github.com/GrahamCampbell/Laravel-HTMLMin/tree/master/src/Minifiers).
+
 ##### HTMLMinServiceProvider
 
 This class contains no public methods of interest. This class should be added to the providers array in `app/config/app.php`. This class will setup ioc bindings and register automatic blade/live minification based on the config.
@@ -80,7 +84,7 @@ You may put the `htmlmin` filter in front of your routes to live minify their re
 
 ##### Further Information
 
-There are other classes in this package that are not documented here. This is because they are not intended for public use and are used internally by this package.
+There are other classes in this package that are not documented here (such as the compiler class). This is because they are not intended for public use and are used internally by this package.
 
 Feel free to check out the [API Documentation](http://docs.grahamjcampbell.co.uk) for Laravel HTMLMin.
 
