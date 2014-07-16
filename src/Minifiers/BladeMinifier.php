@@ -83,10 +83,10 @@ class BladeMinifier implements MinifierInterface
     {
         if ($this->force) {
             return true;
-        } else {
-            return (!preg_match('/<(pre|textarea)/', $value) &&
-                !preg_match('/<script[^\??>]*>[^<\/script>]/', $value) &&
-                !preg_match('/value=("|\')(.*)([ ]{2,})(.*)("|\')/', $value));
         }
+
+        return (!preg_match('/<(pre|textarea)/', $value) &&
+            !preg_match('/<script[^\??>]*>[^<\/script>]/', $value) &&
+            !preg_match('/value=("|\')(.*)([ ]{2,})(.*)("|\')/', $value));
     }
 }
