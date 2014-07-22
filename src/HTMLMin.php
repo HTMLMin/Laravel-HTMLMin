@@ -130,22 +130,40 @@ class HTMLMin
      */
     public function live($response)
     {
-        if ($response instanceof Response) {
-            // check if the response has a content type header
-            if ($response->headers->has('Content-Type') !== false) {
-                // check if the contact type header is html
-                if (strpos($response->headers->get('Content-Type'), 'text/html') !== false) {
-                    // get the response body
-                    $output = $response->getContent();
-                    // minify the response body
-                    $min = $this->html->render($output);
-                    // set the response body
-                    $response->setContent($min);
-                }
-            }
+        if ($this->isAResponseObject($response) && $this->isAnHtmlResponse($response)) {
+            $output = $response->getContent();
+            $minified = $this->html->render($output);
+            $response->setContent($minified);
         }
 
         return $response;
+    }
+
+    /**
+     * Check if the response is a usable response class.
+     *
+     * @param  mixed  $response
+     * @return bool
+     */
+    protected function isAResponseObject($response) {
+        return (is_object($response) && $response instanceof Response);
+    }
+
+    /**
+     * Check if the content type header is html.
+     *
+     * @param  \Illuminate\Http\Response  $response
+     * @return bool
+     */
+    protected function isAnHtmlResponse(Response $response) {
+        if ($response->headers->has('Content-Type') && is_string($type = $response->headers->get('Content-Type'))) {
+            return (strpos($type, 'text/html') !== false);
+        }
+
+        return false;
+
+
+        return ($response->headers->has('Content-Type') && $response->headers->get('Content-Type') === 'text/html');
     }
 
     /**
