@@ -16,11 +16,11 @@
 
 namespace GrahamCampbell\HTMLMin;
 
-use Illuminate\Http\Response;
-use GrahamCampbell\HTMLMin\Minifiers\JsMinifier;
+use GrahamCampbell\HTMLMin\Minifiers\BladeMinifier;
 use GrahamCampbell\HTMLMin\Minifiers\CssMinifier;
 use GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier;
-use GrahamCampbell\HTMLMin\Minifiers\BladeMinifier;
+use GrahamCampbell\HTMLMin\Minifiers\JsMinifier;
+use Illuminate\Http\Response;
 
 /**
  * This is the htmlmin class.

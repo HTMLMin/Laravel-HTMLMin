@@ -16,9 +16,9 @@
 
 namespace GrahamCampbell\HTMLMin\Compilers;
 
+use GrahamCampbell\HTMLMin\Minifiers\BladeMinifier;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\View\Compilers\BladeCompiler;
-use GrahamCampbell\HTMLMin\Minifiers\BladeMinifier;
 
 /**
  * This is the minify compiler class.
