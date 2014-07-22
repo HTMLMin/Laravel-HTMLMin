@@ -16,6 +16,9 @@
 
 namespace GrahamCampbell\Tests\HTMLMin\Functional;
 
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Response;
+
 /**
  * This is the live enabled test class.
  *
@@ -53,12 +56,36 @@ class LiveEnabledTest extends AbstractFunctionalTestCase
         $this->app['view']->addNamespace('stubs', realpath(__DIR__.'/stubs'));
 
         $this->app['router']->get('htmlmin-test-route', function () {
-            return $this->app['view']->make('stubs::test');
+            return Response::view('stubs::test');
         });
 
         $actual = $this->call('GET', 'htmlmin-test-route')->getContent();
 
         $expected = file_get_contents(__DIR__.'/stubs/live.txt');
+
+        $this->assertEquals($this->normalize($actual), $this->normalize($expected));
+    }
+
+    public function testRedirect()
+    {
+        $this->app['router']->get('htmlmin-test-route', function () {
+            return Redirect::to('foo');
+        });
+
+        $this->call('GET', 'htmlmin-test-route')->getContent();
+
+        $this->assertRedirectedTo('foo');
+    }
+
+    public function testJson()
+    {
+        $this->app['router']->get('htmlmin-test-route', function () {
+            return Response::json(array('foo' => 'bar', array('baz')), 200, array(), JSON_PRETTY_PRINT);
+        });
+
+        $actual = $this->call('GET', 'htmlmin-test-route')->getContent();
+
+        $expected = file_get_contents(__DIR__.'/stubs/live.json');
 
         $this->assertEquals($this->normalize($actual), $this->normalize($expected));
     }
