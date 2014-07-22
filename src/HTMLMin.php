@@ -145,7 +145,8 @@ class HTMLMin
      * @param  mixed  $response
      * @return bool
      */
-    protected function isAResponseObject($response) {
+    protected function isAResponseObject($response)
+    {
         return (is_object($response) && $response instanceof Response);
     }
 
@@ -155,7 +156,8 @@ class HTMLMin
      * @param  \Illuminate\Http\Response  $response
      * @return bool
      */
-    protected function isAnHtmlResponse(Response $response) {
+    protected function isAnHtmlResponse(Response $response)
+    {
         if ($response->headers->has('Content-Type') && is_string($type = $response->headers->get('Content-Type'))) {
             return (strpos($type, 'text/html') !== false);
         }
