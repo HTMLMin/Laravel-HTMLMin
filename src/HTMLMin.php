@@ -161,9 +161,6 @@ class HTMLMin
         }
 
         return false;
-
-
-        return ($response->headers->has('Content-Type') && $response->headers->get('Content-Type') === 'text/html');
     }
 
     /**
