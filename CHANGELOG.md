@@ -2,6 +2,13 @@ CHANGE LOG
 ==========
 
 
+## V2.1 (Upcoming - August 2014)
+
+* Improved live minification
+* Added more functional tests
+* Minor fixes and tweaks
+
+
 ## V2.0 (20/07/2014)
 
 * Bumped to stable
