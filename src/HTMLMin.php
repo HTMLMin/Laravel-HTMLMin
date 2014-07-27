@@ -25,49 +25,48 @@ use Illuminate\Http\Response;
 /**
  * This is the htmlmin class.
  *
- * @package    Laravel-HTMLMin
- * @author     Graham Campbell
- * @copyright  Copyright 2013-2014 Graham Campbell
- * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
- * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
+ * @author    Graham Campbell <graham@mineuk.com>
+ * @copyright 2013-2014 Graham Campbell
+ * @license   <https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md> Apache 2.0
  */
 class HTMLMin
 {
     /**
      * The blade minifier instance.
      *
-     * @var \GrahamCampbell\HTMLMin\Minifiers\BladeMinifier
+     * @type \GrahamCampbell\HTMLMin\Minifiers\BladeMinifier
      */
     protected $blade;
 
     /**
      * The css minifier instance.
      *
-     * @var \GrahamCampbell\HTMLMin\Minifiers\CssMinifier
+     * @type \GrahamCampbell\HTMLMin\Minifiers\CssMinifier
      */
     protected $css;
 
     /**
      * The js minifier instance.
      *
-     * @var \GrahamCampbell\HTMLMin\Minifiers\JsMinifier
+     * @type \GrahamCampbell\HTMLMin\Minifiers\JsMinifier
      */
     protected $js;
 
     /**
      * The html minifier instance.
      *
-     * @var \GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier
+     * @type \GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier
      */
     protected $html;
 
     /**
      * Create a new instance.
      *
-     * @param  \GrahamCampbell\HTMLMin\Minifiers\BladeMinifier  $blade
-     * @param  \GrahamCampbell\HTMLMin\Minifiers\CssMinifier  $css
-     * @param  \GrahamCampbell\HTMLMin\Minifiers\JsMinifier  $js
-     * @param  \GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier  $html
+     * @param \GrahamCampbell\HTMLMin\Minifiers\BladeMinifier $blade
+     * @param \GrahamCampbell\HTMLMin\Minifiers\CssMinifier   $css
+     * @param \GrahamCampbell\HTMLMin\Minifiers\JsMinifier    $js
+     * @param \GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier  $html
+     *
      * @return void
      */
     public function __construct(BladeMinifier $blade, CssMinifier $css, JsMinifier $js, HtmlMinifier $html)
@@ -81,7 +80,8 @@ class HTMLMin
     /**
      * Get the minified blade.
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return string
      */
     public function blade($value)
@@ -92,7 +92,8 @@ class HTMLMin
     /**
      * Get the minified css.
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return string
      */
     public function css($value)
@@ -103,7 +104,8 @@ class HTMLMin
     /**
      * Get the minified js.
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return string
      */
     public function js($value)
@@ -114,7 +116,8 @@ class HTMLMin
     /**
      * Get the minified html.
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return string
      */
     public function html($value)
@@ -125,7 +128,8 @@ class HTMLMin
     /**
      * Get the minified response.
      *
-     * @param  mixed  $response
+     * @param mixed $response
+     *
      * @return mixed
      */
     public function live($response)
@@ -142,7 +146,8 @@ class HTMLMin
     /**
      * Check if the response is a usable response class.
      *
-     * @param  mixed  $response
+     * @param mixed $response
+     *
      * @return bool
      */
     protected function isAResponseObject($response)
@@ -153,7 +158,8 @@ class HTMLMin
     /**
      * Check if the content type header is html.
      *
-     * @param  \Illuminate\Http\Response  $response
+     * @param \Illuminate\Http\Response $response
+     *
      * @return bool
      */
     protected function isAnHtmlResponse(Response $response)

@@ -21,18 +21,17 @@ use GrahamCampbell\Tests\HTMLMin\AbstractTestCase;
 /**
  * This is the abstract functional test case class.
  *
- * @package    Laravel-HTMLMin
- * @author     Graham Campbell
- * @copyright  Copyright 2013-2014 Graham Campbell
- * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
- * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
+ * @author    Graham Campbell <graham@mineuk.com>
+ * @copyright 2013-2014 Graham Campbell
+ * @license   <https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md> Apache 2.0
  */
 abstract class AbstractFunctionalTestCase extends AbstractTestCase
 {
     /**
      * Normalise eol characters in a string.
      *
-     * @param  string  $string
+     * @param string $string
+     *
      * @return string
      */
     protected function normalize($string)

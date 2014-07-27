@@ -21,33 +21,32 @@ use Minify_HTML;
 /**
  * This is the html minifier class.
  *
- * @package    Laravel-HTMLMin
- * @author     Graham Campbell
- * @copyright  Copyright 2013-2014 Graham Campbell
- * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
- * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
+ * @author    Graham Campbell <graham@mineuk.com>
+ * @copyright 2013-2014 Graham Campbell
+ * @license   <https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md> Apache 2.0
  */
 class HtmlMinifier implements MinifierInterface
 {
     /**
      * The css minifier instance.
      *
-     * @var \GrahamCampbell\HTMLMin\Minifiers\CssMinifier
+     * @type \GrahamCampbell\HTMLMin\Minifiers\CssMinifier
      */
     protected $css;
 
     /**
      * The js minifier instance.
      *
-     * @var \GrahamCampbell\HTMLMin\Minifiers\JsMinifier
+     * @type \GrahamCampbell\HTMLMin\Minifiers\JsMinifier
      */
     protected $js;
 
     /**
      * Create a new instance.
      *
-     * @param  \GrahamCampbell\HTMLMin\Minifiers\CssMinifier  $css
-     * @param  \GrahamCampbell\HTMLMin\Minifiers\JsMinifier  $js
+     * @param \GrahamCampbell\HTMLMin\Minifiers\CssMinifier $css
+     * @param \GrahamCampbell\HTMLMin\Minifiers\JsMinifier  $js
+     *
      * @return void
      */
     public function __construct(CssMinifier $css, JsMinifier $js)
@@ -59,7 +58,8 @@ class HtmlMinifier implements MinifierInterface
     /**
      * Get the minified value.
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return string
      */
     public function render($value)

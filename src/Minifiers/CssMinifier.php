@@ -21,18 +21,17 @@ use Minify_CSS;
 /**
  * This is the css minifier class.
  *
- * @package    Laravel-HTMLMin
- * @author     Graham Campbell
- * @copyright  Copyright 2013-2014 Graham Campbell
- * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
- * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
+ * @author    Graham Campbell <graham@mineuk.com>
+ * @copyright 2013-2014 Graham Campbell
+ * @license   <https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md> Apache 2.0
  */
 class CssMinifier implements MinifierInterface
 {
     /**
      * Get the minified value.
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return string
      */
     public function render($value)

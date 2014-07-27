@@ -19,25 +19,24 @@ namespace GrahamCampbell\HTMLMin\Minifiers;
 /**
  * This is the blade minifier class.
  *
- * @package    Laravel-HTMLMin
- * @author     Graham Campbell
- * @copyright  Copyright 2013-2014 Graham Campbell
- * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
- * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
+ * @author    Graham Campbell <graham@mineuk.com>
+ * @copyright 2013-2014 Graham Campbell
+ * @license   <https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md> Apache 2.0
  */
 class BladeMinifier implements MinifierInterface
 {
     /**
      * Should minification be forcefully enabled.
      *
-     * @var bool
+     * @type bool
      */
     protected $force;
 
     /**
      * Create a new instance.
      *
-     * @param  bool  $force
+     * @param bool $force
+     *
      * @return void
      */
     public function __construct($force)
@@ -51,7 +50,8 @@ class BladeMinifier implements MinifierInterface
      * All credit to Trevor Fitzgerald for the regex here.
      * See the original here: http://bit.ly/U7mv7a.
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return string
      */
     public function render($value)
@@ -76,7 +76,8 @@ class BladeMinifier implements MinifierInterface
     /**
      * Determine if the blade should be minified.
      *
-     * @param  string  $value
+     * @param string $value
+     *
      * @return bool
      */
     protected function shouldMinify($value)

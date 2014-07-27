@@ -23,27 +23,26 @@ use Illuminate\View\Compilers\BladeCompiler;
 /**
  * This is the minify compiler class.
  *
- * @package    Laravel-HTMLMin
- * @author     Graham Campbell
- * @copyright  Copyright 2013-2014 Graham Campbell
- * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
- * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
+ * @author    Graham Campbell <graham@mineuk.com>
+ * @copyright 2013-2014 Graham Campbell
+ * @license   <https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md> Apache 2.0
  */
 class MinifyCompiler extends BladeCompiler
 {
     /**
      * The blade minifier instance.
      *
-     * @var \GrahamCampbell\HTMLMin\Minifiers\BladeMinifier
+     * @type \GrahamCampbell\HTMLMin\Minifiers\BladeMinifier
      */
     protected $blade;
 
     /**
      * Create a new instance.
      *
-     * @param  \GrahamCampbell\HTMLMin\Minifiers\BladeMinifier  $blade
-     * @param  \Illuminate\Filesystem\Filesystem  $files
-     * @param  string  $cachePath
+     * @param \GrahamCampbell\HTMLMin\Minifiers\BladeMinifier $blade
+     * @param \Illuminate\Filesystem\Filesystem               $files
+     * @param string                                          $cachePath
+     *
      * @return void
      */
     public function __construct(BladeMinifier $blade, Filesystem $files, $cachePath)
@@ -67,7 +66,7 @@ class MinifyCompiler extends BladeCompiler
     /**
      * Return the compilers.
      *
-     * @return array
+     * @return string[]
      */
     public function getCompilers()
     {

@@ -22,11 +22,9 @@ use Illuminate\Support\Facades\Response;
 /**
  * This is the live enabled test class.
  *
- * @package    Laravel-HTMLMin
- * @author     Graham Campbell
- * @copyright  Copyright 2013-2014 Graham Campbell
- * @license    https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md
- * @link       https://github.com/GrahamCampbell/Laravel-HTMLMin
+ * @author    Graham Campbell <graham@mineuk.com>
+ * @copyright 2013-2014 Graham Campbell
+ * @license   <https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md> Apache 2.0
  */
 class LiveEnabledTest extends AbstractFunctionalTestCase
 {
@@ -43,7 +41,8 @@ class LiveEnabledTest extends AbstractFunctionalTestCase
     /**
      * Additional application environment setup.
      *
-     * @param  \Illuminate\Foundation\Application  $app
+     * @param \Illuminate\Foundation\Application $app
+     *
      * @return void
      */
     protected function additionalSetup($app)
