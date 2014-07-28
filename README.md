@@ -35,7 +35,9 @@ Laravel HTMLMin supports optional configuration.
 
 To get started, first publish the package config file:
 
-    php artisan config:publish graham-campbell/htmlmin
+```bash
+$ php artisan config:publish graham-campbell/htmlmin
+```
 
 There are a few config options:
 
