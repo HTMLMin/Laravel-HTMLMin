@@ -32,7 +32,7 @@ class MinifyCompiler extends BladeCompiler
     /**
      * The blade minifier instance.
      *
-     * @type \GrahamCampbell\HTMLMin\Minifiers\BladeMinifier
+     * @var \GrahamCampbell\HTMLMin\Minifiers\BladeMinifier
      */
     protected $blade;
 

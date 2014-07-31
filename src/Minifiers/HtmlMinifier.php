@@ -30,14 +30,14 @@ class HtmlMinifier implements MinifierInterface
     /**
      * The css minifier instance.
      *
-     * @type \GrahamCampbell\HTMLMin\Minifiers\CssMinifier
+     * @var \GrahamCampbell\HTMLMin\Minifiers\CssMinifier
      */
     protected $css;
 
     /**
      * The js minifier instance.
      *
-     * @type \GrahamCampbell\HTMLMin\Minifiers\JsMinifier
+     * @var \GrahamCampbell\HTMLMin\Minifiers\JsMinifier
      */
     protected $js;
 

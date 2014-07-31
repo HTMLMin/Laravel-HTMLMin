@@ -28,7 +28,7 @@ class BladeMinifier implements MinifierInterface
     /**
      * Should minification be forcefully enabled.
      *
-     * @type bool
+     * @var bool
      */
     protected $force;
 
