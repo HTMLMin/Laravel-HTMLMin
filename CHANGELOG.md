@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V2.1 (Upcoming - August 2014)
+## V2.1 (02/08/2014)
 
 * Improved live minification
 * Added more functional tests
