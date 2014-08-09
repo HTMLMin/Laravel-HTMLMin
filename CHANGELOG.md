@@ -2,6 +2,12 @@ CHANGE LOG
 ==========
 
 
+## V2.1.1 (09/08/2014)
+
+* Corrected the license comments
+* Stopped phpunit echoing the stubs
+
+
 ## V2.1 (02/08/2014)
 
 * Improved live minification
