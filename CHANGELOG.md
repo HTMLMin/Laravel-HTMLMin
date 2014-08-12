@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V2.1.2 (Upcoming)
+## V2.1.2 (12/08/2014)
 
 * Tweaked the filter registration
 * Simplified the isAnHtmlResponse check
