@@ -2,6 +2,13 @@ CHANGE LOG
 ==========
 
 
+## V2.1.2 (Upcoming)
+
+* Tweaked the filter registration
+* Simplified the isAnHtmlResponse check
+* Don't minify blade files containing code tags
+
+
 ## V2.1.1 (09/08/2014)
 
 * Corrected the license comments
