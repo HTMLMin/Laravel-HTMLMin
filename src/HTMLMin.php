@@ -164,11 +164,7 @@ class HTMLMin
      */
     protected function isAnHtmlResponse(Response $response)
     {
-        if ($response->headers->has('Content-Type') && is_string($type = $response->headers->get('Content-Type'))) {
-            return (strpos($type, 'text/html') !== false);
-        }
-
-        return false;
+        return (strpos($response->headers->get('Content-Type'), 'text/html') !== false);
     }
 
     /**
