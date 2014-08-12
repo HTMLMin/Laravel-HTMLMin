@@ -42,30 +42,37 @@ class BladeMinifierTest extends AbstractTestCase
         $this->assertEquals('test <div></div>', $return);
     }
 
-    public function testRenderDisabled()
+    public function tagProvider()
+    {
+        return array(
+            array('textarea'),
+            array('pre'),
+            array('code')
+        );
+    }
+
+    /**
+     * @dataProvider tagProvider
+     */
+    public function testRenderDisabled($tag)
     {
         $blade = $this->getBladeMinifier();
 
-        $return = $blade->render('test    <textarea></textarea>');
+        $return = $blade->render("test    <$tag></$tag>");
 
-        $this->assertEquals('test    <textarea></textarea>', $return);
-
-        $return = $blade->render('test    <pre></pre>');
-
-        $this->assertEquals('test    <pre></pre>', $return);
+        $this->assertEquals("test    <$tag></$tag>", $return);
     }
 
-    public function testRenderForced()
+    /**
+     * @dataProvider tagProvider
+     */
+    public function testRenderForced($tag)
     {
         $blade = $this->getBladeMinifier(true);
 
-        $return = $blade->render('test    <textarea></textarea>');
+        $return = $blade->render("test    <$tag></$tag>");
 
-        $this->assertEquals('test <textarea></textarea>', $return);
-
-        $return = $blade->render('test    <pre></pre>');
-
-        $this->assertEquals('test <pre></pre>', $return);
+        $this->assertEquals("test <$tag></$tag>", $return);
     }
 
     protected function getBladeMinifier($force = false)
