@@ -88,7 +88,7 @@ class HTMLMinServiceProvider extends ServiceProvider
 
         // register a new filter
         $app->after(function ($request, $response) use ($app) {
-            $this->app['htmlmin']->live($response);
+            $app['htmlmin']->live($response);
         });
     }
 
