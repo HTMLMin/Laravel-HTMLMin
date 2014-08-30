@@ -16,7 +16,6 @@
 
 namespace GrahamCampbell\Tests\HTMLMin\Minifiers;
 
-use Mockery;
 use GrahamCampbell\HTMLMin\Minifiers\BladeMinifier;
 use GrahamCampbell\TestBench\AbstractTestCase;
 
