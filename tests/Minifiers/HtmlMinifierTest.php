@@ -35,7 +35,7 @@ class HtmlMinifierTest extends AbstractTestCase
 
         $return = $html->render('test');
 
-        $this->assertEquals('test', $return);
+        $this->assertSame('test', $return);
     }
 
     public function testRenderFull()
@@ -51,7 +51,7 @@ class HtmlMinifierTest extends AbstractTestCase
 
         $return = $html->render($text);
 
-        $this->assertEquals('test<style>foo</style><script>bar</script>', $return);
+        $this->assertSame('test<style>foo</style><script>bar</script>', $return);
     }
 
     protected function getHtmlMinifier()

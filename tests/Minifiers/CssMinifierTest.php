@@ -34,7 +34,7 @@ class CssMinifierTest extends AbstractTestCase
 
         $return = $css->render('body { font-family: arial; } h1 { text-align: center; }');
 
-        $this->assertEquals('body{font-family:arial}h1{text-align:center}', $return);
+        $this->assertSame('body{font-family:arial}h1{text-align:center}', $return);
     }
 
     protected function getCssMinifier()

@@ -38,7 +38,7 @@ class MinifyCompilerTest extends AbstractTestCase
 
         $return = $compiler->compileMinify('test');
 
-        $this->assertEquals('abc', $return);
+        $this->assertSame('abc', $return);
     }
 
     public function testCompilers()

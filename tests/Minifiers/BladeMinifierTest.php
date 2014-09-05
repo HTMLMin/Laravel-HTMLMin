@@ -34,11 +34,11 @@ class BladeMinifierTest extends AbstractTestCase
 
         $return = $blade->render('test    123');
 
-        $this->assertEquals($return, 'test 123');
+        $this->assertSame($return, 'test 123');
 
         $return = $blade->render('test    <div></div>');
 
-        $this->assertEquals('test <div></div>', $return);
+        $this->assertSame('test <div></div>', $return);
     }
 
     public function tagProvider()
@@ -59,7 +59,7 @@ class BladeMinifierTest extends AbstractTestCase
 
         $return = $blade->render("test    <$tag></$tag>");
 
-        $this->assertEquals("test    <$tag></$tag>", $return);
+        $this->assertSame("test    <$tag></$tag>", $return);
     }
 
     /**
@@ -71,7 +71,7 @@ class BladeMinifierTest extends AbstractTestCase
 
         $return = $blade->render("test    <$tag></$tag>");
 
-        $this->assertEquals("test <$tag></$tag>", $return);
+        $this->assertSame("test <$tag></$tag>", $return);
     }
 
     protected function getBladeMinifier($force = false)

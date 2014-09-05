@@ -34,7 +34,7 @@ class JsMinifierTest extends AbstractTestCase
 
         $return = $js->render('alert("foo");    alert("bar");');
 
-        $this->assertEquals('alert("foo");alert("bar");', $return);
+        $this->assertSame('alert("foo");alert("bar");', $return);
     }
 
     protected function getJsMinifier()

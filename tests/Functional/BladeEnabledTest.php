@@ -45,6 +45,6 @@ class BladeEnabledTest extends AbstractFunctionalTestCase
 
         $expected = file_get_contents(__DIR__.'/stubs/blade.txt');
 
-        $this->assertEquals($this->normalize($actual), $this->normalize($expected));
+        $this->assertSame($this->normalize($actual), $this->normalize($expected));
     }
 }
