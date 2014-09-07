@@ -53,7 +53,7 @@ class HTMLMinTest extends AbstractTestBenchTestCase
 
         $return = $htmlmin->$method('test');
 
-        $this->assertSame($return, 'abc');
+        $this->assertSame('abc', $return);
     }
 
     public function testLiveError()
@@ -64,7 +64,7 @@ class HTMLMinTest extends AbstractTestBenchTestCase
 
         $return = $htmlmin->live($response);
 
-        $this->assertSame($return, $response);
+        $this->assertSame($response, $return);
     }
 
     public function testLiveRedirect()
@@ -77,8 +77,8 @@ class HTMLMinTest extends AbstractTestBenchTestCase
 
         $return = $htmlmin->live($response);
 
-        $this->assertSame($return, $response);
-        $this->assertSame($return->getTargetUrl(), $content);
+        $this->assertSame($response, $return);
+        $this->assertSame($content, $return->getTargetUrl());
     }
 
     public function testLiveJson()
@@ -91,8 +91,8 @@ class HTMLMinTest extends AbstractTestBenchTestCase
 
         $return = $htmlmin->live($response);
 
-        $this->assertSame($return, $response);
-        $this->assertSame($return->getContent(), '["<p>123<\/p>        <p>123<\/p>"]');
+        $this->assertSame($response, $return);
+        $this->assertSame('["<p>123<\/p>        <p>123<\/p>"]', $return->getContent());
     }
 
     public function testLiveHtml()
@@ -110,8 +110,8 @@ class HTMLMinTest extends AbstractTestBenchTestCase
 
         $return = $htmlmin->live($response);
 
-        $this->assertSame($return, $response);
-        $this->assertSame($return->getContent(), '<p>123</p><p>123</p>');
+        $this->assertSame($response, $return);
+        $this->assertSame('<p>123</p><p>123</p>', $return->getContent());
     }
 
     protected function getHTMLMin()

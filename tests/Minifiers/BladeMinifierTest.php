@@ -34,7 +34,7 @@ class BladeMinifierTest extends AbstractTestCase
 
         $return = $blade->render('test    123');
 
-        $this->assertSame($return, 'test 123');
+        $this->assertSame('test 123', $return);
 
         $return = $blade->render('test    <div></div>');
 

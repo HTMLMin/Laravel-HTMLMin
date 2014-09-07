@@ -47,6 +47,6 @@ class FilterEnabledTest extends AbstractFunctionalTestCase
 
         $expected = file_get_contents(__DIR__.'/stubs/live.txt');
 
-        $this->assertSame($this->normalize($actual), $this->normalize($expected));
+        $this->assertSameIgnoreLineEndings($expected, $actual);
     }
 }

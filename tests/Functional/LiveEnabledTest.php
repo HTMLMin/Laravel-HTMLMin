@@ -62,7 +62,7 @@ class LiveEnabledTest extends AbstractFunctionalTestCase
 
         $expected = file_get_contents(__DIR__.'/stubs/live.txt');
 
-        $this->assertSame($this->normalize($actual), $this->normalize($expected));
+        $this->assertSameIgnoreLineEndings($expected, $actual);
     }
 
     public function testRedirect()
@@ -86,6 +86,6 @@ class LiveEnabledTest extends AbstractFunctionalTestCase
 
         $expected = file_get_contents(__DIR__.'/stubs/live.json');
 
-        $this->assertSame($this->normalize($actual), $this->normalize($expected));
+        $this->assertSameIgnoreLineEndings($expected, $actual);
     }
 }

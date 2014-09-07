@@ -41,4 +41,18 @@ abstract class AbstractFunctionalTestCase extends AbstractTestCase
         $string = preg_replace("/\n{2,}/", "\n\n", $string);
         return rtrim($string);
     }
+
+    /**
+     * Asserts that two variables have the same type and value.
+     *
+     * @param string $expected
+     * @param string $actual
+     * @param string $msg
+     *
+     * @return void
+     */
+    public function assertSameIgnoreLineEndings($expected, $actual, $msg = '')
+    {
+        $this->assertSame($this->normalize($expected), $this->normalize($actual), $msg);
+    }
 }
