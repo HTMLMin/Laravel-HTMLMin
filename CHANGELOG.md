@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V2.1.3 (Upcoming)
+
+* Improved the test suite
+
+
 ## V2.1.2 (12/08/2014)
 
 * Tweaked the filter registration
