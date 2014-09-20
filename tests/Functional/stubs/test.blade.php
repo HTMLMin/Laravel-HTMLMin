@@ -7,7 +7,7 @@
 
     <title>Laravel HTMLMin Test Page</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="A simple HTML minifier for Laravel 4.2" name="description">
+    <meta content="A simple HTML minifier for Laravel 5" name="description">
     <meta content="Graham Campbell" name="author">
     <link href="http://example.com/favicon.ico" rel="shortcut icon">
 </head>
@@ -16,7 +16,7 @@
     <div class="container">
         <h1>Laravel HTMLMin Test Page</h1>
 
-        <p>A simple HTML minifier for Laravel 4.2</p>
+        <p>A simple HTML minifier for Laravel 5</p>
     </div>
 </body>
 </html>
