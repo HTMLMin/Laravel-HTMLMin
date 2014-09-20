@@ -9,6 +9,11 @@ Laravel HTMLMin
 [![Latest Version](https://img.shields.io/github/release/GrahamCampbell/Laravel-HTMLMin.svg?style=flat-square)](https://github.com/GrahamCampbell/Laravel-HTMLMin/releases)
 
 
+### Looking for a laravel 5 compatable version?
+
+Checkout the [master branch](https://github.com/GrahamCampbell/Laravel-HTMLMin/tree/master), installable by requiring `"graham-campbell/htmlmin": "~3.0"`.
+
+
 ## Introduction
 
 Laravel HTMLMin was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a simple HTML minifier for [Laravel 4.2](http://laravel.com). It utilises Mr Clay's [Minify](https://github.com/mrclay/minify) package to minify entire responses, but can also minify blade at compile time. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-HTMLMin/releases), [license](LICENSE.md), [api docs](http://docs.grahamjcampbell.co.uk), and [contribution guidelines](CONTRIBUTING.md).
