@@ -16,11 +16,11 @@
 
 namespace GrahamCampbell\Tests\HTMLMin;
 
-use Mockery;
-use Illuminate\Http\Response;
-use Illuminate\Http\RedirectResponse;
 use GrahamCampbell\HTMLMin\HTMLMin;
 use GrahamCampbell\TestBench\AbstractTestCase as AbstractTestBenchTestCase;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
+use Mockery;
 
 /**
  * This is the htmlmin test class.
@@ -37,7 +37,7 @@ class HTMLMinTest extends AbstractTestBenchTestCase
             array('blade', 'getBladeMinifier'),
             array('css', 'getCssMinifier'),
             array('js', 'getJsMinifier'),
-            array('html', 'getHtmlMinifier')
+            array('html', 'getHtmlMinifier'),
         );
     }
 

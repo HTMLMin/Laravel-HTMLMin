@@ -16,8 +16,8 @@
 
 namespace GrahamCampbell\Tests\HTMLMin\Facades;
 
-use GrahamCampbell\Tests\HTMLMin\AbstractTestCase;
 use GrahamCampbell\TestBench\Traits\FacadeTestCaseTrait;
+use GrahamCampbell\Tests\HTMLMin\AbstractTestCase;
 
 /**
  * This is the htmlmin facade test class.
