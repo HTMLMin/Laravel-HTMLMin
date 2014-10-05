@@ -178,7 +178,7 @@ class HTMLMinServiceProvider extends ServiceProvider
         $this->app->bindShared('htmlmin.compiler', function ($app) {
             $blade = $app['htmlmin.blade'];
             $files = $app['files'];
-            $storagePath = $app['path.storage'].'/views';
+            $storagePath = $app['config']['view.compiled'];
 
             return new Compilers\MinifyCompiler($blade, $files, $storagePath);
         });
