@@ -10,6 +10,8 @@ CHANGE LOG
 ## V2.1.3 (Upcoming)
 
 * Improved the test suite
+* Added cs fixers to the test suite
+* Improved the docs
 
 
 ## V2.1.2 (12/08/2014)

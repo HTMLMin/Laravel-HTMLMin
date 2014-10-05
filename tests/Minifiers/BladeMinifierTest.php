@@ -46,7 +46,7 @@ class BladeMinifierTest extends AbstractTestCase
         return array(
             array('textarea'),
             array('pre'),
-            array('code')
+            array('code'),
         );
     }
 

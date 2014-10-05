@@ -71,7 +71,7 @@ class HtmlMinifier implements MinifierInterface
             'jsMinifier' => function ($js) {
                 return $this->js->render($js);
             },
-            'jsCleanComments' => true
+            'jsCleanComments' => true,
         );
 
         return Minify_HTML::minify($value, $options);

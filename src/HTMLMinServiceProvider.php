@@ -218,7 +218,7 @@ class HTMLMinServiceProvider extends ServiceProvider
             'htmlmin.css',
             'htmlmin.html',
             'htmlmin.blade',
-            'htmlmin.compiler'
+            'htmlmin.compiler',
         );
     }
 }

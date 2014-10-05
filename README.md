@@ -1,22 +1,17 @@
 Laravel HTMLMin
 ===============
 
-
-[![Build Status](https://img.shields.io/travis/GrahamCampbell/Laravel-HTMLMin/master.svg?style=flat-square)](https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin)
-[![Coverage Status](https://img.shields.io/scrutinizer/coverage/g/GrahamCampbell/Laravel-HTMLMin.svg?style=flat-square)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-HTMLMin/code-structure)
-[![Quality Score](https://img.shields.io/scrutinizer/g/GrahamCampbell/Laravel-HTMLMin.svg?style=flat-square)](https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-HTMLMin)
-[![Software License](https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Latest Version](https://img.shields.io/github/release/GrahamCampbell/Laravel-HTMLMin.svg?style=flat-square)](https://github.com/GrahamCampbell/Laravel-HTMLMin/releases)
-
-
-### Looking for a laravel 4 compatable version?
-
-Checkout the [2.1 branch](https://github.com/GrahamCampbell/Laravel-HTMLMin/tree/2.1), installable by requiring `"graham-campbell/htmlmin": "~2.0"`.
-
-
-## Introduction
-
 Laravel HTMLMin was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a simple HTML minifier for [Laravel 5](http://laravel.com). It utilises Mr Clay's [Minify](https://github.com/mrclay/minify) package to minify entire responses, but can also minify blade at compile time. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-HTMLMin/releases), [license](LICENSE.md), [api docs](http://docs.grahamjcampbell.co.uk), and [contribution guidelines](CONTRIBUTING.md).
+
+![Laravel HTMLMin](https://cloud.githubusercontent.com/assets/2829600/4432287/a99460da-468c-11e4-9bda-18345c06b2a5.PNG)
+
+<p align="center">
+<a href="https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin"><img src="https://img.shields.io/travis/GrahamCampbell/Laravel-HTMLMin/master.svg?style=flat-square" alt="Build Status"></img></a>
+<a href="https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-HTMLMin/code-structure"><img src="https://img.shields.io/scrutinizer/coverage/g/GrahamCampbell/Laravel-HTMLMin.svg?style=flat-square" alt="Coverage Status"></img></a>
+<a href="https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-HTMLMin"><img src="https://img.shields.io/scrutinizer/g/GrahamCampbell/Laravel-HTMLMin.svg?style=flat-square" alt="Quality Score"></img></a>
+<a href="LICENSE.md"><img src="https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg?style=flat-square" alt="Software License"></img></a>
+<a href="https://github.com/GrahamCampbell/Laravel-HTMLMin/releases"><img src="https://img.shields.io/github/release/GrahamCampbell/Laravel-HTMLMin.svg?style=flat-square" alt="Latest Version"></img></a>
+</p>
 
 
 ## Installation
@@ -32,6 +27,10 @@ Once Laravel HTMLMin is installed, you need to register the service provider. Op
 You can register the HTMLMin facade in the `aliases` key of your `app/config/app.php` file if you like.
 
 * `'HTMLMin' => 'GrahamCampbell\HTMLMin\Facades\HTMLMin'`
+
+#### Looking for a laravel 4 compatable version?
+
+Checkout the [2.1 branch](https://github.com/GrahamCampbell/Laravel-HTMLMin/tree/2.1), installable by requiring `"graham-campbell/htmlmin": "~2.0"`.
 
 
 ## Configuration

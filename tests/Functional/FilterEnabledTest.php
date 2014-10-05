@@ -41,7 +41,7 @@ class FilterEnabledTest extends AbstractFunctionalTestCase
 
         $this->app['router']->get('htmlmin-test-route', array('after' => 'htmlmin', function () {
             return $this->app['view']->make('stubs::test');
-        }));
+        }, ));
 
         $actual = $this->call('GET', 'htmlmin-test-route')->getContent();
 
