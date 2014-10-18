@@ -16,6 +16,7 @@
 
 namespace GrahamCampbell\Tests\HTMLMin\Functional;
 
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
 
@@ -29,23 +30,13 @@ use Illuminate\Support\Facades\Response;
 class LiveEnabledTest extends AbstractFunctionalTestCase
 {
     /**
-     * Specify if routing filters are enabled.
-     *
-     * @return bool
-     */
-    protected function enableFilters()
-    {
-        return true;
-    }
-
-    /**
      * Additional application environment setup.
      *
      * @param \Illuminate\Contracts\Foundation\Application $app
      *
      * @return void
      */
-    protected function additionalSetup($app)
+    protected function additionalSetup(Application $app)
     {
         $app['config']->set('graham-campbell/htmlmin::live', true);
     }

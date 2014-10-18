@@ -16,6 +16,8 @@
 
 namespace GrahamCampbell\Tests\HTMLMin\Functional;
 
+use Illuminate\Contracts\Foundation\Application;
+
 /**
  * This is the blade enabled test class.
  *
@@ -32,7 +34,7 @@ class BladeEnabledTest extends AbstractFunctionalTestCase
      *
      * @return void
      */
-    protected function additionalSetup($app)
+    protected function additionalSetup(Application $app)
     {
         $app['config']->set('graham-campbell/htmlmin::blade', true);
     }

@@ -25,16 +25,6 @@ namespace GrahamCampbell\Tests\HTMLMin\Functional;
  */
 class FilterEnabledTest extends AbstractFunctionalTestCase
 {
-    /**
-     * Specify if routing filters are enabled.
-     *
-     * @return bool
-     */
-    protected function enableFilters()
-    {
-        return true;
-    }
-
     public function testNewSetup()
     {
         $this->app['view']->addNamespace('stubs', realpath(__DIR__.'/stubs'));
