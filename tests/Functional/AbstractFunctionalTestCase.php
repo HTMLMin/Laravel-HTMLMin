@@ -28,6 +28,20 @@ use GrahamCampbell\Tests\HTMLMin\AbstractTestCase;
 abstract class AbstractFunctionalTestCase extends AbstractTestCase
 {
     /**
+     * Run extra setup code.
+     *
+     * @return void
+     */
+    protected function start()
+    {
+        $files = glob(storage_path('framework/views/*'));
+
+        foreach ($files as $file) {
+            @unlink($file);
+        }
+    }
+
+    /**
      * Normalise eol characters in a string.
      *
      * @param string $string
