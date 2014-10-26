@@ -54,7 +54,7 @@ class HTMLMinServiceProvider extends ServiceProvider
             $this->enableLiveOptimisations();
         }
 
-        include __DIR__.'/filters.php';
+        $this->setupFilters();
     }
 
     /**
@@ -88,6 +88,20 @@ class HTMLMinServiceProvider extends ServiceProvider
 
         // register a new filter
         $app['router']->after(function ($request, $response) use ($app) {
+            $app['htmlmin']->live($response);
+        });
+    }
+
+    /**
+     * Setup the filters.
+     *
+     * @return void
+     */
+    protected function setupFilters()
+    {
+        $app = $this->app;
+
+        $app['router']->filter('htmlmin', function ($route, $request, $response) use ($app) {
             $app['htmlmin']->live($response);
         });
     }
