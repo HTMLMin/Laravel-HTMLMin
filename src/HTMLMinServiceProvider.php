@@ -128,7 +128,7 @@ class HTMLMinServiceProvider extends ServiceProvider
      */
     protected function registerCssMinifier()
     {
-        $this->app->bindShared('htmlmin.css', function ($app) {
+        $this->app->singleton('htmlmin.css', function ($app) {
             return new Minifiers\CssMinifier();
         });
 
@@ -142,7 +142,7 @@ class HTMLMinServiceProvider extends ServiceProvider
      */
     protected function registerJsMinifier()
     {
-        $this->app->bindShared('htmlmin.js', function ($app) {
+        $this->app->singleton('htmlmin.js', function ($app) {
             return new Minifiers\JsMinifier();
         });
 
@@ -156,7 +156,7 @@ class HTMLMinServiceProvider extends ServiceProvider
      */
     protected function registerHtmlMinifier()
     {
-        $this->app->bindShared('htmlmin.html', function ($app) {
+        $this->app->singleton('htmlmin.html', function ($app) {
             $css = $app['htmlmin.css'];
             $js = $app['htmlmin.js'];
 
@@ -173,7 +173,7 @@ class HTMLMinServiceProvider extends ServiceProvider
      */
     protected function registerBladeMinifier()
     {
-        $this->app->bindShared('htmlmin.blade', function ($app) {
+        $this->app->singleton('htmlmin.blade', function ($app) {
             $force = $app['config']['graham-campbell/htmlmin::force'];
 
             return new Minifiers\BladeMinifier($force);
@@ -189,7 +189,7 @@ class HTMLMinServiceProvider extends ServiceProvider
      */
     protected function registerMinifyCompiler()
     {
-        $this->app->bindShared('htmlmin.compiler', function ($app) {
+        $this->app->singleton('htmlmin.compiler', function ($app) {
             $blade = $app['htmlmin.blade'];
             $files = $app['files'];
             $storagePath = $app['config']['view.compiled'];
@@ -207,7 +207,7 @@ class HTMLMinServiceProvider extends ServiceProvider
      */
     protected function registerHTMLMin()
     {
-        $this->app->bindShared('htmlmin', function ($app) {
+        $this->app->singleton('htmlmin', function ($app) {
             $blade = $app['htmlmin.blade'];
             $css = $app['htmlmin.css'];
             $js = $app['htmlmin.js'];
