@@ -36,6 +36,6 @@ class CssMinifier implements MinifierInterface
      */
     public function render($value)
     {
-        return Minify_CSS::minify($value, array('preserveComments' => false));
+        return Minify_CSS::minify($value, ['preserveComments' => false]);
     }
 }

@@ -226,13 +226,13 @@ class HTMLMinServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return array(
+        return [
             'htmlmin',
             'htmlmin.js',
             'htmlmin.css',
             'htmlmin.html',
             'htmlmin.blade',
             'htmlmin.compiler',
-        );
+        ];
     }
 }

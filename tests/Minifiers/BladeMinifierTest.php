@@ -43,11 +43,11 @@ class BladeMinifierTest extends AbstractTestCase
 
     public function tagProvider()
     {
-        return array(
-            array('textarea'),
-            array('pre'),
-            array('code'),
-        );
+        return [
+            ['textarea'],
+            ['pre'],
+            ['code'],
+        ];
     }
 
     /**

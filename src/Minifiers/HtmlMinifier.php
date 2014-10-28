@@ -64,7 +64,7 @@ class HtmlMinifier implements MinifierInterface
      */
     public function render($value)
     {
-        $options = array(
+        $options = [
             'cssMinifier' => function ($css) {
                 return $this->css->render($css);
             },
@@ -72,7 +72,7 @@ class HtmlMinifier implements MinifierInterface
                 return $this->js->render($js);
             },
             'jsCleanComments' => true,
-        );
+        ];
 
         return Minify_HTML::minify($value, $options);
     }
