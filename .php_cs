@@ -4,7 +4,7 @@ $fixers = array(
     'psr0',
     'encoding',
     'short_tag',
-    'braces',
+    // 'braces',
     'elseif',
     'eof_ending',
     'function_declaration',
