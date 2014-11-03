@@ -9,6 +9,12 @@
             "email": "graham@mineuk.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/GrahamCampbell/testbench"
+        }
+    ],
     "require": {
         "php": ">=5.4.7",
         "illuminate/filesystem": "~5.0",
@@ -19,6 +25,7 @@
         "mrclay/minify": "~2.2"
     },
     "require-dev": {
+        "orchestra/testbench": "dev-fix-logging as 3.0.x-dev",
         "graham-campbell/testbench": "~2.0"
     },
     "autoload": {
