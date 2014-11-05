@@ -36,7 +36,7 @@ class LiveEnabledTest extends AbstractFunctionalTestCase
      *
      * @return void
      */
-    protected function additionalSetup(Application $app)
+    protected function additionalSetup($app)
     {
         $app['config']->set('graham-campbell/htmlmin::live', true);
     }

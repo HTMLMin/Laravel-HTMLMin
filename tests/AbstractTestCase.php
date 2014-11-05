@@ -16,7 +16,7 @@
 
 namespace GrahamCampbell\Tests\HTMLMin;
 
-use GrahamCampbell\TestBench\AbstractLaravelTestCase;
+use GrahamCampbell\TestBench\AbstractPackageTestCase;
 
 /**
  * This is the abstract test case class.
@@ -25,14 +25,16 @@ use GrahamCampbell\TestBench\AbstractLaravelTestCase;
  * @copyright 2013-2014 Graham Campbell
  * @license   <https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/LICENSE.md> Apache 2.0
  */
-abstract class AbstractTestCase extends AbstractLaravelTestCase
+abstract class AbstractTestCase extends AbstractPackageTestCase
 {
     /**
      * Get the service provider class.
      *
+     * @param \Illuminate\Contracts\Foundation\Application $app
+     *
      * @return string
      */
-    protected function getServiceProviderClass()
+    protected function getServiceProviderClass($app)
     {
         return 'GrahamCampbell\HTMLMin\HTMLMinServiceProvider';
     }
