@@ -33,12 +33,12 @@ class HTMLMinTest extends AbstractTestBenchTestCase
 {
     public function methodProvider()
     {
-        return array(
-            array('blade', 'getBladeMinifier'),
-            array('css', 'getCssMinifier'),
-            array('js', 'getJsMinifier'),
-            array('html', 'getHtmlMinifier'),
-        );
+        return [
+            ['blade', 'getBladeMinifier'],
+            ['css', 'getCssMinifier'],
+            ['js', 'getJsMinifier'],
+            ['html', 'getHtmlMinifier'],
+        ];
     }
 
     /**
@@ -85,7 +85,7 @@ class HTMLMinTest extends AbstractTestBenchTestCase
     {
         $htmlmin = $this->getHTMLMin();
 
-        $content = array('<p>123</p>        <p>123</p>');
+        $content = ['<p>123</p>        <p>123</p>'];
 
         $response = new Response($content);
 

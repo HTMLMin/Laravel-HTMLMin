@@ -79,7 +79,7 @@ class LiveEnabledTest extends AbstractFunctionalTestCase
     public function testJson()
     {
         $this->app['router']->get('htmlmin-test-route', function () {
-            return Response::json(array('foo' => 'bar', array('baz')), 200, array(), JSON_PRETTY_PRINT);
+            return Response::json(['foo' => 'bar', ['baz']], 200, [], JSON_PRETTY_PRINT);
         });
 
         $actual = $this->call('GET', 'htmlmin-test-route')->getContent();
