@@ -53,11 +53,11 @@ class MinifyCompiler extends BladeCompiler
     }
 
     /**
-    * Minifies the output before saving it.
-    *
-    * @param  string  $value
-    * @return string
-    */
+     * Minifies the output before saving it.
+     *
+     * @param  string  $value
+     * @return string
+     */
     public function compileMinify($value)
     {
         return $this->blade->render($value);
