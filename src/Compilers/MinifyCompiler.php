@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of Laravel HTMLMin by Graham Campbell.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -53,11 +53,11 @@ class MinifyCompiler extends BladeCompiler
     }
 
     /**
-    * Minifies the output before saving it.
-    *
-    * @param  string  $value
-    * @return string
-    */
+     * Minifies the output before saving it.
+     *
+     * @param  string $value
+     * @return string
+     */
     public function compileMinify($value)
     {
         return $this->blade->render($value);

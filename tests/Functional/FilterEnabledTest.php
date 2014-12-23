@@ -1,6 +1,6 @@
 <?php
 
-/**
+/*
  * This file is part of Laravel HTMLMin by Graham Campbell.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,7 +31,7 @@ class FilterEnabledTest extends AbstractFunctionalTestCase
 
         $this->app['router']->get('htmlmin-test-route', ['after' => 'htmlmin', function () {
             return $this->app['view']->make('stubs::test');
-        }, ]);
+        }]);
 
         $actual = $this->call('GET', 'htmlmin-test-route')->getContent();
 
