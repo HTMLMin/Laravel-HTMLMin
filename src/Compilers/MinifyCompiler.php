@@ -55,7 +55,7 @@ class MinifyCompiler extends BladeCompiler
     /**
      * Minifies the output before saving it.
      *
-     * @param  string  $value
+     * @param  string $value
      * @return string
      */
     public function compileMinify($value)
