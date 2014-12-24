@@ -16,6 +16,7 @@
 
 namespace GrahamCampbell\HTMLMin;
 
+use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Engines\CompilerEngine;
 
@@ -44,14 +45,12 @@ class HTMLMinServiceProvider extends ServiceProvider
     {
         $this->package('graham-campbell/htmlmin', 'graham-campbell/htmlmin', __DIR__);
 
-        // setup blade optimisations if enabled
         if ($this->app['config']['graham-campbell/htmlmin::blade']) {
-            $this->enableBladeOptimisations();
+            $this->enableBladeOptimisations($this->app);
         }
 
-        // setup live optimisations if enabled
         if ($this->app['config']['graham-campbell/htmlmin::live']) {
-            $this->enableLiveOptimisations();
+            $this->enableLiveOptimisations($this->app);
         }
 
         $this->setupFilters();
@@ -60,33 +59,30 @@ class HTMLMinServiceProvider extends ServiceProvider
     /**
      * Enable blade optimisations.
      *
+     * @param \Illuminate\Contracts\Foundation\Application $app
+     *
      * @return void
      */
-    protected function enableBladeOptimisations()
+    protected function enableBladeOptimisations(Application $app)
     {
-        $app = $this->app;
-
-        // register a new engine
         $app['view']->getEngineResolver()->register('blade', function () use ($app) {
             $compiler = $app['htmlmin.compiler'];
 
             return new CompilerEngine($compiler);
         });
 
-        // add the extension
         $app->view->addExtension('blade.php', 'blade');
     }
 
     /**
      * Enable live optimisations.
      *
+     * @param \Illuminate\Contracts\Foundation\Application $app
+     *
      * @return void
      */
-    protected function enableLiveOptimisations()
+    protected function enableLiveOptimisations(Application $app)
     {
-        $app = $this->app;
-
-        // register a new filter
         $app['router']->after(function ($request, $response) use ($app) {
             $app['htmlmin']->live($response);
         });
