@@ -1,7 +1,7 @@
 Laravel HTMLMin
 ===============
 
-Laravel HTMLMin was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a simple HTML minifier for [Laravel 4.2](http://laravel.com). It utilises Mr Clay's [Minify](https://github.com/mrclay/minify) package to minify entire responses, but can also minify blade at compile time. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-HTMLMin/releases), [license](LICENSE.md), [api docs](http://docs.grahamjcampbell.co.uk), and [contribution guidelines](CONTRIBUTING.md).
+Laravel HTMLMin was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a simple HTML minifier for [Laravel 4.2](http://laravel.com). It utilises Mr Clay's [Minify](https://github.com/mrclay/minify) package to minify entire responses, but can also minify blade at compile time. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-HTMLMin/releases), [license](LICENSE), [api docs](http://docs.grahamjcampbell.co.uk), and [contribution guidelines](CONTRIBUTING.md).
 
 ![Laravel HTMLMin](https://cloud.githubusercontent.com/assets/2829600/4432281/a97a7ec2-468c-11e4-947b-528578c3211e.PNG)
 
@@ -9,7 +9,7 @@ Laravel HTMLMin was created by, and is maintained by [Graham Campbell](https://g
 <a href="https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin"><img src="https://img.shields.io/travis/GrahamCampbell/Laravel-HTMLMin/master.svg?style=flat-square" alt="Build Status"></img></a>
 <a href="https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-HTMLMin/code-structure"><img src="https://img.shields.io/scrutinizer/coverage/g/GrahamCampbell/Laravel-HTMLMin.svg?style=flat-square" alt="Coverage Status"></img></a>
 <a href="https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-HTMLMin"><img src="https://img.shields.io/scrutinizer/g/GrahamCampbell/Laravel-HTMLMin.svg?style=flat-square" alt="Quality Score"></img></a>
-<a href="LICENSE.md"><img src="https://img.shields.io/badge/license-Apache%202.0-brightgreen.svg?style=flat-square" alt="Software License"></img></a>
+<a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License"></img></a>
 <a href="https://github.com/GrahamCampbell/Laravel-HTMLMin/releases"><img src="https://img.shields.io/github/release/GrahamCampbell/Laravel-HTMLMin.svg?style=flat-square" alt="Latest Version"></img></a>
 </p>
 
@@ -105,18 +105,4 @@ You may see an example of implementation in [Bootstrap CMS](https://github.com/G
 
 ## License
 
-Apache License
-
-Copyright 2013-2014 Graham Campbell
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
- http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+Laravel HTMLMin is licensed under [The MIT License (MIT)](LICENSE).
