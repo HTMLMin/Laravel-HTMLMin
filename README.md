@@ -100,8 +100,6 @@ There are other classes in this package that are not documented here (such as th
 
 Feel free to check out the [API Documentation](http://docs.grahamjcampbell.co.uk) for Laravel HTMLMin.
 
-You may see an example of implementation in [Bootstrap CMS](https://github.com/GrahamCampbell/Bootstrap-CMS).
-
 
 ## License
 
