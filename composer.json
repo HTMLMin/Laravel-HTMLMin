@@ -12,11 +12,11 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/GrahamCampbell/html"
+            "url": "https://github.com/GrahamCampbell/framework"
         },
         {
             "type": "vcs",
-            "url": "https://github.com/GrahamCampbell/framework"
+            "url": "https://github.com/GrahamCampbell/html"
         },
         {
             "type": "vcs",
