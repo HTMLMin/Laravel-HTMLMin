@@ -7,7 +7,7 @@ CHANGE LOG
 * Upgraded to laravel 5
 
 
-## V2.1.4 (04/01/2014)
+## V2.1.4 (04/01/2015)
 
 * Removed the cs fixers
 * CS fixes
