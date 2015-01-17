@@ -12,8 +12,8 @@
 namespace GrahamCampbell\HTMLMin;
 
 use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Engines\CompilerEngine;
+use Orchestra\Support\Providers\ServiceProvider;
 
 /**
  * This is the htmlmin service provider class.
@@ -23,20 +23,13 @@ use Illuminate\View\Engines\CompilerEngine;
 class HTMLMinServiceProvider extends ServiceProvider
 {
     /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
-
-    /**
-     * Bootstrap the application events.
+     * Boot the service provider.
      *
      * @return void
      */
     public function boot()
     {
-        $this->package('graham-campbell/htmlmin', 'graham-campbell/htmlmin', __DIR__);
+        $this->addConfigComponent('graham-campbell/htmlmin', 'graham-campbell/htmlmin', realpath(__DIR__.'/../config'));
 
         if ($this->app['config']['graham-campbell/htmlmin::blade']) {
             $this->enableBladeOptimisations($this->app);
