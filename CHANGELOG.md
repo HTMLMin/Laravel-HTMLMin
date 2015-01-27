@@ -4,7 +4,7 @@ CHANGE LOG
 
 ## V3.0 Beta 1 (Upcoming)
 
-* Upgraded to laravel 5
+* Upgraded to laravel 5.0
 
 
 ## V2.1.4 (04/01/2015)
