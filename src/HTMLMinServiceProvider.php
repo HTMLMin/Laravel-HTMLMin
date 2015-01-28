@@ -200,7 +200,7 @@ class HTMLMinServiceProvider extends ServiceProvider
         $app->singleton('htmlmin.compiler', function ($app) {
             $blade = $app['htmlmin.blade'];
             $files = $app['files'];
-            $storagePath = $app->get('view.compiled');
+            $storagePath = $app->config->get('view.compiled');
 
             return new Compilers\MinifyCompiler($blade, $files, $storagePath);
         });
