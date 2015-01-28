@@ -16,8 +16,6 @@
         "illuminate/routing": "5.0.*",
         "illuminate/support": "5.0.*",
         "illuminate/view": "5.0.*",
-        "orchestra/config": "3.0.*",
-        "orchestra/support-providers": "3.0.*",
         "mrclay/minify": "~2.2"
     },
     "require-dev": {
