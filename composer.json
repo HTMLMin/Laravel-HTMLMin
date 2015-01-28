@@ -21,7 +21,7 @@
         "mrclay/minify": "~2.2"
     },
     "require-dev": {
-        "graham-campbell/testbench": "~2.0"
+        "graham-campbell/testbench": "dev-master"
     },
     "autoload": {
         "psr-4": {
