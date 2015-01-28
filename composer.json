@@ -11,6 +11,7 @@
     ],
     "require": {
         "php": ">=5.4.7",
+        "illuminate/contracts": "5.0.*",
         "illuminate/filesystem": "5.0.*",
         "illuminate/http": "5.0.*",
         "illuminate/routing": "5.0.*",
