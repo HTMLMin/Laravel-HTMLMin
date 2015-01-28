@@ -20,10 +20,10 @@ class FilterEnabledTest extends AbstractFunctionalTestCase
 {
     public function testNewSetup()
     {
-        $this->app['view']->addNamespace('stubs', realpath(__DIR__.'/stubs'));
+        $this->app->view->addNamespace('stubs', realpath(__DIR__.'/stubs'));
 
-        $this->app['router']->get('htmlmin-test-route', ['after' => 'htmlmin', function () {
-            return $this->app['view']->make('stubs::test');
+        $this->app->router->get('htmlmin-test-route', ['after' => 'htmlmin', function () {
+            return $this->app->view->make('stubs::test');
         }]);
 
         $actual = $this->call('GET', 'htmlmin-test-route')->getContent();

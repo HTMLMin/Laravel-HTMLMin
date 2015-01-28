@@ -31,14 +31,14 @@ class LiveEnabledTest extends AbstractFunctionalTestCase
      */
     protected function additionalSetup($app)
     {
-        $app['config']->set('graham-campbell/htmlmin::live', true);
+        $app->config->set('htmlmin.live', true);
     }
 
     public function testNewSetup()
     {
-        $this->app['view']->addNamespace('stubs', realpath(__DIR__.'/stubs'));
+        $this->app->view->addNamespace('stubs', realpath(__DIR__.'/stubs'));
 
-        $this->app['router']->get('htmlmin-test-route', function () {
+        $this->app->router->get('htmlmin-test-route', function () {
             return Response::view('stubs::test');
         });
 
@@ -51,7 +51,7 @@ class LiveEnabledTest extends AbstractFunctionalTestCase
 
     public function testRedirect()
     {
-        $this->app['router']->get('htmlmin-test-route', function () {
+        $this->app->router->get('htmlmin-test-route', function () {
             return Redirect::to('foo');
         });
 
@@ -62,7 +62,7 @@ class LiveEnabledTest extends AbstractFunctionalTestCase
 
     public function testJson()
     {
-        $this->app['router']->get('htmlmin-test-route', function () {
+        $this->app->router->get('htmlmin-test-route', function () {
             return Response::json(['foo' => 'bar', ['baz']], 200, [], JSON_PRETTY_PRINT);
         });
 

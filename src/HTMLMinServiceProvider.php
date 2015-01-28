@@ -67,7 +67,7 @@ class HTMLMinServiceProvider extends ServiceProvider
      */
     protected function enableBladeOptimisations(Application $app)
     {
-        $app['view']->getEngineResolver()->register('blade', function () use ($app) {
+        $app->view->getEngineResolver()->register('blade', function () use ($app) {
             $compiler = $app['htmlmin.compiler'];
 
             return new CompilerEngine($compiler);
@@ -85,8 +85,8 @@ class HTMLMinServiceProvider extends ServiceProvider
      */
     protected function enableLiveOptimisations(Application $app)
     {
-        $app['router']->after(function ($request, $response) use ($app) {
-            $app['htmlmin']->live($response);
+        $app->router->after(function ($request, $response) use ($app) {
+            $app->htmlmin->live($response);
         });
     }
 
@@ -99,8 +99,8 @@ class HTMLMinServiceProvider extends ServiceProvider
      */
     protected function setupFilters(Application $app)
     {
-        $app['router']->filter('htmlmin', function ($route, $request, $response) use ($app) {
-            $app['htmlmin']->live($response);
+        $app->router->filter('htmlmin', function ($route, $request, $response) use ($app) {
+            $app->htmlmin->live($response);
         });
     }
 
@@ -180,7 +180,7 @@ class HTMLMinServiceProvider extends ServiceProvider
     protected function registerBladeMinifier(Application $app)
     {
         $app->singleton('htmlmin.blade', function ($app) {
-            $force = $app['config']['graham-campbell/htmlmin::force'];
+            $force = $app->config->get('html.force', false);
 
             return new Minifiers\BladeMinifier($force);
         });
@@ -200,7 +200,7 @@ class HTMLMinServiceProvider extends ServiceProvider
         $app->singleton('htmlmin.compiler', function ($app) {
             $blade = $app['htmlmin.blade'];
             $files = $app['files'];
-            $storagePath = $app['config']['view.compiled'];
+            $storagePath = $app->get('view.compiled');
 
             return new Compilers\MinifyCompiler($blade, $files, $storagePath);
         });

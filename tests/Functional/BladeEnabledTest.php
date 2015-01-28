@@ -29,14 +29,14 @@ class BladeEnabledTest extends AbstractFunctionalTestCase
      */
     protected function additionalSetup($app)
     {
-        $app['config']->set('graham-campbell/htmlmin::blade', true);
+        $app->config->set('htmlmin.blade', true);
     }
 
     public function testNewSetup()
     {
-        $this->app['view']->addNamespace('stubs', realpath(__DIR__.'/stubs'));
+        $this->app->view->addNamespace('stubs', realpath(__DIR__.'/stubs'));
 
-        $actual = $this->app['view']->make('stubs::test')->render();
+        $actual = $this->app->view->make('stubs::test')->render();
 
         $expected = file_get_contents(__DIR__.'/stubs/blade.txt');
 
