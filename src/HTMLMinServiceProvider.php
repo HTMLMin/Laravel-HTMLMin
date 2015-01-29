@@ -53,7 +53,7 @@ class HTMLMinServiceProvider extends ServiceProvider
 
         $this->publishes([$source => config_path('htmlmin.php')]);
 
-        $this->mergeConfigFrom('htmlmin', $source);
+        $this->mergeConfigFrom($source, 'htmlmin');
     }
 
     /**
