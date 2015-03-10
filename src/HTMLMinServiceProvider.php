@@ -178,7 +178,7 @@ class HTMLMinServiceProvider extends ServiceProvider
     protected function registerBladeMinifier(Application $app)
     {
         $app->singleton('htmlmin.blade', function ($app) {
-            $force = $app->config->get('html.force', false);
+            $force = $app->config->get('htmlmin.force', false);
 
             return new Minifiers\BladeMinifier($force);
         });
