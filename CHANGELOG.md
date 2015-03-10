@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V3.0.1 (10/03/2015)
+
+* Fixed forced minification not being available
+
+
 ## V3.0 (05/02/2015)
 
 * Upgraded to laravel 5.0
