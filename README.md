@@ -34,10 +34,6 @@ You can register the HTMLMin facade in the `aliases` key of your `config/app.php
 
 * `'HTMLMin' => 'GrahamCampbell\HTMLMin\Facades\HTMLMin'`
 
-#### Looking for a laravel 4 compatable version?
-
-Checkout the [2.1 branch](https://github.com/GrahamCampbell/Laravel-HTMLMin/tree/2.1), installable by requiring `"graham-campbell/htmlmin": "~2.0"`.
-
 
 ## Configuration
 
