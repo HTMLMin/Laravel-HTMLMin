@@ -2,6 +2,12 @@ CHANGE LOG
 ==========
 
 
+## V3.1 (Upcoming)
+
+* Support both laravel 5.0 and 5.1
+* Dropped php 5.4 support
+
+
 ## V3.0.1 (10/03/2015)
 
 * Fixed forced minification not being available
