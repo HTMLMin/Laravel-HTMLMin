@@ -1,7 +1,7 @@
 Laravel HTMLMin
 ===============
 
-Laravel HTMLMin was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a simple HTML minifier for [Laravel 5](http://laravel.com). It utilises Mr Clay's [Minify](https://github.com/mrclay/minify) package to minify entire responses, but can also minify blade at compile time. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-HTMLMin/releases), [license](LICENSE), [api docs](http://docs.grahamjcampbell.co.uk), and [contribution guidelines](CONTRIBUTING.md).
+Laravel HTMLMin was created by, and is maintained by [Graham Campbell](https://github.com/GrahamCampbell), and is a simple HTML minifier for [Laravel 5](http://laravel.com). It utilises Mr Clay's [Minify](https://github.com/mrclay/minify) package to minify entire responses, but can also minify blade at compile time. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/GrahamCampbell/Laravel-HTMLMin/releases), [license](LICENSE), [api docs](http://docs.gjcampbell.co.uk), and [contribution guidelines](CONTRIBUTING.md).
 
 ![Laravel HTMLMin](https://cloud.githubusercontent.com/assets/2829600/4432287/a99460da-468c-11e4-9bda-18345c06b2a5.PNG)
 
@@ -96,7 +96,7 @@ You may put the `htmlmin` filter in front of your routes to live minify their re
 
 There are other classes in this package that are not documented here (such as the compiler class). This is because they are not intended for public use and are used internally by this package.
 
-Feel free to check out the [API Documentation](http://docs.grahamjcampbell.co.uk) for Laravel HTMLMin.
+Feel free to check out the [API Documentation](http://docs.gjcampbell.co.uk) for Laravel HTMLMin.
 
 
 ## License
