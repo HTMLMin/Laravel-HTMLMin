@@ -51,7 +51,9 @@ class HTMLMinServiceProvider extends ServiceProvider
     {
         $source = realpath(__DIR__.'/../config/htmlmin.php');
 
-        $this->publishes([$source => config_path('htmlmin.php')]);
+        if (class_exists('Illuminate\Foundation\Application', false)) {
+            $this->publishes([$source => config_path('htmlmin.php')]);
+        }
 
         $this->mergeConfigFrom($source, 'htmlmin');
     }
