@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Response;
  *
  * @author Graham Campbell <graham@cachethq.io>
  */
-class LiveEnabledTest extends AbstractFunctionalTestCase
+class MiddlewareTest extends AbstractFunctionalTestCase
 {
     /**
      * Setup the application environment.
@@ -51,7 +51,6 @@ class LiveEnabledTest extends AbstractFunctionalTestCase
 
         $this->assertSameIgnoreLineEndings($expected, $actual);
     }
-
 
     public function testRedirect()
     {

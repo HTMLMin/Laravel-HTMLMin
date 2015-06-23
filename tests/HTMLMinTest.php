@@ -17,8 +17,6 @@ use GrahamCampbell\HTMLMin\Minifiers\CssMinifier;
 use GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier;
 use GrahamCampbell\HTMLMin\Minifiers\JsMinifier;
 use GrahamCampbell\TestBench\AbstractTestCase as AbstractTestBenchTestCase;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
 use Mockery;
 
 /**
