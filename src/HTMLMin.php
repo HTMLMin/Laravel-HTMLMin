@@ -15,7 +15,6 @@ use GrahamCampbell\HTMLMin\Minifiers\BladeMinifier;
 use GrahamCampbell\HTMLMin\Minifiers\CssMinifier;
 use GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier;
 use GrahamCampbell\HTMLMin\Minifiers\JsMinifier;
-use Illuminate\Http\Response;
 
 /**
  * This is the htmlmin class.
@@ -116,48 +115,6 @@ class HTMLMin
     public function html($value)
     {
         return $this->html->render($value);
-    }
-
-    /**
-     * Get the minified response.
-     *
-     * @param mixed $response
-     *
-     * @return mixed
-     */
-    public function live($response)
-    {
-        if ($this->isAResponseObject($response) && $this->isAnHtmlResponse($response)) {
-            $output = $response->getContent();
-            $minified = $this->html->render($output);
-            $response->setContent($minified);
-        }
-
-        return $response;
-    }
-
-    /**
-     * Check if the response is a usable response class.
-     *
-     * @param mixed $response
-     *
-     * @return bool
-     */
-    protected function isAResponseObject($response)
-    {
-        return (is_object($response) && $response instanceof Response);
-    }
-
-    /**
-     * Check if the content type header is html.
-     *
-     * @param \Illuminate\Http\Response $response
-     *
-     * @return bool
-     */
-    protected function isAnHtmlResponse(Response $response)
-    {
-        return (strpos($response->headers->get('Content-Type'), 'text/html') !== false);
     }
 
     /**

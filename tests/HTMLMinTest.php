@@ -12,6 +12,10 @@
 namespace GrahamCampbell\Tests\HTMLMin;
 
 use GrahamCampbell\HTMLMin\HTMLMin;
+use GrahamCampbell\HTMLMin\Minifiers\BladeMinifier;
+use GrahamCampbell\HTMLMin\Minifiers\CssMinifier;
+use GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier;
+use GrahamCampbell\HTMLMin\Minifiers\JsMinifier;
 use GrahamCampbell\TestBench\AbstractTestCase as AbstractTestBenchTestCase;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
@@ -49,70 +53,12 @@ class HTMLMinTest extends AbstractTestBenchTestCase
         $this->assertSame('abc', $return);
     }
 
-    public function testLiveError()
-    {
-        $htmlmin = $this->getHTMLMin();
-
-        $response = 'hello';
-
-        $return = $htmlmin->live($response);
-
-        $this->assertSame($response, $return);
-    }
-
-    public function testLiveRedirect()
-    {
-        $htmlmin = $this->getHTMLMin();
-
-        $content = 'http://example.com/';
-
-        $response = new RedirectResponse($content);
-
-        $return = $htmlmin->live($response);
-
-        $this->assertSame($response, $return);
-        $this->assertSame($content, $return->getTargetUrl());
-    }
-
-    public function testLiveJson()
-    {
-        $htmlmin = $this->getHTMLMin();
-
-        $content = ['<p>123</p>        <p>123</p>'];
-
-        $response = new Response($content);
-
-        $return = $htmlmin->live($response);
-
-        $this->assertSame($response, $return);
-        $this->assertSame('["<p>123<\/p>        <p>123<\/p>"]', $return->getContent());
-    }
-
-    public function testLiveHtml()
-    {
-        $htmlmin = $this->getHTMLMin();
-
-        $content = '<p>123</p>        <p>123</p>';
-
-        $response = new Response($content);
-
-        $response->headers->set('Content-Type', 'text/html');
-
-        $htmlmin->getHtmlMinifier()->shouldReceive('render')->once()
-            ->with($content)->andReturn('<p>123</p><p>123</p>');
-
-        $return = $htmlmin->live($response);
-
-        $this->assertSame($response, $return);
-        $this->assertSame('<p>123</p><p>123</p>', $return->getContent());
-    }
-
     protected function getHTMLMin()
     {
-        $blade = Mockery::mock('GrahamCampbell\HTMLMin\Minifiers\BladeMinifier');
-        $css = Mockery::mock('GrahamCampbell\HTMLMin\Minifiers\CssMinifier');
-        $js = Mockery::mock('GrahamCampbell\HTMLMin\Minifiers\JsMinifier');
-        $html = Mockery::mock('GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier');
+        $blade = Mockery::mock(BladeMinifier::class);
+        $css = Mockery::mock(CssMinifier::class);
+        $js = Mockery::mock(JsMinifier::class);
+        $html = Mockery::mock(HtmlMinifier::class);
 
         return new HTMLMin($blade, $css, $js, $html);
     }

@@ -11,7 +11,13 @@
 
 namespace GrahamCampbell\Tests\HTMLMin;
 
-use GrahamCampbell\TestBench\Traits\ServiceProviderTestCaseTrait;
+use GrahamCampbell\HTMLMin\Compilers\MinifyCompiler;
+use GrahamCampbell\HTMLMin\HTMLMin;
+use GrahamCampbell\HTMLMin\Minifiers\BladeMinifier;
+use GrahamCampbell\HTMLMin\Minifiers\CssMinifier;
+use GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier;
+use GrahamCampbell\HTMLMin\Minifiers\JsMinifier;
+use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 
 /**
  * This is the service provider test class.
@@ -20,35 +26,35 @@ use GrahamCampbell\TestBench\Traits\ServiceProviderTestCaseTrait;
  */
 class ServiceProviderTest extends AbstractTestCase
 {
-    use ServiceProviderTestCaseTrait;
+    use ServiceProviderTrait;
 
     public function testCssMinifierIsInjectable()
     {
-        $this->assertIsInjectable('GrahamCampbell\HTMLMin\Minifiers\CssMinifier');
+        $this->assertIsInjectable(CssMinifier::class);
     }
 
     public function testJsMinifierIsInjectable()
     {
-        $this->assertIsInjectable('GrahamCampbell\HTMLMin\Minifiers\JsMinifier');
+        $this->assertIsInjectable(JsMinifier::class);
     }
 
     public function testHtmlMinifierIsInjectable()
     {
-        $this->assertIsInjectable('GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier');
+        $this->assertIsInjectable(HtmlMinifier::class);
     }
 
     public function testBladeMinifierIsInjectable()
     {
-        $this->assertIsInjectable('GrahamCampbell\HTMLMin\Minifiers\BladeMinifier');
+        $this->assertIsInjectable(BladeMinifier::class);
     }
 
     public function testCompilerIsInjectable()
     {
-        $this->assertIsInjectable('GrahamCampbell\HTMLMin\Compilers\MinifyCompiler');
+        $this->assertIsInjectable(MinifyCompiler::class);
     }
 
     public function testHTMLMinIsInjectable()
     {
-        $this->assertIsInjectable('GrahamCampbell\HTMLMin\HTMLMin');
+        $this->assertIsInjectable(HTMLMin::class);
     }
 }

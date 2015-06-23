@@ -46,21 +46,4 @@ return [
 
     'force' => false,
 
-    /*
-    |--------------------------------------------------------------------------
-    | Automatic Live Optimizations
-    |--------------------------------------------------------------------------
-    |
-    | This option enables minification of the html responses just before they
-    | are served. These optimizations have greater impact on php processing
-    | time as the optimizations are applied on every request. This package
-    | will do nothing by default to allow it to be used without minifying
-    | pages automatically.
-    |
-    | Default: false
-    |
-    */
-
-    'live' => false,
-
 ];

@@ -11,6 +11,7 @@
 
 namespace GrahamCampbell\Tests\HTMLMin\Functional;
 
+use GrahamCampbell\HTMLMin\Http\Middleware\MinifyMiddleware;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;
@@ -23,14 +24,16 @@ use Illuminate\Support\Facades\Response;
 class LiveEnabledTest extends AbstractFunctionalTestCase
 {
     /**
-     * Additional application environment setup.
+     * Setup the application environment.
      *
      * @param \Illuminate\Contracts\Foundation\Application $app
      *
      * @return void
      */
-    protected function additionalSetup($app)
+    protected function getEnvironmentSetUp($app)
     {
+        parent::getEnvironmentSetUp($app);
+
         $app->config->set('htmlmin.live', true);
     }
 
@@ -38,9 +41,9 @@ class LiveEnabledTest extends AbstractFunctionalTestCase
     {
         $this->app->view->addNamespace('stubs', realpath(__DIR__.'/stubs'));
 
-        $this->app->router->get('htmlmin-test-route', function () {
+        $this->app->router->get('htmlmin-test-route', ['middleware' => MinifyMiddleware::class, function () {
             return Response::view('stubs::test');
-        });
+        }]);
 
         $actual = $this->call('GET', 'htmlmin-test-route')->getContent();
 
@@ -49,22 +52,23 @@ class LiveEnabledTest extends AbstractFunctionalTestCase
         $this->assertSameIgnoreLineEndings($expected, $actual);
     }
 
+
     public function testRedirect()
     {
-        $this->app->router->get('htmlmin-test-route', function () {
+        $this->app->router->get('htmlmin-test-route', ['middleware' => MinifyMiddleware::class, function () {
             return Redirect::to('foo');
-        });
+        }]);
 
-        $this->call('GET', 'htmlmin-test-route')->getContent();
+        $this->call('GET', 'htmlmin-test-route');
 
         $this->assertRedirectedTo('foo');
     }
 
     public function testJson()
     {
-        $this->app->router->get('htmlmin-test-route', function () {
+        $this->app->router->get('htmlmin-test-route', ['middleware' => MinifyMiddleware::class, function () {
             return Response::json(['foo' => 'bar', ['baz']], 200, [], JSON_PRETTY_PRINT);
-        });
+        }]);
 
         $actual = $this->call('GET', 'htmlmin-test-route')->getContent();
 

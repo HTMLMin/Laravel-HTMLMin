@@ -11,6 +11,11 @@
 
 namespace GrahamCampbell\HTMLMin;
 
+use GrahamCampbell\HTMLMin\Compilers\MinifyCompiler;
+use GrahamCampbell\HTMLMin\Minifiers\BladeMinifier;
+use GrahamCampbell\HTMLMin\Minifiers\CssMinifier;
+use GrahamCampbell\HTMLMin\Minifiers\JsMinifier;
+use GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Engines\CompilerEngine;
@@ -34,12 +39,6 @@ class HTMLMinServiceProvider extends ServiceProvider
         if ($this->app->config->get('htmlmin.blade')) {
             $this->enableBladeOptimisations($this->app);
         }
-
-        if ($this->app->config->get('htmlmin.live')) {
-            $this->enableLiveOptimisations($this->app);
-        }
-
-        $this->setupFilters($this->app);
     }
 
     /**
@@ -77,34 +76,6 @@ class HTMLMinServiceProvider extends ServiceProvider
     }
 
     /**
-     * Enable live optimisations.
-     *
-     * @param \Illuminate\Contracts\Foundation\Application $app
-     *
-     * @return void
-     */
-    protected function enableLiveOptimisations(Application $app)
-    {
-        $app->router->after(function ($request, $response) use ($app) {
-            $app->htmlmin->live($response);
-        });
-    }
-
-    /**
-     * Setup the filters.
-     *
-     * @param \Illuminate\Contracts\Foundation\Application $app
-     *
-     * @return void
-     */
-    protected function setupFilters(Application $app)
-    {
-        $app->router->filter('htmlmin', function ($route, $request, $response) use ($app) {
-            $app->htmlmin->live($response);
-        });
-    }
-
-    /**
      * Register the service provider.
      *
      * @return void
@@ -129,10 +100,10 @@ class HTMLMinServiceProvider extends ServiceProvider
     protected function registerCssMinifier(Application $app)
     {
         $app->singleton('htmlmin.css', function ($app) {
-            return new Minifiers\CssMinifier();
+            return new CssMinifier();
         });
 
-        $app->alias('htmlmin.css', 'GrahamCampbell\HTMLMin\Minifiers\CssMinifier');
+        $app->alias('htmlmin.css', CssMinifier::class);
     }
 
     /**
@@ -145,10 +116,10 @@ class HTMLMinServiceProvider extends ServiceProvider
     protected function registerJsMinifier(Application $app)
     {
         $app->singleton('htmlmin.js', function ($app) {
-            return new Minifiers\JsMinifier();
+            return new JsMinifier();
         });
 
-        $app->alias('htmlmin.js', 'GrahamCampbell\HTMLMin\Minifiers\JsMinifier');
+        $app->alias('htmlmin.js', JsMinifier::class);
     }
 
     /**
@@ -164,10 +135,10 @@ class HTMLMinServiceProvider extends ServiceProvider
             $css = $app['htmlmin.css'];
             $js = $app['htmlmin.js'];
 
-            return new Minifiers\HtmlMinifier($css, $js);
+            return new HtmlMinifier($css, $js);
         });
 
-        $app->alias('htmlmin.html', 'GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier');
+        $app->alias('htmlmin.html', HtmlMinifier::class);
     }
 
     /**
@@ -182,10 +153,10 @@ class HTMLMinServiceProvider extends ServiceProvider
         $app->singleton('htmlmin.blade', function ($app) {
             $force = $app->config->get('htmlmin.force', false);
 
-            return new Minifiers\BladeMinifier($force);
+            return new BladeMinifier($force);
         });
 
-        $app->alias('htmlmin.blade', 'GrahamCampbell\HTMLMin\Minifiers\BladeMinifier');
+        $app->alias('htmlmin.blade', BladeMinifier::class);
     }
 
     /**
@@ -202,10 +173,10 @@ class HTMLMinServiceProvider extends ServiceProvider
             $files = $app['files'];
             $storagePath = $app->config->get('view.compiled');
 
-            return new Compilers\MinifyCompiler($blade, $files, $storagePath);
+            return new MinifyCompiler($blade, $files, $storagePath);
         });
 
-        $app->alias('htmlmin.compiler', 'GrahamCampbell\HTMLMin\Compilers\MinifyCompiler');
+        $app->alias('htmlmin.compiler', MinifyCompiler::class);
     }
 
     /**
@@ -226,7 +197,7 @@ class HTMLMinServiceProvider extends ServiceProvider
             return new HTMLMin($blade, $css, $js, $html);
         });
 
-        $app->alias('htmlmin', 'GrahamCampbell\HTMLMin\HTMLMin');
+        $app->alias('htmlmin', HTMLMin::class);
     }
 
     /**

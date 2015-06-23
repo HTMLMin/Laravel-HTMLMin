@@ -21,14 +21,16 @@ use Illuminate\Contracts\Foundation\Application;
 class BladeEnabledTest extends AbstractFunctionalTestCase
 {
     /**
-     * Additional application environment setup.
+     * Setup the application environment.
      *
      * @param \Illuminate\Contracts\Foundation\Application $app
      *
      * @return void
      */
-    protected function additionalSetup($app)
+    protected function getEnvironmentSetUp($app)
     {
+        parent::getEnvironmentSetUp($app);
+
         $app->config->set('htmlmin.blade', true);
     }
 

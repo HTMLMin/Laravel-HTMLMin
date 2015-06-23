@@ -11,6 +11,7 @@
 
 namespace GrahamCampbell\Tests\HTMLMin;
 
+use GrahamCampbell\HTMLMin\HTMLMinServiceProvider;
 use GrahamCampbell\TestBench\AbstractPackageTestCase;
 
 /**
@@ -29,6 +30,6 @@ abstract class AbstractTestCase extends AbstractPackageTestCase
      */
     protected function getServiceProviderClass($app)
     {
-        return 'GrahamCampbell\HTMLMin\HTMLMinServiceProvider';
+        return HTMLMinServiceProvider::class;
     }
 }

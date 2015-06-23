@@ -11,7 +11,9 @@
 
 namespace GrahamCampbell\Tests\HTMLMin\Facades;
 
-use GrahamCampbell\TestBench\Traits\FacadeTestCaseTrait;
+use GrahamCampbell\HTMLMin\Facades\HTMLMin as Facade;
+use GrahamCampbell\HTMLMin\HTMLMin;
+use GrahamCampbell\TestBenchCore\FacadeTrait;
 use GrahamCampbell\Tests\HTMLMin\AbstractTestCase;
 
 /**
@@ -21,7 +23,7 @@ use GrahamCampbell\Tests\HTMLMin\AbstractTestCase;
  */
 class HTMLMinTest extends AbstractTestCase
 {
-    use FacadeTestCaseTrait;
+    use FacadeTrait;
 
     /**
      * Get the facade accessor.
@@ -40,7 +42,7 @@ class HTMLMinTest extends AbstractTestCase
      */
     protected function getFacadeClass()
     {
-        return 'GrahamCampbell\HTMLMin\Facades\HTMLMin';
+        return Facade::class;
     }
 
     /**
@@ -50,6 +52,6 @@ class HTMLMinTest extends AbstractTestCase
      */
     protected function getFacadeRoot()
     {
-        return 'GrahamCampbell\HTMLMin\HTMLMin';
+        return HTMLMin::class;
     }
 }

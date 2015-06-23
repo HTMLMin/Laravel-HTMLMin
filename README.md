@@ -21,7 +21,7 @@ Laravel HTMLMin was created by, and is maintained by [Graham Campbell](https://g
 To get the latest version of Laravel HTMLMin, simply add the following line to the require block of your `composer.json` file:
 
 ```
-"graham-campbell/htmlmin": "~3.2"
+"graham-campbell/htmlmin": "~4.0"
 ```
 
 You'll then need to run `composer install` or `composer update` to download it and have the autoloader updated.
@@ -47,7 +47,7 @@ $ php artisan vendor:publish
 
 This will create a `config/htmlmin.php` file in your app that you can modify to set your configuration. Also, make sure you check for changes to the original config file in this package between releases.
 
-There are a few config options:
+There are two config options:
 
 ##### Automatic Blade Optimizations
 
@@ -57,24 +57,18 @@ This option (`'blade'`) enables minification of the the blade views as they are 
 
 This option (`'force'`) forces blade minification on views where there such minification may be dangerous. This should only be used if you are fully aware of the potential issues this may cause. Obviously, this setting is dependent on blade minification actually being enabled. The default value for this setting is `false`.
 
-##### Automatic Live Optimizations
-
-This option (`'live'`) enables minification of the html responses just before they are served. These optimizations have greater impact on php processing time as the optimizations are applied on every request. This package will do nothing by default to allow it to be used without minifying pages automatically. The default value for this setting is `false`.
-
 
 ## Usage
 
 ##### HTMLMin
 
-This is the class of most interest. It is bound to the ioc container as `'htmlmin'` and can be accessed using the `Facades\HTMLMin` facade. There are five public methods of interest.
+This is the class of most interest. It is bound to the ioc container as `'htmlmin'` and can be accessed using the `Facades\HTMLMin` facade. There are four public methods of interest.
 
 The `'blade'` method will parse a string as blade and minify it as quickly as possible. This is method the compiler class uses when blade minification is enabled.
 
 The `'css'` and `'js'` methods will parse a string as css/js and will minify it using Mr Clay's [Minify](https://github.com/mrclay/minify) package.
 
-The `'html'` method will parse a string as html and will minify it as best as possible using Mr Clay's [Minify](https://github.com/mrclay/minify) package. It will also be able to minify inline css and js. This is the method that is automatically used in an after filter when live minification is enabled.
-
-The `'live'` method accepts a response object as a first parameter and will first determine if it can be minified, and then will set the response body to a minified version of the body of the response using the html minifier.
+The `'html'` method will parse a string as html and will minify it as best as possible using Mr Clay's [Minify](https://github.com/mrclay/minify) package. It will also be able to minify inline css and js. This is the method that is used by the minification middleware.
 
 ##### Facades\HTMLMin
 
@@ -84,13 +78,13 @@ This facade will dynamically pass static method calls to the `'htmlmin'` object 
 
 This interface defines the public method a minifier class must implement. Such a class must only provide a `'render'` method which takes one parameter as a string, and should return a string. This package ships with 4 implementations of this interface, but these classes are not intended for public use, so have no been documented here. You can see the source [here](https://github.com/GrahamCampbell/Laravel-HTMLMin/tree/master/src/Minifiers).
 
+##### Http\Middleware\MinifyMiddleware
+
+You may put the `GrahamCampbell\Throttle\Http\Middleware\MinifyMiddleware` middleware in front of your routes to live minify them. Note that this middleware allows you to achieve maximal results, though at a performance cost because of it running on each request instead of once like the built in blade minification. It may be useful for you to take a look at the [source](https://github.com/GrahamCampbell/Laravel-Throttle/blob/master/src/Http/Middleware/ThrottleMiddleware.php) for this, read the [tests](https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/tests/Functional/MiddlewareTest.php), or check out Laravel's [documentation](http://laravel.com/docs/5.1/middleware) if you need to.
+
 ##### HTMLMinServiceProvider
 
-This class contains no public methods of interest. This class should be added to the providers array in `config/app.php`. This class will setup ioc bindings and register automatic blade/live minification based on the config.
-
-##### Filters
-
-You may put the `htmlmin` filter in front of your routes to live minify their responses. This filter will always minify them even when live minification is disabled because the live minification config setting defines if all html responses should be minified. This filter allows you to selectively choose which routes to minify. It may be useful for you to take a look at the [source](https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/src/filters.php) for this, read the [tests](https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/tests/Functional/FilterEnabledTest.php), or check out Laravel's [documentation](http://laravel.com/docs/routing#route-filters) if you need to.
+This class contains no public methods of interest. This class should be added to the providers array in `config/app.php`. This class will setup ioc bindings and register automatic blade minification based on the config.
 
 ##### Further Information
 

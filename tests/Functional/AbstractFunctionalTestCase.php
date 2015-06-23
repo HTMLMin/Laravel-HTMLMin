@@ -21,11 +21,9 @@ use GrahamCampbell\Tests\HTMLMin\AbstractTestCase;
 abstract class AbstractFunctionalTestCase extends AbstractTestCase
 {
     /**
-     * Run extra setup code.
-     *
-     * @return void
+     * @before
      */
-    protected function start()
+    public function setUpStorage()
     {
         $files = glob(storage_path('framework/views/*'));
 

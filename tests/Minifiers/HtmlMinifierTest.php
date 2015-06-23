@@ -11,7 +11,9 @@
 
 namespace GrahamCampbell\Tests\HTMLMin\Minifiers;
 
+use GrahamCampbell\HTMLMin\Minifiers\CssMinifier;
 use GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier;
+use GrahamCampbell\HTMLMin\Minifiers\JsMinifier;
 use GrahamCampbell\TestBench\AbstractTestCase;
 use Mockery;
 
@@ -49,8 +51,8 @@ class HtmlMinifierTest extends AbstractTestCase
 
     protected function getHtmlMinifier()
     {
-        $css = Mockery::mock('GrahamCampbell\HTMLMin\Minifiers\CssMinifier');
-        $js = Mockery::mock('GrahamCampbell\HTMLMin\Minifiers\JsMinifier');
+        $css = Mockery::mock(CssMinifier::class);
+        $js = Mockery::mock(JsMinifier::class);
 
         return new HtmlMinifier($css, $js);
     }

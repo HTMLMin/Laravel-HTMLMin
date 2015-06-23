@@ -12,7 +12,9 @@
 namespace GrahamCampbell\Tests\HTMLMin\Compilers;
 
 use GrahamCampbell\HTMLMin\Compilers\MinifyCompiler;
+use GrahamCampbell\HTMLMin\Minifiers\BladeMinifier;
 use GrahamCampbell\TestBench\AbstractTestCase;
+use Illuminate\Filesystem\Filesystem;
 use Mockery;
 
 /**
@@ -45,8 +47,8 @@ class MinifyCompilerTest extends AbstractTestCase
 
     protected function getCompiler()
     {
-        $blade = Mockery::mock('GrahamCampbell\HTMLMin\Minifiers\BladeMinifier');
-        $files = Mockery::mock('Illuminate\Filesystem\Filesystem');
+        $blade = Mockery::mock(BladeMinifier::class);
+        $files = Mockery::mock(Filesystem::class);
         $cachePath = __DIR__;
 
         return new MinifyCompiler($blade, $files, $cachePath);

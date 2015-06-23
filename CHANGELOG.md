@@ -2,9 +2,12 @@ CHANGE LOG
 ==========
 
 
-## V3.2 (Upcoming)
+## V4.0 (Upcoming)
 
-* Lumen support
+* Official lumen support
+* Drop live config and filters
+* Added a minification middleware
+* Minor cleanup and fixes
 
 
 ## V3.1 (20/05/2015)
