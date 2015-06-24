@@ -7,7 +7,7 @@ CHANGE LOG
 * Official lumen support
 * Drop live config and filters
 * Added a minification middleware
-* Minor cleanup and fixes
+* Code cleanup
 
 
 ## V3.1 (20/05/2015)
