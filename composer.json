@@ -34,6 +34,9 @@
             "GrahamCampbell\\Tests\\HTMLMin\\": "tests/"
         }
     },
+    "config": {
+        "preferred-install": "dist"
+    },
     "extra": {
         "branch-alias": {
             "dev-master": "4.0-dev"
