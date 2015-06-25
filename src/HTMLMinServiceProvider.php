@@ -99,7 +99,7 @@ class HTMLMinServiceProvider extends ServiceProvider
      */
     protected function registerCssMinifier(Application $app)
     {
-        $app->singleton('htmlmin.css', function ($app) {
+        $app->singleton('htmlmin.css', function () {
             return new CssMinifier();
         });
 
@@ -115,7 +115,7 @@ class HTMLMinServiceProvider extends ServiceProvider
      */
     protected function registerJsMinifier(Application $app)
     {
-        $app->singleton('htmlmin.js', function ($app) {
+        $app->singleton('htmlmin.js', function () {
             return new JsMinifier();
         });
 
