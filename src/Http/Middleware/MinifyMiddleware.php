@@ -32,7 +32,7 @@ class MinifyMiddleware
     /**
      * Create a new throttle middleware instance.
      *
-     * @param \Illuminate\Contracts\Config\Repository $config
+     * @param \GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier $html
      *
      * @return void
      */
