@@ -2,7 +2,7 @@ CHANGE LOG
 ==========
 
 
-## V4.0 (Upcoming)
+## V4.0 (26/06/2015)
 
 * Official lumen support
 * Drop live config and filters
