@@ -30,7 +30,7 @@ class MinifyMiddleware
     protected $html;
 
     /**
-     * Create a new throttle middleware instance.
+     * Create a new minify middleware instance.
      *
      * @param \GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier $html
      *
