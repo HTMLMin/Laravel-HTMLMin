@@ -80,7 +80,7 @@ This interface defines the public method a minifier class must implement. Such a
 
 ##### Http\Middleware\MinifyMiddleware
 
-You may put the `GrahamCampbell\Throttle\Http\Middleware\MinifyMiddleware` middleware in front of your routes to live minify them. Note that this middleware allows you to achieve maximal results, though at a performance cost because of it running on each request instead of once like the built in blade minification. It may be useful for you to take a look at the [source](https://github.com/GrahamCampbell/Laravel-Throttle/blob/master/src/Http/Middleware/ThrottleMiddleware.php) for this, read the [tests](https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/tests/Functional/MiddlewareTest.php), or check out Laravel's [documentation](http://laravel.com/docs/5.1/middleware) if you need to.
+You may put the `GrahamCampbell\HTMLMin\Http\Middleware\MinifyMiddleware` middleware in front of your routes to live minify them. Note that this middleware allows you to achieve maximal results, though at a performance cost because of it running on each request instead of once like the built in blade minification. It may be useful for you to take a look at the [source](https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/src/Http/Middleware/MinifyMiddleware.php) for this, read the [tests](https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/tests/Functional/MiddlewareTest.php), or check out Laravel's [documentation](http://laravel.com/docs/5.1/middleware) if you need to.
 
 ##### HTMLMinServiceProvider
 
