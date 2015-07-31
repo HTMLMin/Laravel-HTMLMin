@@ -16,7 +16,7 @@ return [
     | Automatic Blade Optimizations
     |--------------------------------------------------------------------------
     |
-    | This option enables minification of the the blade views as they are
+    | This option enables minification of the blade views as they are
     | compiled. These optimizations have little impact on php processing time
     | as the optimizations are only applied once and are cached. This package
     | will do nothing by default to allow it to be used without minifying
