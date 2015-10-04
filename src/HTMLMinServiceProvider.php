@@ -52,6 +52,8 @@ class HTMLMinServiceProvider extends ServiceProvider
 
         if (class_exists('Illuminate\Foundation\Application', false)) {
             $this->publishes([$source => config_path('htmlmin.php')]);
+        } elseif (class_exists('Laravel\Lumen\Application', false)) {
+            $this->configure('htmlmin');
         }
 
         $this->mergeConfigFrom($source, 'htmlmin');
