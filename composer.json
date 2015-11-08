@@ -17,7 +17,7 @@
         "illuminate/routing": "5.0.*|5.1.*",
         "illuminate/support": "5.0.*|5.1.*",
         "illuminate/view": "5.0.*|5.1.*",
-        "mrclay/minify": "~2.2"
+        "mrclay/minify": "^2.2"
     },
     "require-dev": {
         "graham-campbell/testbench": "^3.1",
