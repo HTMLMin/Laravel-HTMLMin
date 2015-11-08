@@ -11,12 +11,12 @@
     ],
     "require": {
         "php": ">=5.5.9",
-        "illuminate/contracts": "5.0.*|5.1.*",
-        "illuminate/filesystem": "5.0.*|5.1.*",
-        "illuminate/http": "5.0.*|5.1.*",
-        "illuminate/routing": "5.0.*|5.1.*",
-        "illuminate/support": "5.0.*|5.1.*",
-        "illuminate/view": "5.0.*|5.1.*",
+        "illuminate/contracts": "5.1.*|5.2.*",
+        "illuminate/filesystem": "5.1.*|5.2.*",
+        "illuminate/http": "5.1.*|5.2.*",
+        "illuminate/routing": "5.1.*|5.2.*",
+        "illuminate/support": "5.1.*|5.2.*",
+        "illuminate/view": "5.1.*|5.2.*",
         "mrclay/minify": "^2.2"
     },
     "require-dev": {
