@@ -52,13 +52,20 @@ class BladeMinifier implements MinifierInterface
     {
         if ($this->shouldMinify($value)) {
             $replace = [
-                '/<!--[^\[](.*?)[^\]]-->/s' => '',
-                "/<\?php/"                  => '<?php ',
-                "/\n([\S])/"                => ' $1',
-                "/\r/"                      => '',
-                "/\n/"                      => '',
-                "/\t/"                      => ' ',
-                '/ +/'                      => ' ',
+              '/\>[^\S ]+/s'                                                    => '>',
+              '/[^\S ]+\</s'                                                    => '<',
+              '/([\t ])+/s'                                                     => ' ',
+              '/^([\t ])+/m'                                                    => '',
+              '/([\t ])+$/m'                                                    => '',
+              '~//[a-zA-Z0-9 ]+$~m'                                             => '',
+              '/[\r\n]+([\t ]?[\r\n]+)+/s'                                      => "\n",
+              '/\>[\r\n\t ]+\</s'                                               => '><',
+              '/}[\r\n\t ]+/s'                                                  => '}',
+              '/}[\r\n\t ]+,[\r\n\t ]+/s'                                       => '},',
+              '/\)[\r\n\t ]?{[\r\n\t ]+/s'                                      => '){',
+              '/,[\r\n\t ]?{[\r\n\t ]+/s'                                       => ',{',
+              '/\),[\r\n\t ]+/s'                                                => '),',
+              '~([\r\n\t ])?([a-zA-Z0-9]+)="([a-zA-Z0-9_/\\-]+)"([\r\n\t ])?~s' => '$1$2=$3$4',
             ];
 
             $value = preg_replace(array_keys($replace), array_values($replace), $value);
@@ -80,8 +87,8 @@ class BladeMinifier implements MinifierInterface
             return true;
         }
 
-        return (!preg_match('/<(code|pre|textarea)/', $value) &&
+        return !preg_match('/<(code|pre|textarea)/', $value) &&
             !preg_match('/<script[^\??>]*>[^<\/script>]/', $value) &&
-            !preg_match('/value=("|\')(.*)([ ]{2,})(.*)("|\')/', $value));
+            !preg_match('/value=("|\')(.*)([ ]{2,})(.*)("|\')/', $value);
     }
 }
