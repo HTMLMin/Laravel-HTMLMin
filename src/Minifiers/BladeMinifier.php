@@ -65,7 +65,7 @@ class BladeMinifier implements MinifierInterface
               '/\)[\r\n\t ]?{[\r\n\t ]+/s'                                      => '){',
               '/,[\r\n\t ]?{[\r\n\t ]+/s'                                       => ',{',
               '/\),[\r\n\t ]+/s'                                                => '),',
-              '~([\r\n\t ])?([a-zA-Z0-9]+)="([a-zA-Z0-9_/\\-]+)"([\r\n\t ])?~s' => '$1$2=$3$4'
+              '~([\r\n\t ])?([a-zA-Z0-9]+)="([a-zA-Z0-9_/\\-]+)"([\r\n\t ])?~s' => '$1$2=$3$4',
             ];
 
             $value = preg_replace(array_keys($replace), array_values($replace), $value);
