@@ -36,7 +36,7 @@ class HTMLMinServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        $this->setupConfig($this->app);
+        $this->setupConfig();
 
         if ($this->app->config->get('htmlmin.blade')) {
             $this->enableBladeOptimisations($this->app);
@@ -46,18 +46,16 @@ class HTMLMinServiceProvider extends ServiceProvider
     /**
      * Setup the config.
      *
-     * @param \Illuminate\Contracts\Foundation\Application $app
-     *
      * @return void
      */
-    protected function setupConfig(Application $app)
+    protected function setupConfig()
     {
         $source = realpath(__DIR__.'/../config/htmlmin.php');
 
-        if ($app instanceof LaravelApplication && $app->runningInConsole()) {
+        if ($this->app instanceof LaravelApplication && $this->app->runningInConsole()) {
             $this->publishes([$source => config_path('htmlmin.php')]);
-        } elseif ($app instanceof LumenApplication) {
-            $app->configure('htmlmin');
+        } elseif ($this->app instanceof LumenApplication) {
+            $this->app->configure('htmlmin');
         }
 
         $this->mergeConfigFrom($source, 'htmlmin');
