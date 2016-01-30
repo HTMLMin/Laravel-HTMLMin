@@ -16,7 +16,7 @@ use GrahamCampbell\HTMLMin\Minifiers\BladeMinifier;
 use GrahamCampbell\HTMLMin\Minifiers\CssMinifier;
 use GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier;
 use GrahamCampbell\HTMLMin\Minifiers\JsMinifier;
-use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\Container\Container;
 use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Engines\CompilerEngine;
@@ -39,7 +39,7 @@ class HTMLMinServiceProvider extends ServiceProvider
         $this->setupConfig();
 
         if ($this->app->config->get('htmlmin.blade')) {
-            $this->enableBladeOptimisations($this->app);
+            $this->enableBladeOptimisations();
         }
     }
 
@@ -64,12 +64,12 @@ class HTMLMinServiceProvider extends ServiceProvider
     /**
      * Enable blade optimisations.
      *
-     * @param \Illuminate\Contracts\Foundation\Application $app
-     *
      * @return void
      */
-    protected function enableBladeOptimisations(Application $app)
+    protected function enableBladeOptimisations()
     {
+        $app = $this->app;
+
         $app->view->getEngineResolver()->register('blade', function () use ($app) {
             $compiler = $app['htmlmin.compiler'];
 
@@ -86,93 +86,83 @@ class HTMLMinServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->registerJsMinifier($this->app);
-        $this->registerCssMinifier($this->app);
-        $this->registerHtmlMinifier($this->app);
-        $this->registerBladeMinifier($this->app);
-        $this->registerMinifyCompiler($this->app);
-        $this->registerHTMLMin($this->app);
+        $this->registerJsMinifier();
+        $this->registerCssMinifier();
+        $this->registerHtmlMinifier();
+        $this->registerBladeMinifier();
+        $this->registerMinifyCompiler();
+        $this->registerHTMLMin();
     }
 
     /**
      * Register the css minifier class.
      *
-     * @param \Illuminate\Contracts\Foundation\Application $app
-     *
      * @return void
      */
-    protected function registerCssMinifier(Application $app)
+    protected function registerCssMinifier()
     {
-        $app->singleton('htmlmin.css', function () {
+        $this->app->singleton('htmlmin.css', function () {
             return new CssMinifier();
         });
 
-        $app->alias('htmlmin.css', CssMinifier::class);
+        $this->app->alias('htmlmin.css', CssMinifier::class);
     }
 
     /**
      * Register the js minifier class.
      *
-     * @param \Illuminate\Contracts\Foundation\Application $app
-     *
      * @return void
      */
-    protected function registerJsMinifier(Application $app)
+    protected function registerJsMinifier()
     {
-        $app->singleton('htmlmin.js', function () {
+        $this->app->singleton('htmlmin.js', function () {
             return new JsMinifier();
         });
 
-        $app->alias('htmlmin.js', JsMinifier::class);
+        $this->app->alias('htmlmin.js', JsMinifier::class);
     }
 
     /**
      * Register the html minifier class.
      *
-     * @param \Illuminate\Contracts\Foundation\Application $app
-     *
      * @return void
      */
-    protected function registerHtmlMinifier(Application $app)
+    protected function registerHtmlMinifier()
     {
-        $app->singleton('htmlmin.html', function ($app) {
+        $this->app->singleton('htmlmin.html', function (Container $app) {
             $css = $app['htmlmin.css'];
             $js = $app['htmlmin.js'];
 
             return new HtmlMinifier($css, $js);
         });
 
-        $app->alias('htmlmin.html', HtmlMinifier::class);
+        $this->app->alias('htmlmin.html', HtmlMinifier::class);
     }
 
     /**
      * Register the blade minifier class.
      *
-     * @param \Illuminate\Contracts\Foundation\Application $app
-     *
      * @return void
      */
-    protected function registerBladeMinifier(Application $app)
+    protected function registerBladeMinifier()
     {
-        $app->singleton('htmlmin.blade', function ($app) {
+        $this->app->singleton('htmlmin.blade', function (Container $app) {
             $force = $app->config->get('htmlmin.force', false);
 
             return new BladeMinifier($force);
         });
 
-        $app->alias('htmlmin.blade', BladeMinifier::class);
+        $this->app->alias('htmlmin.blade', BladeMinifier::class);
     }
 
     /**
      * Register the minify compiler class.
      *
-     * @param \Illuminate\Contracts\Foundation\Application $app
-     *
      * @return void
      */
-    protected function registerMinifyCompiler(Application $app)
+    protected function registerMinifyCompiler()
     {
-        $app->singleton('htmlmin.compiler', function ($app) {
+        $this->app->singleton('htmlmin.compiler', function (Container $app) {
             $blade = $app['htmlmin.blade'];
             $files = $app['files'];
             $storagePath = $app->config->get('view.compiled');
@@ -180,19 +170,17 @@ class HTMLMinServiceProvider extends ServiceProvider
             return new MinifyCompiler($blade, $files, $storagePath);
         });
 
-        $app->alias('htmlmin.compiler', MinifyCompiler::class);
+        $this->app->alias('htmlmin.compiler', MinifyCompiler::class);
     }
 
     /**
      * Register the htmlmin class.
      *
-     * @param \Illuminate\Contracts\Foundation\Application $app
-     *
      * @return void
      */
-    protected function registerHTMLMin(Application $app)
+    protected function registerHTMLMin()
     {
-        $app->singleton('htmlmin', function ($app) {
+        $this->app->singleton('htmlmin', function (Container $app) {
             $blade = $app['htmlmin.blade'];
             $css = $app['htmlmin.css'];
             $js = $app['htmlmin.js'];
@@ -201,7 +189,7 @@ class HTMLMinServiceProvider extends ServiceProvider
             return new HTMLMin($blade, $css, $js, $html);
         });
 
-        $app->alias('htmlmin', HTMLMin::class);
+        $this->app->alias('htmlmin', HTMLMin::class);
     }
 
     /**
