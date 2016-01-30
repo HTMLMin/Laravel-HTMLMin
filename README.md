@@ -6,6 +6,7 @@ Laravel HTMLMin was created by, and is maintained by [Graham Campbell](https://g
 ![Laravel HTMLMin](https://cloud.githubusercontent.com/assets/2829600/4432287/a99460da-468c-11e4-9bda-18345c06b2a5.PNG)
 
 <p align="center">
+<a href="https://styleci.io/repos/12090327"><img src="https://styleci.io/repos/12090327/shield" alt="StyleCI Status"></img></a>
 <a href="https://travis-ci.org/GrahamCampbell/Laravel-HTMLMin"><img src="https://img.shields.io/travis/GrahamCampbell/Laravel-HTMLMin/master.svg?style=flat-square" alt="Build Status"></img></a>
 <a href="https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-HTMLMin/code-structure"><img src="https://img.shields.io/scrutinizer/coverage/g/GrahamCampbell/Laravel-HTMLMin.svg?style=flat-square" alt="Coverage Status"></img></a>
 <a href="https://scrutinizer-ci.com/g/GrahamCampbell/Laravel-HTMLMin"><img src="https://img.shields.io/scrutinizer/g/GrahamCampbell/Laravel-HTMLMin.svg?style=flat-square" alt="Quality Score"></img></a>
