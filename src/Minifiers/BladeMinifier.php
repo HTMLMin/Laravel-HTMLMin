@@ -80,8 +80,42 @@ class BladeMinifier implements MinifierInterface
             return true;
         }
 
-        return !preg_match('/<(code|pre|textarea)/', $value) &&
-            !preg_match('/<script[^\??>]*>[^<\/script>]/', $value) &&
-            !preg_match('/value=("|\')(.*)([ ]{2,})(.*)("|\')/', $value);
+        return !$this->containsBadHtml($value) && !$this->containsBadCommands($value);
+    }
+
+    /**
+     * Does the code contain bad html?
+     *
+     * @param string $value
+     *
+     * @return bool
+     */
+    protected function containsBadHtml($value)
+    {
+        return preg_match('/<(code|pre|textarea)/', $value) ||
+            preg_match('/<script[^\??>]*>[^<\/script>]/', $value) ||
+            preg_match('/value=("|\')(.*)([ ]{2,})(.*)("|\')/', $value);
+    }
+
+    /**
+     * Does the code contain bad comments?
+     *
+     * @param string $value
+     *
+     * @return bool
+     */
+    protected function containsBadComments($value)
+    {
+        foreach (token_get_all($value) as $token) {
+            if (!is_array($token) || !isset($token[0]) || !$token[0] === T_COMMENT) {
+                continue;
+            }
+    
+            if (substr($token[1], 0, 2) === '//') {
+                return true;
+            }
+        }
+    
+        return false;
     }
 }
