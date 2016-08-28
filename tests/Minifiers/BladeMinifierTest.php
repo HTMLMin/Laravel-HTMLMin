@@ -46,13 +46,22 @@ class BladeMinifierTest extends AbstractTestCase
     /**
      * @dataProvider tagProvider
      */
-    public function testRenderDisabled($tag)
+    public function testRenderHtmlDisabled($tag)
     {
         $blade = $this->getBladeMinifier();
 
         $return = $blade->render("test    <$tag></$tag>");
 
         $this->assertSame("test    <$tag></$tag>", $return);
+    }
+
+    public function testRenderCommentDisabled($tag)
+    {
+        $blade = $this->getBladeMinifier();
+
+        $return = $blade->render('test    <?php // foo');
+
+        $this->assertSame('test    <?php // foo', $return);
     }
 
     /**
