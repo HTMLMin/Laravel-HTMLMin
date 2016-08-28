@@ -107,7 +107,7 @@ class BladeMinifier implements MinifierInterface
     protected function containsBadComments($value)
     {
         foreach (token_get_all($value) as $token) {
-            if (!is_array($token) || !isset($token[0]) || !$token[0] === T_COMMENT) {
+            if (!is_array($token) || !isset($token[0]) || $token[0] !== T_COMMENT) {
                 continue;
             }
 
