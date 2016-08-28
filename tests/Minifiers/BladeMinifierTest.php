@@ -55,7 +55,7 @@ class BladeMinifierTest extends AbstractTestCase
         $this->assertSame("test    <$tag></$tag>", $return);
     }
 
-    public function testRenderCommentDisabled($tag)
+    public function testRenderCommentDisabled()
     {
         $blade = $this->getBladeMinifier();
 
