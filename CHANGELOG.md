@@ -2,6 +2,11 @@ CHANGE LOG
 ==========
 
 
+## V4.4 (28/08/2016)
+
+* Skip blade with bad comments
+
+
 ## V4.3 (26/04/2016)
 
 * Added laravel 5.3 support
