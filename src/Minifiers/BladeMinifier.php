@@ -80,7 +80,7 @@ class BladeMinifier implements MinifierInterface
             return true;
         }
 
-        return !$this->containsBadHtml($value) && !$this->containsBadCommands($value);
+        return !$this->containsBadHtml($value) && !$this->containsBadComments($value);
     }
 
     /**
