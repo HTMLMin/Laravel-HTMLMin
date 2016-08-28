@@ -110,12 +110,12 @@ class BladeMinifier implements MinifierInterface
             if (!is_array($token) || !isset($token[0]) || !$token[0] === T_COMMENT) {
                 continue;
             }
-    
+
             if (substr($token[1], 0, 2) === '//') {
                 return true;
             }
         }
-    
+
         return false;
     }
 }
