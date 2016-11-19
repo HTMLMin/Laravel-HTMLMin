@@ -69,13 +69,13 @@ class BladeMinifier implements MinifierInterface
         if ($this->shouldMinify($value)) {
             preg_match_all("/<style[^>]+>(.+?)<\/style>/ims", $value, $matches, PREG_SET_ORDER);
 
-            foreach($matches as $match) {
+            foreach ($matches as $match) {
                 $value = str_replace($match[0], sprintf('<style type="text/css">%s</style>', $this->css->render($match[1])), $value);
             }
 
             preg_match_all("/<script(?![^>]*\bsrc\s*=)[^>]*>(.+?)<\/script>/ims", $value, $matches, PREG_SET_ORDER);
 
-            foreach($matches as $match) {
+            foreach ($matches as $match) {
                 $value = str_replace($match[0], sprintf('<script type="text/javascript">%s</script>', $this->js->render($match[1])), $value);
             }
 
