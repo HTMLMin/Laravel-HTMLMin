@@ -27,15 +27,31 @@ class BladeMinifier implements MinifierInterface
     protected $force;
 
     /**
+     * The css minifier instance.
+     *
+     * @var \GrahamCampbell\HTMLMin\Minifiers\CssMinifier
+     */
+    protected $css;
+
+    /**
+     * The js minifier instance.
+     *
+     * @var \GrahamCampbell\HTMLMin\Minifiers\JsMinifier
+     */
+    protected $js;
+
+    /**
      * Create a new instance.
      *
      * @param bool $force
      *
      * @return void
      */
-    public function __construct($force)
+    public function __construct($force, CssMinifier $css, JsMinifier $js)
     {
         $this->force = $force;
+        $this->css = $css;
+        $this->js = $js;
     }
 
     /**
@@ -51,12 +67,23 @@ class BladeMinifier implements MinifierInterface
     public function render($value)
     {
         if ($this->shouldMinify($value)) {
+            preg_match_all("/<style[^>]+>(.+?)<\/style>/ims", $value, $matches, PREG_SET_ORDER);
+
+            foreach($matches as $match) {
+                $value = str_replace($match[0], sprintf('<style type="text/css">%s</style>', $this->css->render($match[1])), $value);
+            }
+
+            preg_match_all("/<script(?![^>]*\bsrc\s*=)[^>]*>(.+?)<\/script>/ims", $value, $matches, PREG_SET_ORDER);
+
+            foreach($matches as $match) {
+                $value = str_replace($match[0], sprintf('<script type="text/javascript">%s</script>', $this->js->render($match[1])), $value);
+            }
+
             $replace = [
                 '/<!--[^\[](.*?)[^\]]-->/s' => '',
                 "/<\?php/"                  => '<?php ',
-                "/\n([\S])/"                => ' $1',
-                "/\r/"                      => '',
-                "/\n/"                      => '',
+                "/[\r\n]\s+/"               => '',
+                "/[\r\n]/"                  => '', // for specific cases
                 "/\t/"                      => ' ',
                 '/ +/'                      => ' ',
             ];
@@ -93,8 +120,8 @@ class BladeMinifier implements MinifierInterface
     protected function containsBadHtml($value)
     {
         return preg_match('/<(code|pre|textarea)/', $value) ||
-            preg_match('/<script[^\??>]*>[^<\/script>]/', $value) ||
-            preg_match('/value=("|\')(.*)([ ]{2,})(.*)("|\')/', $value);
+               /*preg_match('/<script[^\??>]*>[^<\/script>]/', $value) ||*/
+               preg_match('/value=("|\')(.*)([ ]{2,})(.*)("|\')/', $value);
     }
 
     /**
