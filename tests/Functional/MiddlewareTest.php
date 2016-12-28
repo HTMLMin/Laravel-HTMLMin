@@ -58,9 +58,9 @@ class MiddlewareTest extends AbstractFunctionalTestCase
             return Redirect::to('foo');
         }]);
 
-        $this->call('GET', 'htmlmin-test-route');
+        $response = $this->call('GET', 'htmlmin-test-route');
 
-        $this->assertRedirectedTo('foo');
+        $this->assertSame($this->app->url->to('foo'), $response->headers->get('Location'));
     }
 
     public function testJson()
