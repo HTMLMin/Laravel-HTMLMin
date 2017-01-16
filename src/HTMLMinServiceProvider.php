@@ -148,8 +148,10 @@ class HTMLMinServiceProvider extends ServiceProvider
     {
         $this->app->singleton('htmlmin.blade', function (Container $app) {
             $force = $app->config->get('htmlmin.force', false);
+            $css = $app['htmlmin.css'];
+            $js = $app['htmlmin.js'];
 
-            return new BladeMinifier($force);
+            return new BladeMinifier($force, $css, $js);
         });
 
         $this->app->alias('htmlmin.blade', BladeMinifier::class);
