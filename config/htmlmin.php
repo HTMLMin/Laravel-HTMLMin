@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'blade' => false,
+    'blade' => env('HTMLMIN_BLADE', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -44,6 +44,6 @@ return [
     |
     */
 
-    'force' => false,
+    'force' => env('HTMLMIN_FORCE', false),
 
 ];
