@@ -52,13 +52,10 @@ class BladeMinifier implements MinifierInterface
     {
         if ($this->shouldMinify($value)) {
             $replace = [
-                '/<!--[^\<>[](.*?)[^\<>]]-->/s' => '',
-                "/<\?php/"                  => '<?php ',
-                "/\n([\S])/"                => ' $1',
-                "/\r/"                      => '',
-                "/\n/"                      => '',
-                "/\t/"                      => ' ',
-                '/ +/'                      => ' ',
+                '/<!--[^\[](.*?)[^\]]-->/s' => '',
+                "/(<[\S])[\s]+/"            => '$1 ',
+                '/[\s]+/'                   => ' ',
+                '/>[\s]+</'                 => '><',
             ];
 
             $value = preg_replace(array_keys($replace), array_values($replace), $value);
