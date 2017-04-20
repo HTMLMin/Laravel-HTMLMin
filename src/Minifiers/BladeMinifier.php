@@ -63,6 +63,12 @@ class BladeMinifier implements MinifierInterface
 
             $value = preg_replace(array_keys($replace), array_values($replace), $value);
         }
+        else
+        {
+            // Where skip minification tags are used let's remove them from markdown or blade.
+            $value = preg_replace("/<!--[\s]+skip\.minification[\s]+-->/", '', $value);
+        }
+
 
         return $value;
     }
