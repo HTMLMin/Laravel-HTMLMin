@@ -95,7 +95,7 @@ You may put the `GrahamCampbell\HTMLMin\Http\Middleware\MinifyMiddleware` middle
 
 There are occassions where you will want to 'skip' the minification of certain blade pages. A use case is when you want to skip the minification of the Markdown blades or Email templates because it removes too many spaces which renders the notification unreadable.
 
-Just add 
+Just add the following comment:
 
 ```html
 <!-- skip.minification -->
