@@ -67,7 +67,6 @@ class BladeMinifier implements MinifierInterface
             $value = preg_replace("/<!--[\s]+skip\.minification[\s]+-->/", '', $value);
         }
 
-
         return $value;
     }
 
