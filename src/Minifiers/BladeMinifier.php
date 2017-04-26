@@ -98,6 +98,7 @@ class BladeMinifier implements MinifierInterface
         return preg_match('/<(code|pre|textarea)/', $value) ||
             preg_match('/<script[^\??>]*>[^<\/script>]/', $value) ||
             preg_match('/skip\.minification/', $value) ||
+            preg_match('/Schema::create/', $value) ||
             preg_match('/value=("|\')(.*)([ ]{2,})(.*)("|\')/', $value);
     }
 
