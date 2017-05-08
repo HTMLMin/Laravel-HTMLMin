@@ -37,11 +37,11 @@ class TextareaTest extends AbstractFunctionalTestCase
 
     public function testTextareaAndMore()
     {
-        $this->app->view->addNamespace('stubs', realpath(__DIR__ . '/stubs'));
+        $this->app->view->addNamespace('stubs', realpath(__DIR__.'/stubs'));
 
         $actual = $this->app->view->make('stubs::textarea')->render();
 
-        $expected = file_get_contents(__DIR__ . '/stubs/textarea.txt');
+        $expected = file_get_contents(__DIR__.'/stubs/textarea.txt');
 
         $this->assertSameIgnoreLineEndings($expected, $actual);
     }
