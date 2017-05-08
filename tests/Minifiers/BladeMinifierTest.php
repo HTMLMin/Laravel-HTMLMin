@@ -52,7 +52,8 @@ class BladeMinifierTest extends AbstractTestCase
 
         $return = $blade->render("test    <$tag></$tag>");
 
-        $this->assertSame("test    <$tag></$tag>", $return);
+        // Should resut to true with the new regex
+        $this->assertSame("test <$tag></$tag>", $return);
     }
 
     public function testRenderCommentDisabled()
