@@ -11,6 +11,8 @@
 
 namespace GrahamCampbell\HTMLMin\Minifiers;
 
+use Log;
+
 /**
  * This is the blade minifier class.
  *
@@ -80,7 +82,20 @@ class BladeMinifier implements MinifierInterface
             return true;
         }
 
-        return !$this->containsBadHtml($value) && !$this->containsBadComments($value);
+        if($this->containsBadHtml($value))
+        {
+            Log::warning('Contains Bad Html');
+            return false;
+        }
+        elseif($this->containsBadComments($value))
+        {
+            Log::warning('Contains Bad Comments');
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 
     /**
