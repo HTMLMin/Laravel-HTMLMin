@@ -148,8 +148,9 @@ class HTMLMinServiceProvider extends ServiceProvider
     {
         $this->app->singleton('htmlmin.blade', function (Container $app) {
             $force = $app->config->get('htmlmin.force', false);
+            $ignoredPaths = $app->config->get('htmlmin.ignore', []);
 
-            return new BladeMinifier($force);
+            return new BladeMinifier($force, $ignoredPaths);
         });
 
         $this->app->alias('htmlmin.blade', BladeMinifier::class);

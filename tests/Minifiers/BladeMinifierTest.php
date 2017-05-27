@@ -76,8 +76,8 @@ class BladeMinifierTest extends AbstractTestCase
         $this->assertSame("test <$tag></$tag>", $return);
     }
 
-    protected function getBladeMinifier($force = false)
+    protected function getBladeMinifier($force = false, $ignorePaths = [])
     {
-        return new BladeMinifier($force);
+        return new BladeMinifier($force, $ignorePaths);
     }
 }

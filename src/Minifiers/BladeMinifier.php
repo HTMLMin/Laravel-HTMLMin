@@ -27,15 +27,24 @@ class BladeMinifier implements MinifierInterface
     protected $force;
 
     /**
+     * Paths, which should not be minified.
+     *
+     * @var bool
+     */
+    public $ignoredPaths;
+
+    /**
      * Create a new instance.
      *
      * @param bool $force
+     * @param array $ignoredPaths
      *
      * @return void
      */
-    public function __construct($force)
+    public function __construct($force, $ignoredPaths)
     {
         $this->force = $force;
+        $this->ignoredPaths = $ignoredPaths;
     }
 
     /**

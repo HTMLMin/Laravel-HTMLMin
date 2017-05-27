@@ -46,4 +46,20 @@ return [
 
     'force' => false,
 
+    /*
+    |--------------------------------------------------------------------------
+    | Ignore Blade Files
+    |--------------------------------------------------------------------------
+    |
+    | Here you can specify paths, which you don't want to minimize, for example
+    | e-mails or markdowns.
+    |
+    | Default: ['resources/views/emails']
+    |
+    */
+
+    'ignore' => [
+        'resources/views/emails'
+    ],
+
 ];

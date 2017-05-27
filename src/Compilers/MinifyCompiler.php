@@ -54,6 +54,14 @@ class MinifyCompiler extends BladeCompiler
      */
     public function compileMinify($value)
     {
+        if ($this->blade->ignoredPaths) {
+            foreach ($this->blade->ignoredPaths as $path) {
+                if (strpos($this->getPath(), $path) !== false) {
+                    return $value;
+                }
+            }
+        }
+
         return $this->blade->render($value);
     }
 
