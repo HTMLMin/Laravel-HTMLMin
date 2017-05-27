@@ -29,7 +29,7 @@ class BladeMinifier implements MinifierInterface
     /**
      * Create a new instance.
      *
-     * @param bool  $force
+     * @param bool $force
      *
      * @return void
      */
