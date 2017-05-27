@@ -36,7 +36,7 @@ class BladeMinifier implements MinifierInterface
     /**
      * Create a new instance.
      *
-     * @param bool $force
+     * @param bool  $force
      * @param array $ignoredPaths
      *
      * @return void
