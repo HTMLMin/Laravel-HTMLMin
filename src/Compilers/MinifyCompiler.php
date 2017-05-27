@@ -30,18 +30,27 @@ class MinifyCompiler extends BladeCompiler
     protected $blade;
 
     /**
+     * The ignored paths.
+     *
+     * @var string
+     */
+    protected $ignoredPaths;
+
+    /**
      * Create a new instance.
      *
      * @param \GrahamCampbell\HTMLMin\Minifiers\BladeMinifier $blade
+     * @param array                                           $ignoredPaths
      * @param \Illuminate\Filesystem\Filesystem               $files
      * @param string                                          $cachePath
      *
      * @return void
      */
-    public function __construct(BladeMinifier $blade, Filesystem $files, $cachePath)
+    public function __construct(BladeMinifier $blade, $ignoredPaths, Filesystem $files, $cachePath)
     {
         parent::__construct($files, $cachePath);
         $this->blade = $blade;
+        $this->ignoredPaths = $ignoredPaths;
         $this->compilers[] = 'Minify';
     }
 
@@ -54,10 +63,10 @@ class MinifyCompiler extends BladeCompiler
      */
     public function compileMinify($value)
     {
-        if ($this->blade->ignoredPaths) {
+        if ($this->ignoredPaths) {
             $path = str_replace('\\', '/', $this->getPath());
 
-            foreach ($this->blade->ignoredPaths as $ignoredPath) {
+            foreach ($this->ignoredPaths as $ignoredPath) {
                 if (strpos($path, $ignoredPath) !== false) {
                     return $value;
                 }

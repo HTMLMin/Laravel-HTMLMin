@@ -41,13 +41,12 @@ class MinifyCompilerTest extends AbstractTestCase
         $blade = Mockery::mock(BladeMinifier::class);
         $files = Mockery::mock(Filesystem::class);
 
-        $compiler = Mockery::mock(MinifyCompiler::class, [$blade, $files, __DIR__])
+        $compiler = Mockery::mock(MinifyCompiler::class, [$blade, ['stubs'], $files, __DIR__])
             ->makePartial();
 
         $compiler->shouldReceive('getPath')
             ->andReturn('stubs/index.blade.php');
 
-        $blade->ignoredPaths = ['stubs'];
         $blade->shouldReceive('render')
             ->never();
 
@@ -66,12 +65,12 @@ class MinifyCompilerTest extends AbstractTestCase
         $this->assertInArray('Minify', $compilers);
     }
 
-    protected function getCompiler()
+    protected function getCompiler($ignoredPaths = [])
     {
         $blade = Mockery::mock(BladeMinifier::class);
         $files = Mockery::mock(Filesystem::class);
         $cachePath = __DIR__;
 
-        return new MinifyCompiler($blade, $files, $cachePath);
+        return new MinifyCompiler($blade, $ignoredPaths, $files, $cachePath);
     }
 }
