@@ -71,6 +71,6 @@ class MinifyCompilerTest extends AbstractTestCase
         $files = Mockery::mock(Filesystem::class);
         $cachePath = __DIR__;
 
-        return new MinifyCompiler($blade, $ignoredPaths, $files, $cachePath);
+        return new MinifyCompiler($blade, $files, $cachePath, $ignoredPaths);
     }
 }
