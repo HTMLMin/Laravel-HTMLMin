@@ -54,12 +54,15 @@ return [
     | Here you can specify paths, which you don't want to minimize, for example
     | e-mails or markdowns.
     |
-    | Default: ['resources/views/emails']
+    | Default: ['/emails/', '/html/', '/notifications/', '/markdown/']
     |
     */
 
     'ignore' => [
-        'resources/views/emails',
+        '/emails/',
+        '/html/',
+        '/notifications/',
+        '/markdown/',
     ],
 
 ];
