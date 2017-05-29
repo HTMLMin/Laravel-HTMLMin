@@ -22,6 +22,7 @@ class SkipMinificationTest extends AbstractFunctionalTestCase
 {
     /**
      * Setup the application environment.
+     *
      * Ensure that blade is on.
      *
      * @param \Illuminate\Contracts\Foundation\Application $app

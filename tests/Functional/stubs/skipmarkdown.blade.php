@@ -8,4 +8,5 @@ hello world!
 * three
 
 skip minification
+
 <!-- skip.minification -->

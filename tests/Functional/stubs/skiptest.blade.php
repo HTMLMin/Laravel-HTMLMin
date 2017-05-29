@@ -19,5 +19,6 @@
         <p>A simple HTML minifier for Laravel 5</p>
     </div>
 </body>
+
 </html>
 <!-- skip.minification -->
