@@ -91,6 +91,19 @@ This interface defines the public method a minifier class must implement. Such a
 
 You may put the `GrahamCampbell\HTMLMin\Http\Middleware\MinifyMiddleware` middleware in front of your routes to live minify them. Note that this middleware allows you to achieve maximal results, though at a performance cost because of it running on each request instead of once like the built in blade minification. It may be useful for you to take a look at the [source](https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/src/Http/Middleware/MinifyMiddleware.php) for this, read the [tests](https://github.com/GrahamCampbell/Laravel-HTMLMin/blob/master/tests/Functional/MiddlewareTest.php), or check out Laravel's [documentation](http://laravel.com/docs/5.1/middleware) if you need to.
 
+##### Skipping Minification
+
+There are occassions where you will want to 'skip' the minification of certain blade pages. A use case is when you want to skip the minification of the Markdown blades or Email templates because it removes too many spaces which renders the notification unreadable.
+
+Just add the following comment:
+
+```html
+<!-- skip.minification -->
+```
+to each blade file to skip the minification. 
+
+Please note that if you use (`'force'`) option in the config it will not work.
+
 ##### HTMLMinServiceProvider
 
 This class contains no public methods of interest. This class should be added to the providers array in `config/app.php`. This class will setup ioc bindings and register automatic blade minification based on the config.
