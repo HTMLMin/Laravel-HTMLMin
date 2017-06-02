@@ -41,7 +41,7 @@ class MinifyCompilerTest extends AbstractTestCase
         $blade = Mockery::mock(BladeMinifier::class);
         $files = Mockery::mock(Filesystem::class);
 
-        $compiler = Mockery::mock(MinifyCompiler::class, [$blade, ['stubs'], $files, __DIR__])
+        $compiler = Mockery::mock(MinifyCompiler::class, [$blade, $files, __DIR__, ['stubs']])
             ->makePartial();
 
         $compiler->shouldReceive('getPath')
