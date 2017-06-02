@@ -56,7 +56,7 @@ $ php artisan vendor:publish
 
 This will create a `config/htmlmin.php` file in your app that you can modify to set your configuration. Also, make sure you check for changes to the original config file in this package between releases.
 
-There are two config options:
+There are three config options:
 
 ##### Automatic Blade Optimizations
 
@@ -65,6 +65,10 @@ This option (`'blade'`) enables minification of the blade views as they are comp
 ##### Force Blade Optimizations
 
 This option (`'force'`) forces blade minification on views where there such minification may be dangerous. This should only be used if you are fully aware of the potential issues this may cause. Obviously, this setting is dependent on blade minification actually being enabled. The default value for this setting is `false`.
+
+##### Ignore Blade Files
+
+This option (`'ignore'`) is where you can specify paths, which you don't want to minify. A sensible default for this setting is provided.
 
 
 ## Usage
@@ -93,14 +97,13 @@ You may put the `GrahamCampbell\HTMLMin\Http\Middleware\MinifyMiddleware` middle
 
 ##### Skipping Minification
 
-There are occassions where you will want to 'skip' the minification of certain blade pages. A use case is when you want to skip the minification of the Markdown blades or Email templates because it removes too many spaces which renders the notification unreadable.
+As well as being to skip folders using the (`'ignore'`) config, there are occassions where you will want to 'skip' single files.
 
-Just add the following comment:
+Just add the following comment to each file you want to skip:
 
 ```html
 <!-- skip.minification -->
 ```
-to each blade file to skip the minification. 
 
 Please note that if you use (`'force'`) option in the config it will not work.
 
