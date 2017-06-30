@@ -40,6 +40,14 @@
     "extra": {
         "branch-alias": {
             "dev-master": "4.5-dev"
+        },
+        "laravel": {
+            "providers": [
+                "GrahamCampbell\\HTMLMin\\HTMLMinServiceProvider"
+            ],
+            "aliases": {
+                "HTMLMin": "GrahamCampbell\\HTMLMin\\Facades\\HTMLMin"
+            }
         }
     },
     "minimum-stability": "dev",
