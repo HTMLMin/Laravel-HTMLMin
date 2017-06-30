@@ -25,7 +25,7 @@ To get the latest version, simply require the project using [Composer](https://g
 $ composer require graham-campbell/htmlmin
 ```
 
-Once installed, you need to register the `GrahamCampbell\HTMLMin\HTMLMinServiceProvide` service provider in your `config/app.php`, and optionally alias our facade:
+Once installed, you need to register the `GrahamCampbell\HTMLMin\HTMLMinServiceProvider` service provider in your `config/app.php`, and optionally alias our facade:
 
 ```php
         'HTMLMin' => GrahamCampbell\HTMLMin\Facades\HTMLMin::class,
