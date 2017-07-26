@@ -12,9 +12,9 @@
 
 namespace HTMLMin\Tests\HTMLMin\Compilers;
 
+use GrahamCampbell\TestBench\AbstractTestCase;
 use HTMLMin\HTMLMin\Compilers\MinifyCompiler;
 use HTMLMin\HTMLMin\Minifiers\BladeMinifier;
-use GrahamCampbell\TestBench\AbstractTestCase;
 use Illuminate\Filesystem\Filesystem;
 use Mockery;
 

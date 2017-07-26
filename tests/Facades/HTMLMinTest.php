@@ -12,9 +12,9 @@
 
 namespace HTMLMin\Tests\HTMLMin\Facades;
 
+use GrahamCampbell\TestBenchCore\FacadeTrait;
 use HTMLMin\HTMLMin\Facades\HTMLMin as Facade;
 use HTMLMin\HTMLMin\HTMLMin;
-use GrahamCampbell\TestBenchCore\FacadeTrait;
 use HTMLMin\Tests\HTMLMin\AbstractTestCase;
 
 /**

@@ -12,10 +12,10 @@
 
 namespace HTMLMin\Tests\HTMLMin\Minifiers;
 
+use GrahamCampbell\TestBench\AbstractTestCase;
 use HTMLMin\HTMLMin\Minifiers\CssMinifier;
 use HTMLMin\HTMLMin\Minifiers\HtmlMinifier;
 use HTMLMin\HTMLMin\Minifiers\JsMinifier;
-use GrahamCampbell\TestBench\AbstractTestCase;
 use Mockery;
 
 /**

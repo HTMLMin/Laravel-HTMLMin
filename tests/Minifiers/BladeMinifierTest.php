@@ -12,8 +12,8 @@
 
 namespace HTMLMin\Tests\HTMLMin\Minifiers;
 
-use HTMLMin\HTMLMin\Minifiers\BladeMinifier;
 use GrahamCampbell\TestBench\AbstractTestCase;
+use HTMLMin\HTMLMin\Minifiers\BladeMinifier;
 
 /**
  * This is the blade minifier test class.

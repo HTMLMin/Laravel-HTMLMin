@@ -41,9 +41,9 @@ class MinifyCompiler extends BladeCompiler
      * Create a new instance.
      *
      * @param \HTMLMin\HTMLMin\Minifiers\BladeMinifier $blade
-     * @param \Illuminate\Filesystem\Filesystem               $files
-     * @param string                                          $cachePath
-     * @param array                                           $ignoredPaths
+     * @param \Illuminate\Filesystem\Filesystem        $files
+     * @param string                                   $cachePath
+     * @param array                                    $ignoredPaths
      *
      * @return void
      */

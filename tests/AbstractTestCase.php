@@ -12,8 +12,8 @@
 
 namespace HTMLMin\Tests\HTMLMin;
 
-use HTMLMin\HTMLMin\HTMLMinServiceProvider;
 use GrahamCampbell\TestBench\AbstractPackageTestCase;
+use HTMLMin\HTMLMin\HTMLMinServiceProvider;
 
 /**
  * This is the abstract test case class.

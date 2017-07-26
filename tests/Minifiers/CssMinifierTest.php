@@ -12,8 +12,8 @@
 
 namespace HTMLMin\Tests\HTMLMin\Minifiers;
 
-use HTMLMin\HTMLMin\Minifiers\CssMinifier;
 use GrahamCampbell\TestBench\AbstractTestCase;
+use HTMLMin\HTMLMin\Minifiers\CssMinifier;
 
 /**
  * This is the css minifier test class.

@@ -12,13 +12,13 @@
 
 namespace HTMLMin\Tests\HTMLMin;
 
+use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 use HTMLMin\HTMLMin\Compilers\MinifyCompiler;
 use HTMLMin\HTMLMin\HTMLMin;
 use HTMLMin\HTMLMin\Minifiers\BladeMinifier;
 use HTMLMin\HTMLMin\Minifiers\CssMinifier;
 use HTMLMin\HTMLMin\Minifiers\HtmlMinifier;
 use HTMLMin\HTMLMin\Minifiers\JsMinifier;
-use GrahamCampbell\TestBenchCore\ServiceProviderTrait;
 
 /**
  * This is the service provider test class.

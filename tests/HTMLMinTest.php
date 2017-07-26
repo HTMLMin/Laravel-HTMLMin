@@ -12,12 +12,12 @@
 
 namespace HTMLMin\Tests\HTMLMin;
 
+use GrahamCampbell\TestBench\AbstractTestCase as AbstractTestBenchTestCase;
 use HTMLMin\HTMLMin\HTMLMin;
 use HTMLMin\HTMLMin\Minifiers\BladeMinifier;
 use HTMLMin\HTMLMin\Minifiers\CssMinifier;
 use HTMLMin\HTMLMin\Minifiers\HtmlMinifier;
 use HTMLMin\HTMLMin\Minifiers\JsMinifier;
-use GrahamCampbell\TestBench\AbstractTestCase as AbstractTestBenchTestCase;
 use Mockery;
 
 /**
