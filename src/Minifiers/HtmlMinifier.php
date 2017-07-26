@@ -4,12 +4,13 @@
  * This file is part of Laravel HTMLMin.
  *
  * (c) Graham Campbell <graham@alt-three.com>
+ * (c) Raza Mehdi <srmk@outlook.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace GrahamCampbell\HTMLMin\Minifiers;
+namespace HTMLMin\HTMLMin\Minifiers;
 
 use Minify_HTML;
 
@@ -23,22 +24,22 @@ class HtmlMinifier implements MinifierInterface
     /**
      * The css minifier instance.
      *
-     * @var \GrahamCampbell\HTMLMin\Minifiers\CssMinifier
+     * @var \HTMLMin\HTMLMin\Minifiers\CssMinifier
      */
     protected $css;
 
     /**
      * The js minifier instance.
      *
-     * @var \GrahamCampbell\HTMLMin\Minifiers\JsMinifier
+     * @var \HTMLMin\HTMLMin\Minifiers\JsMinifier
      */
     protected $js;
 
     /**
      * Create a new instance.
      *
-     * @param \GrahamCampbell\HTMLMin\Minifiers\CssMinifier $css
-     * @param \GrahamCampbell\HTMLMin\Minifiers\JsMinifier  $js
+     * @param \HTMLMin\HTMLMin\Minifiers\CssMinifier $css
+     * @param \HTMLMin\HTMLMin\Minifiers\JsMinifier  $js
      *
      * @return void
      */
@@ -73,7 +74,7 @@ class HtmlMinifier implements MinifierInterface
     /**
      * Return the css minifier instance.
      *
-     * @return \GrahamCampbell\HTMLMin\Minifiers\CssMinifier
+     * @return \HTMLMin\HTMLMin\Minifiers\CssMinifier
      */
     public function getCssMinifier()
     {
@@ -83,7 +84,7 @@ class HtmlMinifier implements MinifierInterface
     /**
      * Return the js minifier instance.
      *
-     * @return \GrahamCampbell\HTMLMin\Minifiers\JsMinifier
+     * @return \HTMLMin\HTMLMin\Minifiers\JsMinifier
      */
     public function getJsMinifier()
     {

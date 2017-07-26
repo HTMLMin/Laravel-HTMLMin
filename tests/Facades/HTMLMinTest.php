@@ -4,17 +4,18 @@
  * This file is part of Laravel HTMLMin.
  *
  * (c) Graham Campbell <graham@alt-three.com>
+ * (c) Raza Mehdi <srmk@outlook.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace GrahamCampbell\Tests\HTMLMin\Facades;
+namespace HTMLMin\Tests\HTMLMin\Facades;
 
-use GrahamCampbell\HTMLMin\Facades\HTMLMin as Facade;
-use GrahamCampbell\HTMLMin\HTMLMin;
+use HTMLMin\HTMLMin\Facades\HTMLMin as Facade;
+use HTMLMin\HTMLMin\HTMLMin;
 use GrahamCampbell\TestBenchCore\FacadeTrait;
-use GrahamCampbell\Tests\HTMLMin\AbstractTestCase;
+use HTMLMin\Tests\HTMLMin\AbstractTestCase;
 
 /**
  * This is the htmlmin facade test class.

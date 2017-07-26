@@ -4,18 +4,19 @@
  * This file is part of Laravel HTMLMin.
  *
  * (c) Graham Campbell <graham@alt-three.com>
+ * (c) Raza Mehdi <srmk@outlook.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace GrahamCampbell\HTMLMin;
+namespace HTMLMin\HTMLMin;
 
-use GrahamCampbell\HTMLMin\Compilers\MinifyCompiler;
-use GrahamCampbell\HTMLMin\Minifiers\BladeMinifier;
-use GrahamCampbell\HTMLMin\Minifiers\CssMinifier;
-use GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier;
-use GrahamCampbell\HTMLMin\Minifiers\JsMinifier;
+use HTMLMin\HTMLMin\Compilers\MinifyCompiler;
+use HTMLMin\HTMLMin\Minifiers\BladeMinifier;
+use HTMLMin\HTMLMin\Minifiers\CssMinifier;
+use HTMLMin\HTMLMin\Minifiers\HtmlMinifier;
+use HTMLMin\HTMLMin\Minifiers\JsMinifier;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Foundation\Application as LaravelApplication;
 use Illuminate\Support\ServiceProvider;

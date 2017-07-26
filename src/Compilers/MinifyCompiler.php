@@ -4,14 +4,15 @@
  * This file is part of Laravel HTMLMin.
  *
  * (c) Graham Campbell <graham@alt-three.com>
+ * (c) Raza Mehdi <srmk@outlook.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace GrahamCampbell\HTMLMin\Compilers;
+namespace HTMLMin\HTMLMin\Compilers;
 
-use GrahamCampbell\HTMLMin\Minifiers\BladeMinifier;
+use HTMLMin\HTMLMin\Minifiers\BladeMinifier;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\View\Compilers\BladeCompiler;
 
@@ -25,7 +26,7 @@ class MinifyCompiler extends BladeCompiler
     /**
      * The blade minifier instance.
      *
-     * @var \GrahamCampbell\HTMLMin\Minifiers\BladeMinifier
+     * @var \HTMLMin\HTMLMin\Minifiers\BladeMinifier
      */
     protected $blade;
 
@@ -39,7 +40,7 @@ class MinifyCompiler extends BladeCompiler
     /**
      * Create a new instance.
      *
-     * @param \GrahamCampbell\HTMLMin\Minifiers\BladeMinifier $blade
+     * @param \HTMLMin\HTMLMin\Minifiers\BladeMinifier $blade
      * @param \Illuminate\Filesystem\Filesystem               $files
      * @param string                                          $cachePath
      * @param array                                           $ignoredPaths
@@ -89,7 +90,7 @@ class MinifyCompiler extends BladeCompiler
     /**
      * Return the blade minifier instance.
      *
-     * @return \GrahamCampbell\HTMLMin\Minifiers\BladeMinifier
+     * @return \HTMLMin\HTMLMin\Minifiers\BladeMinifier
      */
     public function getBladeMinifier()
     {

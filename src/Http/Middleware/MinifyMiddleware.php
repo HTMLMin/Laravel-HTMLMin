@@ -4,15 +4,16 @@
  * This file is part of Laravel HTMLMin.
  *
  * (c) Graham Campbell <graham@alt-three.com>
+ * (c) Raza Mehdi <srmk@outlook.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace GrahamCampbell\HTMLMin\Http\Middleware;
+namespace HTMLMin\HTMLMin\Http\Middleware;
 
 use Closure;
-use GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier;
+use HTMLMin\HTMLMin\Minifiers\HtmlMinifier;
 use Illuminate\Http\Response;
 
 /**
@@ -25,14 +26,14 @@ class MinifyMiddleware
     /**
      * The html minifier instance.
      *
-     * @var \GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier
+     * @var \HTMLMin\HTMLMin\Minifiers\HtmlMinifier
      */
     protected $html;
 
     /**
      * Create a new minify middleware instance.
      *
-     * @param \GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier $html
+     * @param \HTMLMin\HTMLMin\Minifiers\HtmlMinifier $html
      *
      * @return void
      */

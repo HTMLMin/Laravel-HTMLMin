@@ -4,15 +4,16 @@
  * This file is part of Laravel HTMLMin.
  *
  * (c) Graham Campbell <graham@alt-three.com>
+ * (c) Raza Mehdi <srmk@outlook.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace GrahamCampbell\Tests\HTMLMin\Compilers;
+namespace HTMLMin\Tests\HTMLMin\Compilers;
 
-use GrahamCampbell\HTMLMin\Compilers\MinifyCompiler;
-use GrahamCampbell\HTMLMin\Minifiers\BladeMinifier;
+use HTMLMin\HTMLMin\Compilers\MinifyCompiler;
+use HTMLMin\HTMLMin\Minifiers\BladeMinifier;
 use GrahamCampbell\TestBench\AbstractTestCase;
 use Illuminate\Filesystem\Filesystem;
 use Mockery;

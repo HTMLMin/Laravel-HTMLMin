@@ -4,14 +4,15 @@
  * This file is part of Laravel HTMLMin.
  *
  * (c) Graham Campbell <graham@alt-three.com>
+ * (c) Raza Mehdi <srmk@outlook.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace GrahamCampbell\Tests\HTMLMin\Functional;
+namespace HTMLMin\Tests\HTMLMin\Functional;
 
-use GrahamCampbell\HTMLMin\Http\Middleware\MinifyMiddleware;
+use HTMLMin\HTMLMin\Http\Middleware\MinifyMiddleware;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Response;

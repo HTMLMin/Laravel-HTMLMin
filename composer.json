@@ -1,12 +1,16 @@
 {
-    "name": "graham-campbell/htmlmin",
+    "name": "htmlmin/htmlmin",
     "description": "HTMLMin Is A Simple HTML Minifier For Laravel 5",
-    "keywords": ["laravel", "framework", "html minifier", "html", "minifier", "HTMLMin", "Laravel HTMLMin", "Laravel-HTMLMin", "Graham Campbell", "GrahamCampbell"],
+    "keywords": ["laravel", "framework", "html minifier", "html", "minifier", "HTMLMin", "Laravel HTMLMin", "Laravel-HTMLMin"],
     "license": "MIT",
     "authors": [
         {
             "name": "Graham Campbell",
             "email": "graham@alt-three.com"
+        },
+        {
+            "name": "Raza Mehdi",
+            "email": "srmk@outlook.com"
         }
     ],
     "require": {
@@ -26,12 +30,12 @@
     },
     "autoload": {
         "psr-4": {
-            "GrahamCampbell\\HTMLMin\\": "src/"
+            "HTMLMin\\HTMLMin\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "GrahamCampbell\\Tests\\HTMLMin\\": "tests/"
+            "HTMLMin\\Tests\\HTMLMin\\": "tests/"
         }
     },
     "config": {
@@ -39,7 +43,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "4.5-dev"
+            "dev-master": "5.0-dev"
         }
     },
     "minimum-stability": "dev",

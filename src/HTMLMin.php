@@ -4,17 +4,18 @@
  * This file is part of Laravel HTMLMin.
  *
  * (c) Graham Campbell <graham@alt-three.com>
+ * (c) Raza Mehdi <srmk@outlook.com>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
 
-namespace GrahamCampbell\HTMLMin;
+namespace HTMLMin\HTMLMin;
 
-use GrahamCampbell\HTMLMin\Minifiers\BladeMinifier;
-use GrahamCampbell\HTMLMin\Minifiers\CssMinifier;
-use GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier;
-use GrahamCampbell\HTMLMin\Minifiers\JsMinifier;
+use HTMLMin\HTMLMin\Minifiers\BladeMinifier;
+use HTMLMin\HTMLMin\Minifiers\CssMinifier;
+use HTMLMin\HTMLMin\Minifiers\HtmlMinifier;
+use HTMLMin\HTMLMin\Minifiers\JsMinifier;
 
 /**
  * This is the htmlmin class.
@@ -26,38 +27,38 @@ class HTMLMin
     /**
      * The blade minifier instance.
      *
-     * @var \GrahamCampbell\HTMLMin\Minifiers\BladeMinifier
+     * @var \HTMLMin\HTMLMin\Minifiers\BladeMinifier
      */
     protected $blade;
 
     /**
      * The css minifier instance.
      *
-     * @var \GrahamCampbell\HTMLMin\Minifiers\CssMinifier
+     * @var \HTMLMin\HTMLMin\Minifiers\CssMinifier
      */
     protected $css;
 
     /**
      * The js minifier instance.
      *
-     * @var \GrahamCampbell\HTMLMin\Minifiers\JsMinifier
+     * @var \HTMLMin\HTMLMin\Minifiers\JsMinifier
      */
     protected $js;
 
     /**
      * The html minifier instance.
      *
-     * @var \GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier
+     * @var \HTMLMin\HTMLMin\Minifiers\HtmlMinifier
      */
     protected $html;
 
     /**
      * Create a new instance.
      *
-     * @param \GrahamCampbell\HTMLMin\Minifiers\BladeMinifier $blade
-     * @param \GrahamCampbell\HTMLMin\Minifiers\CssMinifier   $css
-     * @param \GrahamCampbell\HTMLMin\Minifiers\JsMinifier    $js
-     * @param \GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier  $html
+     * @param \HTMLMin\HTMLMin\Minifiers\BladeMinifier $blade
+     * @param \HTMLMin\HTMLMin\Minifiers\CssMinifier   $css
+     * @param \HTMLMin\HTMLMin\Minifiers\JsMinifier    $js
+     * @param \HTMLMin\HTMLMin\Minifiers\HtmlMinifier  $html
      *
      * @return void
      */
@@ -120,7 +121,7 @@ class HTMLMin
     /**
      * Return the blade minifier instance.
      *
-     * @return \GrahamCampbell\HTMLMin\Minifiers\BladeMinifier
+     * @return \HTMLMin\HTMLMin\Minifiers\BladeMinifier
      */
     public function getBladeMinifier()
     {
@@ -130,7 +131,7 @@ class HTMLMin
     /**
      * Return the css minifier instance.
      *
-     * @return \GrahamCampbell\HTMLMin\Minifiers\CssMinifier
+     * @return \HTMLMin\HTMLMin\Minifiers\CssMinifier
      */
     public function getCssMinifier()
     {
@@ -140,7 +141,7 @@ class HTMLMin
     /**
      * Return the js minifier instance.
      *
-     * @return \GrahamCampbell\HTMLMin\Minifiers\JsMinifier
+     * @return \HTMLMin\HTMLMin\Minifiers\JsMinifier
      */
     public function getJsMinifier()
     {
@@ -150,7 +151,7 @@ class HTMLMin
     /**
      * Return the html minifier instance.
      *
-     * @return \GrahamCampbell\HTMLMin\Minifiers\HtmlMinifier
+     * @return \HTMLMin\HTMLMin\Minifiers\HtmlMinifier
      */
     public function getHtmlMinifier()
     {
