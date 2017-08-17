@@ -81,7 +81,7 @@ You may put the `HTMLMin\HTMLMin\Http\Middleware\MinifyMiddleware` middleware in
 
 ##### Skipping Minification
 
-As well as being to skip folders using the (`'ignore'`) config, there are occasions where you will want to 'skip' single files.
+As well as being able to skip folders using the (`'ignore'`) config, there are occasions where you will want to 'skip' single files.
 
 Just add the following comment to each file you want to skip:
 
