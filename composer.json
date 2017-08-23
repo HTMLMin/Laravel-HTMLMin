@@ -47,10 +47,10 @@
         },
         "laravel": {
           "providers": [
-            "GrahamCampbell\\HTMLMin\\HTMLMinServiceProvider"
+            "HTMLMin\\HTMLMin\\HTMLMinServiceProvider"
           ],
           "aliases": {
-            "HTMLMin": "GrahamCampbell\\HTMLMin\\Facades\\HTMLMin"
+            "HTMLMin": "HTMLMin\\HTMLMin\\Facades\\HTMLMin"
           }
         }
     },
