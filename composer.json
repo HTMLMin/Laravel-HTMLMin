@@ -15,12 +15,12 @@
     ],
     "require": {
         "php": ">=5.5.9",
-        "illuminate/contracts": "5.1.*|5.2.*|5.3.*|5.4.*",
-        "illuminate/filesystem": "5.1.*|5.2.*|5.3.*|5.4.*",
-        "illuminate/http": "5.1.*|5.2.*|5.3.*|5.4.*",
-        "illuminate/routing": "5.1.*|5.2.*|5.3.*|5.4.*",
-        "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*",
-        "illuminate/view": "5.1.*|5.2.*|5.3.*|5.4.*",
+        "illuminate/contracts": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*",
+        "illuminate/filesystem": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*",
+        "illuminate/http": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*",
+        "illuminate/routing": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*",
+        "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*",
+        "illuminate/view": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*",
         "mrclay/minify": "^2.2"
     },
     "require-dev": {
@@ -44,6 +44,14 @@
     "extra": {
         "branch-alias": {
             "dev-master": "5.0-dev"
+        },
+        "laravel": {
+          "providers": [
+            "GrahamCampbell\\HTMLMin\\HTMLMinServiceProvider"
+          ],
+          "aliases": {
+            "HTMLMin": "GrahamCampbell\\HTMLMin\\Facades\\HTMLMin"
+          }
         }
     },
     "minimum-stability": "dev",
