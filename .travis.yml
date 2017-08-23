@@ -52,9 +52,6 @@ matrix:
     - php: hhvm
       env: LARAVEL_VERSION=5.4.*
       dist: trusty
-    - php: hhvm
-      env: LARAVEL_VERSION=5.5.*
-      dist: trusty
 
 before_install:
   - if [[ $TRAVIS_PHP_VERSION =~ ^hhvm ]]; then echo 'hhvm.jit = false' >> /etc/hhvm/php.ini ; fi
