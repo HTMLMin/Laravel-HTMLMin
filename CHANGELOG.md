@@ -1,6 +1,10 @@
 CHANGE LOG
 ==========
 
+## V4.5.1 (23/08/2017)
+
+* Added laravel 5.5 support
+
 
 ## V4.5 (01/01/2017)
 
