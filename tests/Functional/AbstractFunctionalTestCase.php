@@ -22,18 +22,6 @@ use HTMLMin\Tests\HTMLMin\AbstractTestCase;
 abstract class AbstractFunctionalTestCase extends AbstractTestCase
 {
     /**
-     * @before
-     */
-    public function setUpStorage()
-    {
-        $files = glob(storage_path('framework/views/*'));
-
-        foreach ($files as $file) {
-            @unlink($file);
-        }
-    }
-
-    /**
      * Normalise eol characters in a string.
      *
      * @param string $string
