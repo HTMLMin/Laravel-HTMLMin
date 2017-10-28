@@ -60,6 +60,7 @@ class BladeMinifier implements MinifierInterface
                 "/\n/"                      => '',
                 "/\t/"                      => ' ',
                 '/ +/'                      => ' ',
+                "/> *?</"                   => '><',
             ];
 
             $value = preg_replace(array_keys($replace), array_values($replace), $value);
