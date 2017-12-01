@@ -38,6 +38,7 @@ class HTMLMinServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->setupConfig();
+        $this->app['htmlmin.compiler']->setCustomDirectives($this->app['blade.compiler']->getCustomDirectives());
 
         if ($this->app->config->get('htmlmin.blade')) {
             $this->enableBladeOptimisations();
