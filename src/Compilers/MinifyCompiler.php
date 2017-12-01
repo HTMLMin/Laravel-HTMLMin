@@ -96,4 +96,9 @@ class MinifyCompiler extends BladeCompiler
     {
         return $this->blade;
     }
+
+    public function setCustomDirectives($value)
+    {
+        $this->customDirectives = $value;
+    }
 }
