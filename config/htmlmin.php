@@ -65,6 +65,8 @@ return [
         'resources/views/vendor/html',
         'resources/views/vendor/notifications',
         'resources/views/vendor/markdown',
+        'vendor/laravel/framework/src/Illuminate/Mail/resources/views',
+        'vendor/laravel/framework/src/Illuminate/Notification/resources/views',
     ],
 
 ];
