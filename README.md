@@ -21,6 +21,12 @@ To get the latest version, simply require the project using [Composer](https://g
 $ composer require htmlmin/htmlmin
 ```
 
+### Laravel 5.4 or lower
+Once installed, you need to register the `HTMLMin\HTMLMin\HTMLMinServiceProvider` service provider in your `config/app.php`, and optionally alias our facade:
+```php
+        'HTMLMin' => HTMLMin\HTMLMin\Facades\HTMLMin::class,
+```
+
 
 ## Configuration
 
