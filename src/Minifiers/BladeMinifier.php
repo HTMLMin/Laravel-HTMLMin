@@ -55,11 +55,14 @@ class BladeMinifier implements MinifierInterface
             $replace = [
                 '/<!--[^\[](.*?)[^\]]-->/s' => '',
                 "/<\?php/"                  => '<?php ',
-                "/\n([\S])/"                => ' $1',
+                "/\n([\S])/"                => '$1',
+                "/>\n</"                    => '><',
+                "/>\s+\n</"                 => '><',
+                "/>\n\s+</"                 => '><',
                 "/\r/"                      => '',
                 "/\n/"                      => '',
-                "/\t/"                      => ' ',
-                '/ +/'                      => ' ',
+                "/\t/"                      => '',
+                "/ +/"                      => ' ',
             ];
 
             $value = preg_replace(array_keys($replace), array_values($replace), $value);
