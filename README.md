@@ -98,6 +98,11 @@ This class contains no public methods of interest. This class should be added to
 
 There are other classes in this package that are not documented here (such as the compiler class). This is because they are not intended for public use and are used internally by this package.
 
+**Please note to clear view cache to see changes.**
+
+```
+php artisan view:clear
+```
 
 ## Security
 
