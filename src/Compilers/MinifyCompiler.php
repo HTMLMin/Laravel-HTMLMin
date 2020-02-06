@@ -44,15 +44,22 @@ class MinifyCompiler extends BladeCompiler
      * @param \Illuminate\Filesystem\Filesystem        $files
      * @param string                                   $cachePath
      * @param array                                    $ignoredPaths
+     * @param array                                    $customDirectives
      *
      * @return void
      */
-    public function __construct(BladeMinifier $blade, Filesystem $files, $cachePath, $ignoredPaths = [])
+    public function __construct(BladeMinifier $blade, Filesystem $files, $cachePath, $ignoredPaths = [], $customDirectives = [])
     {
         parent::__construct($files, $cachePath);
         $this->blade = $blade;
         $this->ignoredPaths = $ignoredPaths;
         $this->compilers[] = 'Minify';
+
+        if (count($customDirectives)) {
+            foreach ($customDirectives as $key => $value) {
+                $this->directive($key, $value);
+            }
+        }
     }
 
     /**
