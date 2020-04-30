@@ -36,6 +36,10 @@ class MinifyCompiler extends BladeCompiler
      * @var string
      */
     protected $ignoredPaths;
+    /**
+     * @var \Illuminate\View\Compilers\BladeCompiler|null
+     */
+    private $previousCompiler;
 
     /**
      * Create a new instance.
@@ -44,15 +48,22 @@ class MinifyCompiler extends BladeCompiler
      * @param \Illuminate\Filesystem\Filesystem        $files
      * @param string                                   $cachePath
      * @param array                                    $ignoredPaths
+     * @param \Illuminate\View\Compilers\BladeCompiler $previousCompiler
      *
      * @return void
      */
-    public function __construct(BladeMinifier $blade, Filesystem $files, $cachePath, $ignoredPaths = [])
-    {
+    public function __construct(
+        BladeMinifier $blade,
+        Filesystem $files,
+        $cachePath,
+        $ignoredPaths = [],
+        $previousCompiler = null
+    ) {
         parent::__construct($files, $cachePath);
         $this->blade = $blade;
         $this->ignoredPaths = $ignoredPaths;
         $this->compilers[] = 'Minify';
+        $this->previousCompiler = $previousCompiler;
     }
 
     /**
@@ -95,5 +106,21 @@ class MinifyCompiler extends BladeCompiler
     public function getBladeMinifier()
     {
         return $this->blade;
+    }
+
+    /**
+     * @return void
+     */
+    public function initMinifyCompiler()
+    {
+        if ($this->previousCompiler === null) {
+            return;
+        }
+
+        if (property_exists($this->previousCompiler, 'customDirectives')) {
+            foreach ($this->previousCompiler->customDirectives as $name => $handler) {
+                $this->directive($name, $handler);
+            }
+        }
     }
 }
