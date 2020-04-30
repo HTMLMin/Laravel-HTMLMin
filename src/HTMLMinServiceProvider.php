@@ -41,7 +41,6 @@ class HTMLMinServiceProvider extends ServiceProvider
 
         if ($this->app->config->get('htmlmin.blade')) {
             $this->enableBladeOptimisations();
-            $this->app->make('htmlmin.compiler')->initMinifyCompiler();
         }
     }
 
@@ -74,6 +73,7 @@ class HTMLMinServiceProvider extends ServiceProvider
 
         $app->view->getEngineResolver()->register('blade', function () use ($app) {
             $compiler = $app['htmlmin.compiler'];
+            $compiler->initMinifyCompiler();
 
             return new CompilerEngine($compiler);
         });
