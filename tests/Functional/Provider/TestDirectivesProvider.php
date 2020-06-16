@@ -1,6 +1,6 @@
 <?php
 
-namespace HTMLMin\Tests\HTMLMin\Functional;
+namespace HTMLMin\Tests\HTMLMin\Functional\Provider;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\View\Compilers\BladeCompiler;
@@ -24,12 +24,6 @@ class TestDirectivesProvider extends ServiceProvider
             ->resolve('blade')
             ->getCompiler();
 
-        $previousCompiler->directive('test', [$this, 'testDirective']);
-
-        if (method_exists($previousCompiler, 'aliasComponent')) {
-            $previousCompiler->aliasComponent('stubs::aliasComponent', 'testAliasComponent');
-        } elseif (method_exists($previousCompiler, 'component')) {
-            $previousCompiler->component('stubs::aliasComponent', 'testAliasComponent');
-        }
+        $previousCompiler->directive('test_directive', [$this, 'testDirective']);
     }
 }

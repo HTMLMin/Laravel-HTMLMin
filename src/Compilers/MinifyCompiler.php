@@ -122,5 +122,11 @@ class MinifyCompiler extends BladeCompiler
                 $this->directive($name, $handler);
             }
         }
+
+        if (property_exists($this->previousCompiler, 'classComponentAliases')) {
+            foreach ($this->previousCompiler->classComponentAliases as $name => $handler) {
+                $this->component($handler, $name);
+            }
+        }
     }
 }

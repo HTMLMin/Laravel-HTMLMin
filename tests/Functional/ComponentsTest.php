@@ -3,10 +3,9 @@
 namespace HTMLMin\Tests\HTMLMin\Functional;
 
 use HTMLMin\HTMLMin\Compilers\MinifyCompiler;
-use HTMLMin\Tests\HTMLMin\Functional\Provider\TestDirectivesProvider;
-use HTMLMin\Tests\HTMLMin\Mock\MinifyCompilerMock;
+use HTMLMin\Tests\HTMLMin\Functional\Provider\TestComponentsProvider;
 
-class DirectivesTest extends AbstractFunctionalTestCase
+class ComponentsTest extends AbstractFunctionalTestCase
 {
     /**
      * Get the required service providers.
@@ -17,18 +16,22 @@ class DirectivesTest extends AbstractFunctionalTestCase
      */
     protected function getRequiredServiceProviders($app)
     {
-        return [TestDirectivesProvider::class];
+        return [TestComponentsProvider::class];
     }
 
-    public function testUseDirectives()
+    public function testUseComponents()
     {
+        if (version_compare($this->app->version(), '7.0', '<')) {
+            $this->markTestSkipped('Class components were released in Laravel version 7.0.0');
+        }
+
         /** @var MinifyCompiler $minifyCompiler */
         $minifyCompiler = $this->app->make('view')
             ->getEngineResolver()
             ->resolve('blade')
             ->getCompiler();
 
-        $compilerMock = MinifyCompilerMock::newInstance();
-        $this->assertArrayHasKey('test_directive', $compilerMock->getCompilerCustomDirectives($minifyCompiler));
+        $this->assertArrayHasKey('test-component', $minifyCompiler->getClassComponentAliases());
     }
 }
+
