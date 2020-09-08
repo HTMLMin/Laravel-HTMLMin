@@ -12,7 +12,7 @@ Laravel HTMLMin is currently maintained by [Raza Mehdi](https://github.com/srmkl
 
 ## Installation
 
-Laravel HTMLMin requires [PHP](https://php.net) 5.5+. This particular version supports Laravel 5.1-5.8, 6.x and 7.x.
+Laravel HTMLMin requires [PHP](https://php.net) 5.5+. This particular version supports Laravel 5.1-5.8, 6.x, 7.x and 8.x.
 
 To get the latest version, simply require the project using [Composer](https://getcomposer.org):
 
