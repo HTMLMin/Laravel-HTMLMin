@@ -1,7 +1,7 @@
 Laravel HTMLMin
 ===============
 
-Laravel HTMLMin is currently maintained by [Raza Mehdi](https://github.com/srmklive), and is a simple HTML minifier for [Laravel 5](http://laravel.com). It utilises Mr Clay's [Minify](https://github.com/mrclay/minify) package to minify entire responses, but can also minify blade at compile time. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/HTMLMin/Laravel-HTMLMin/releases), [license](LICENSE), and [contribution guidelines](CONTRIBUTING.md).
+Laravel HTMLMin is currently maintained by [Raza Mehdi](https://github.com/srmklive), and is a simple HTML minifier for [Laravel](http://laravel.com). It utilises Mr Clay's [Minify](https://github.com/mrclay/minify) package to minify entire responses, but can also minify blade at compile time. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/HTMLMin/Laravel-HTMLMin/releases), [license](LICENSE), and [contribution guidelines](CONTRIBUTING.md).
 
 <p align="center">
 <a href="https://travis-ci.org/HTMLMin/Laravel-HTMLMin"><img src="https://img.shields.io/travis/HTMLMin/Laravel-HTMLMin/master.svg?style=flat-square" alt="Build Status"></img></a>
@@ -12,7 +12,7 @@ Laravel HTMLMin is currently maintained by [Raza Mehdi](https://github.com/srmkl
 
 ## Installation
 
-Laravel HTMLMin requires [PHP](https://php.net) 5.5+. This particular version supports Laravel 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8 and 6.0 only.
+Laravel HTMLMin requires [PHP](https://php.net) 5.5+. This particular version supports Laravel 5.1-5.8, 6.x and 7.x.
 
 To get the latest version, simply require the project using [Composer](https://getcomposer.org):
 
