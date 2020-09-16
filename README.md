@@ -1,10 +1,9 @@
 Laravel HTMLMin
 ===============
 
-Laravel HTMLMin is currently maintained by [Raza Mehdi](https://github.com/srmklive), and is a simple HTML minifier for [Laravel 5](http://laravel.com). It utilises Mr Clay's [Minify](https://github.com/mrclay/minify) package to minify entire responses, but can also minify blade at compile time. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/HTMLMin/Laravel-HTMLMin/releases), [license](LICENSE), and [contribution guidelines](CONTRIBUTING.md).
+Laravel HTMLMin is currently maintained by [Raza Mehdi](https://github.com/srmklive), and is a simple HTML minifier for [Laravel](http://laravel.com). It utilises Mr Clay's [Minify](https://github.com/mrclay/minify) package to minify entire responses, but can also minify blade at compile time. Feel free to check out the [change log](CHANGELOG.md), [releases](https://github.com/HTMLMin/Laravel-HTMLMin/releases), [license](LICENSE), and [contribution guidelines](CONTRIBUTING.md).
 
 <p align="center">
-<a href="https://styleci.io/repos/12090327"><img src="https://styleci.io/repos/12090327/shield" alt="StyleCI Status"></img></a>
 <a href="https://travis-ci.org/HTMLMin/Laravel-HTMLMin"><img src="https://img.shields.io/travis/HTMLMin/Laravel-HTMLMin/master.svg?style=flat-square" alt="Build Status"></img></a>
 <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square" alt="Software License"></img></a>
 <a href="https://github.com/HTMLMin/Laravel-HTMLMin/releases"><img src="https://img.shields.io/github/release/HTMLMin/Laravel-HTMLMin.svg?style=flat-square" alt="Latest Version"></img></a>
@@ -13,7 +12,7 @@ Laravel HTMLMin is currently maintained by [Raza Mehdi](https://github.com/srmkl
 
 ## Installation
 
-Laravel HTMLMin requires [PHP](https://php.net) 5.5+. This particular version supports Laravel 5.1, 5.2, 5.3, 5.4, and 5.5 only.
+Laravel HTMLMin requires [PHP](https://php.net) 5.5+. This particular version supports Laravel 5.1-5.8, 6.x, 7.x and 8.x.
 
 To get the latest version, simply require the project using [Composer](https://getcomposer.org):
 
@@ -99,6 +98,11 @@ This class contains no public methods of interest. This class should be added to
 
 There are other classes in this package that are not documented here (such as the compiler class). This is because they are not intended for public use and are used internally by this package.
 
+**Please note to clear view cache to see changes.**
+
+```
+php artisan view:clear
+```
 
 ## Security
 

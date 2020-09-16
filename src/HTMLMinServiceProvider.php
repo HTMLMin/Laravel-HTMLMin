@@ -73,6 +73,7 @@ class HTMLMinServiceProvider extends ServiceProvider
 
         $app->view->getEngineResolver()->register('blade', function () use ($app) {
             $compiler = $app['htmlmin.compiler'];
+            $compiler->initMinifyCompiler();
 
             return new CompilerEngine($compiler);
         });
@@ -163,13 +164,18 @@ class HTMLMinServiceProvider extends ServiceProvider
      */
     protected function registerMinifyCompiler()
     {
-        $this->app->singleton('htmlmin.compiler', function (Container $app) {
+        $previousCompiler = $this->app->make('view')
+            ->getEngineResolver()
+            ->resolve('blade')
+            ->getCompiler();
+
+        $this->app->singleton('htmlmin.compiler', function (Container $app) use ($previousCompiler) {
             $blade = $app['htmlmin.blade'];
             $files = $app['files'];
             $storagePath = $app->config->get('view.compiled');
             $ignoredPaths = $app->config->get('htmlmin.ignore', []);
 
-            return new MinifyCompiler($blade, $files, $storagePath, $ignoredPaths);
+            return new MinifyCompiler($blade, $files, $storagePath, $ignoredPaths, $previousCompiler);
         });
 
         $this->app->alias('htmlmin.compiler', MinifyCompiler::class);
