@@ -31,6 +31,11 @@ use Laravel\Lumen\Application as LumenApplication;
 class HTMLMinServiceProvider extends ServiceProvider
 {
     /**
+     * @var \Illuminate\View\Compilers\CompilerInterface|null
+     */
+    protected $previousCompiler;
+
+    /**
      * Boot the service provider.
      *
      * @return void
@@ -164,18 +169,22 @@ class HTMLMinServiceProvider extends ServiceProvider
      */
     protected function registerMinifyCompiler()
     {
-        $previousCompiler = $this->app->make('view')
-            ->getEngineResolver()
-            ->resolve('blade')
-            ->getCompiler();
+        if (method_exists($this, 'callAfterResolving')) {
+            $this->callAfterResolving('view', function () {
+                $this->previousCompiler = $this->app->make('view')
+                    ->getEngineResolver()
+                    ->resolve('blade')
+                    ->getCompiler();
+            });
+        }
 
-        $this->app->singleton('htmlmin.compiler', function (Container $app) use ($previousCompiler) {
+        $this->app->singleton('htmlmin.compiler', function (Container $app) {
             $blade = $app['htmlmin.blade'];
             $files = $app['files'];
             $storagePath = $app->config->get('view.compiled');
             $ignoredPaths = $app->config->get('htmlmin.ignore', []);
 
-            return new MinifyCompiler($blade, $files, $storagePath, $ignoredPaths, $previousCompiler);
+            return new MinifyCompiler($blade, $files, $storagePath, $ignoredPaths, $this->previousCompiler);
         });
 
         $this->app->alias('htmlmin.compiler', MinifyCompiler::class);
