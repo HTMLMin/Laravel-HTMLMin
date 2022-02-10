@@ -12,7 +12,7 @@
 
 namespace HTMLMin\HTMLMin\Minifiers;
 
-use JSMin;
+use JSMin\JSMin;
 
 /**
  * This is the js minifier class.
