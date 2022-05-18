@@ -24,7 +24,7 @@ Once installed, register the service provider in your `config/app.php`
 
 ```php
 'providers' => [
-    'HTMLMin' => HTMLMin\HTMLMin\HTMLMinServiceProvider::class
+    HTMLMin\HTMLMin\HTMLMinServiceProvider::class
 ]
 ```
 
