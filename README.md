@@ -28,7 +28,7 @@ Once installed, register the service provider in your `config/app.php`
 ]
 ```
 
-If you want, a facade is available to be aliased
+If you want, a facade is available to alias
 
 ```php
 'aliases' => [
