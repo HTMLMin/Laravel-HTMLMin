@@ -20,12 +20,21 @@ To get the latest version, simply require the project using [Composer](https://g
 $ composer require htmlmin/htmlmin
 ```
 
-Once installed, you need to register the `HTMLMin\HTMLMin\HTMLMinServiceProvider` service provider in your `config/app.php`, and optionally alias our facade:
+Once installed, register the service provider in your `config/app.php`
 
 ```php
-        'HTMLMin' => HTMLMin\HTMLMin\Facades\HTMLMin::class,
+'providers' => [
+    'HTMLMin' => HTMLMin\HTMLMin\HTMLMinServiceProvider::class
+]
 ```
 
+If you want, a facade is available to be aliased
+
+```php
+'aliases' => [
+    'HTMLMin' => HTMLMin\HTMLMin\Facades\HTMLMin::class
+]
+```
 
 ## Configuration
 
